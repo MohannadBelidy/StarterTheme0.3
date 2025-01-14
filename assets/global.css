@@ -1,0 +1,50 @@
+:root {
+  --page-width: 1200px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  padding: 20px;
+  width: 90%;
+  max-width: 1440px;
+  margin: 20px auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-wrapper {
+  max-width: var(--page-width);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.page-width {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0px 20px;
+}
+
+body .hidden {
+  display: none;
+}
+
+.badge {
+  border: 1px solid transparent;
+  border-radius: var(--badge-corner-radius);
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 1;
+  padding: 5px 13px 6px;
+  text-align: center;
+  background-color: rgb(var(--color-badge-background));
+  border-color: rgba(var(--color-badge-border), var(--alpha-badge-border));
+  color: rgb(var(--color-badge-foreground));
+  word-break: break-word;
+}
