@@ -29,8 +29,77 @@
           "margin_bottom": 0,
           "padding_top": 20,
           "padding_bottom": 20
+        },
+        "blocks": 
+            {
+                "megamenu1":{
+                    "type": "megamenu1",
+                    "settings": {
+                        "image1":"",
+                        "image2":"",
+                        "title1":"",
+                        "title2":""
+                    }
+                },
+                "megamenu2":{
+                    "type": "megamenu2",
+                    "settings": {
+                        "image1":"",
+                        "image2":"",
+                        "title1":"",
+                        "title2":""
+                    }
+                },
+                "megamenu3":{
+                    "type": "megamenu3",
+                    "settings": {
+                        "image1":"",
+                        "image2":"",
+                        "title1":"",
+                        "title2":""
+                    }
+                },
+                "megamenu4":{
+                    "type": "megamenu4",
+                    "settings": {
+                        "image1":"",
+                        "image2":"",
+                        "title1":"",
+                        "title2":""
+                    }
+                },
+                "megamenu5":{
+                    "type": "megamenu5",
+                    "settings": {
+                        "image1":"",
+                        "image2":"",
+                        "title1":"",
+                        "title2":""
+                    }
+                },
+                "megamenu6":{
+                    "type": "megamenu6",
+                    "settings": {
+                        "image1":"",
+                        "image2":"",
+                        "title1":"",
+                        "title2":""
+                    }
+                },
+                "megamenu7":{
+                    "type": "megamenu7",
+                    "settings": {
+                        "image1":"",
+                        "image2":"",
+                        "title1":"",
+                        "title2":""
+                    }
+                }
+                
+              },
+        
         }
-      }
+      
     },
     "order": [
       
