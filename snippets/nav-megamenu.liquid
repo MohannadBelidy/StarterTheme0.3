@@ -1,14 +1,22 @@
 <style>
   #main-header .nav-megamenu {
+    display: flex;
+    justify-items: center;
+    
+    margin-inline: auto;
+    padding: 2;
     position: absolute;
     left: 0;
     top: 100%;
     width: 100%;
     margin-top: 1px;
+    background-color: #fff5f5;
   }
   #main-header .nav-megamenu .page-wrapper {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    display: flex;
+    max-width: 1400px;
+    justify-items: center;
+    gap: 40px;
     margin-inline: auto;
     align-items: flex-start;
     padding: 30px 20px;
@@ -27,52 +35,112 @@
     font-size: 15px;
     line-height: 1.5;
   }
+
+  #main-header .nav-megamenu .imageColumn{
+    width: 20%;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+
+  }
+
+  #main-header .menu-toggle{
+    padding: 2px;
+  }
+
+
+  #main-header .nav-megamenu .imageContainer {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  #main-header .nav-megamenu .imageContainer img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
 </style>
 <ul>
   {% for link in section.settings.menu.links %}
-    <li x-data="{ menuOpen: false }" @click.outside="menuOpen = false">
+    <li x-data="{ menuOpen: false }" @mouseover.away="menuOpen = false">
       {% if link.links != blank %}
-        <button
-          @click="menuOpen = !menuOpen"
-          :class="{ 'menu-open': menuOpen }"
-          class="menu-toggle"
-        >
-          {{- link.title | escape -}}
-          {{- 'icon-caret.svg' | inline_asset_content -}}
-        </button>
-        <div x-show="menuOpen" x-transition x-cloak class="nav-megamenu color-{{ section.settings.menu_color_scheme }} gradient">
-          <ul class="page-wrapper" role="list">
-            {%- for childlink in link.links -%}
-              <li>
-                <a
-                  href="{{ childlink.url }}"
-                  class="nav-megamenu_heading"
-                  {% if childlink.current %}
-                    aria-current="page"
+        {% assign block_type = 'megamenu' | append: forloop.index0 %}
+
+        {% for block in section.blocks %}
+          {% if block.type == block_type %}
+            <button
+              @mouseover="menuOpen = true"
+              :class="{ 'menu-open': menuOpen }"
+              class="menu-toggle"
+            >
+              {{- link.title | escape -}}
+              
+            </button>
+            <div
+              x-show="menuOpen"
+              x-transition
+              x-cloak
+              class="nav-megamenu color-{{ section.settings.menu_color_scheme }} gradient"
+            >
+              <ul class="page-wrapper" role="list">
+                {%- for childlink in link.links -%}
+                  <li>
+                    {% unless childlink.title == '-' %}
+                      <a
+                      href="{{ childlink.url }}"
+                      class="nav-megamenu_heading"
+                      {% if childlink.current %}
+                        aria-current="page"
+                      {% endif %}
+                    >
+                      {{ childlink.title | escape }}
+                    </a>
+                    {% endunless %}
+                    
+                    {%- if childlink.links != blank -%}
+                      <ul class="nav-megamenu_child" role="list">
+                        {%- for grandchildlink in childlink.links -%}
+                          <li>
+                            <a
+                              href="{{ grandchildlink.url }}"
+                              {% if grandchildlink.current %}
+                                aria-current="page"
+                              {% endif %}
+                            >
+                              {{ grandchildlink.title | escape }}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+                
+                  {% if block.settings.image1 %}
+                    <div style="imageColumn">
+                      <div style="imageContainer">
+                        <img src="{{ block.settings.image1 | img_url: 'medium'}}" alt="{{ image1.alt }}">
+                      </div>
+                      <p>{{ block.settings.title1 }}</p>
+                    </div>
                   {% endif %}
-                >
-                  {{ childlink.title | escape }}
-                </a>
-                {%- if childlink.links != blank -%}
-                  <ul class="nav-megamenu_child" role="list">
-                    {%- for grandchildlink in childlink.links -%}
-                      <li>
-                        <a
-                          href="{{ grandchildlink.url }}"
-                          {% if grandchildlink.current %}
-                            aria-current="page"
-                          {% endif %}
-                        >
-                          {{ grandchildlink.title | escape }}
-                        </a>
-                      </li>
-                    {%- endfor -%}
-                  </ul>
-                {%- endif -%}
-              </li>
-            {%- endfor -%}
-          </ul>
-        </div>
+
+                  {% if block.settings.image2 %}
+                    <div style="imageColumn">
+                      <div style="imageConainer">
+                        <img src="{{ block.settings.image2 | img_url: 'medium'}}" alt="{{ image2.alt }}">
+                      </div>
+                      <p>{{ block.settings.title2 }}</p>
+                    </div>
+                  {% endif %}
+                  
+              </ul>
+            </div>
+          {% endif %}
+        {% endfor %}
+
       {% else %}
         <a
           href="{{ link.url }}"
