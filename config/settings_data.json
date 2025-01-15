@@ -130,6 +130,66 @@
     "sections": {
       "header": {
         "type": "header",
+        "blocks": {
+          "megamenu7_MEG8Q6": {
+            "type": "megamenu7",
+            "settings": {
+              "title1": "",
+              "title2": ""
+            }
+          },
+          "megamenu6_ajgmpN": {
+            "type": "megamenu6",
+            "settings": {
+              "title1": "",
+              "title2": ""
+            }
+          },
+          "megamenu5_Mc7bdy": {
+            "type": "megamenu5",
+            "settings": {
+              "title1": "",
+              "title2": ""
+            }
+          },
+          "megamenu4_KdEzxG": {
+            "type": "megamenu4",
+            "settings": {
+              "title1": "",
+              "title2": ""
+            }
+          },
+          "megamenu3_eJUik7": {
+            "type": "megamenu3",
+            "settings": {
+              "title1": "",
+              "title2": ""
+            }
+          },
+          "megamenu2_PyaA77": {
+            "type": "megamenu2",
+            "settings": {
+              "title1": "",
+              "title2": ""
+            }
+          },
+          "megamenu1_zwBWVR": {
+            "type": "megamenu1",
+            "settings": {
+              "title1": "",
+              "title2": ""
+            }
+          }
+        },
+        "block_order": [
+          "megamenu7_MEG8Q6",
+          "megamenu6_ajgmpN",
+          "megamenu5_Mc7bdy",
+          "megamenu4_KdEzxG",
+          "megamenu3_eJUik7",
+          "megamenu2_PyaA77",
+          "megamenu1_zwBWVR"
+        ],
         "settings": {
           "logo_position": "middle-left",
           "menu": "main-menu",
