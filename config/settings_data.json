@@ -130,10 +130,22 @@
     "sections": {
       "header": {
         "type": "header",
+        "blocks": {
+          "megamenu1_m4hLyc": {
+            "type": "megamenu1",
+            "settings": {
+              "title1": "",
+              "title2": ""
+            }
+          }
+        },
+        "block_order": [
+          "megamenu1_m4hLyc"
+        ],
         "settings": {
           "logo_position": "middle-left",
           "menu": "main-menu",
-          "menu_type_desktop": "dropdown",
+          "menu_type_desktop": "mega",
           "sticky_header_type": "on-scroll-up",
           "show_line_separator": true,
           "color_scheme": "",
