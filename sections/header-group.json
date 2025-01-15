@@ -26,22 +26,27 @@
         "megamenu2": {
           "type": "megamenu2",
           "settings": {
-            "title1": "",
-            "title2": ""
+            "image1": "shopify://shop_images/12-04-MEGA-Best-Sellers.webp",
+            "title1": "Shop Hen House",
+            "image2": "shopify://shop_images/MEGA-BestSellers-SecretLibrary.webp",
+            "title2": "Shop Secret Library"
           }
         },
         "megamenu3": {
           "type": "megamenu3",
           "settings": {
-            "title1": "",
+            "image1": "shopify://shop_images/MEGA-PF_Caviar_Satin_Blush_WildestDreams_03.webp",
+            "title1": "Shop Back In Stock",
             "title2": ""
           }
         },
         "megamenu4": {
           "type": "megamenu4",
           "settings": {
-            "title1": "",
-            "title2": ""
+            "image1": "shopify://shop_images/MEGA-APPAREL-CocktailBlouse.webp",
+            "title1": "Shop Blouses",
+            "image2": "shopify://shop_images/12-8_MM_apparel2jpg.jpg",
+            "title2": "Shop Dresses"
           }
         },
         "megamenu5": {
