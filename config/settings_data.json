@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/design-graphic.png",
-    "logo_height": 60,
+    "logo": "shopify://shop_images/logo-shop.svg",
+    "logo_height": 110,
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
@@ -131,16 +131,77 @@
       "header": {
         "type": "header",
         "blocks": {
+          "megamenu1_iJ6ngJ": {
+            "type": "megamenu1",
+            "settings": {
+              "image1": "shopify://shop_images/12-04-MEGA-New-ArrivalsB.webp",
+              "title1": "Shop New Satin's",
+              "image2": "shopify://shop_images/MEGA-NewArrivals-ValentinesDayB.webp",
+              "title2": "Shop Valentine's"
+            }
+          },
+          "megamenu2_y8HWzf": {
+            "type": "megamenu2",
+            "settings": {
+              "image1": "shopify://shop_images/12-04-MEGA-Best-Sellers.webp",
+              "title1": "Shop Hen House",
+              "image2": "shopify://shop_images/MEGA-BestSellers-SecretLibrary.webp",
+              "title2": "Shop Secret Library"
+            }
+          },
           "megamenu3_XNAJqL": {
             "type": "megamenu3",
             "settings": {
-              "title1": "",
+              "image1": "shopify://shop_images/MEGA-PF_Caviar_Satin_Blush_WildestDreams_03.webp",
+              "title1": "Shop Back in Stock",
               "title2": ""
+            }
+          },
+          "megamenu4_wNbwgN": {
+            "type": "megamenu4",
+            "settings": {
+              "image1": "shopify://shop_images/MEGA-APPAREL-CocktailBlouse.webp",
+              "title1": "Shop Blouses",
+              "image2": "shopify://shop_images/12-8_MM_apparel2jpg.jpg",
+              "title2": "Shop Dresses"
+            }
+          },
+          "megamenu5_jeeYDW": {
+            "type": "megamenu5",
+            "settings": {
+              "image1": "shopify://shop_images/MEGA-LUXE-ValentinesDayB.webp",
+              "title1": "Shop Satin Sets",
+              "image2": "shopify://shop_images/MEGA-LUXE-ValentinesDay.webp",
+              "title2": "Shop Satin Robes"
+            }
+          },
+          "megamenu6_ygbbdc": {
+            "type": "megamenu6",
+            "settings": {
+              "image1": "shopify://shop_images/MEGA-Accessories.webp",
+              "title1": "Shop Quilted Pouches",
+              "image2": "shopify://shop_images/MEGA-FriendsofPF.webp",
+              "title2": "Shop Friends of Printfresh"
+            }
+          },
+          "megamenu7_jipMeb": {
+            "type": "megamenu7",
+            "settings": {
+              "image1": "shopify://shop_images/MEGA-HOME-Tabletop.webp",
+              "title1": "Shop Tabletop",
+              "image2": "shopify://shop_images/MEGA-HOME-MLDWallpaper.webp",
+              "title2": "Shop Wallpaper"
             }
           }
         },
         "block_order": [
-          "megamenu3_XNAJqL"
+          "megamenu1_iJ6ngJ",
+          "megamenu2_y8HWzf",
+          "megamenu3_XNAJqL",
+          "megamenu4_wNbwgN",
+          "megamenu5_jeeYDW",
+          "megamenu6_ygbbdc",
+          "megamenu7_jipMeb"
         ],
         "settings": {
           "logo_position": "middle-left",
