@@ -130,6 +130,19 @@
     "sections": {
       "header": {
         "type": "header",
+        "blocks": {
+          "megamenu1_pF38L9": {
+            "type": "megamenu1",
+            "settings": {
+              "image1": "shopify://shop_images/12-04-MEGA-New-ArrivalsB.webp",
+              "title1": "",
+              "title2": ""
+            }
+          }
+        },
+        "block_order": [
+          "megamenu1_pF38L9"
+        ],
         "settings": {
           "logo_position": "middle-left",
           "menu": "main-menu",
