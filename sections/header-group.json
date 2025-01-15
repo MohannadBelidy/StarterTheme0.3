@@ -52,22 +52,28 @@
         "megamenu5": {
           "type": "megamenu5",
           "settings": {
-            "title1": "",
-            "title2": ""
+            "image1": "shopify://shop_images/MEGA-LUXE-ValentinesDayB.webp",
+            "title1": "Shop Satin Sets",
+            "image2": "shopify://shop_images/MEGA-LUXE-ValentinesDay.webp",
+            "title2": "Shop Satin Robes"
           }
         },
         "megamenu6": {
           "type": "megamenu6",
           "settings": {
-            "title1": "",
-            "title2": ""
+            "image1": "shopify://shop_images/MEGA-Accessories.webp",
+            "title1": "Shop Quilted Pouches",
+            "image2": "shopify://shop_images/MEGA-FriendsofPF.webp",
+            "title2": "Shop Friends of Printfresh"
           }
         },
         "megamenu7": {
           "type": "megamenu7",
           "settings": {
-            "title1": "",
-            "title2": ""
+            "image1": "shopify://shop_images/MEGA-HOME-Tabletop.webp",
+            "title1": "Shop Tabletop",
+            "image2": "shopify://shop_images/MEGA-HOME-MLDWallpaper.webp",
+            "title2": "Shop Wallpaper"
           }
         }
       },
