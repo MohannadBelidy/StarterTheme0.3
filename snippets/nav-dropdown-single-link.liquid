@@ -37,7 +37,7 @@
           :class="{ 'menu-open': menuOpen }"
           class="menu-toggle"
         >
-          {{- link.title | escape -}}
+          {{- link.title | escape | upcase-}}
           {{- 'icon-caret.svg' | inline_asset_content -}}
         </button>
         <ul
