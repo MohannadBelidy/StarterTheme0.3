@@ -38,7 +38,6 @@
     line-height: 1.5;
     color: #373735;
   }
-
   #main-header .nav-megamenu_child a:hover {
     display: block;
     color: black;
@@ -47,7 +46,6 @@
     font-size: 13px;
     line-height: 1.5;
   }
-
   #main-header .nav-megamenu .imageColumn a{
     display: block;
     padding: 6px 0;
@@ -55,7 +53,6 @@
     line-height: 1.5;
     color: #373735;
   }
-
   #main-header .nav-megamenu .imageColumn a:hover{
     display: block;
     color: black;
@@ -64,30 +61,20 @@
     font-size: 13px;
     line-height: 1.5;
   }
-
   #main-header .nav-megamenu .imageColumn{
     width: 20%;
     padding: 2px;
     display: flex;
     flex-direction: column;
     gap: 2px;
-
-
   }
-
-  
-  
-
   #main-header  .megamenu-toggle {
     display: flex;
     padding: 0 12px 13px;
     font-size: 14px; 
     color: #373735;
     letter-spacing: 1px;
-}
-
-
-
+  }
   #main-header .nav-megamenu .imageContainer {
     width: 100%;
     height: auto;
@@ -104,7 +91,13 @@
     <li x-data="{ menuOpen: false }" @mouseover.away="menuOpen = false">
       {% if link.links != blank %}
         {% assign block_type = 'megamenu' | append: forloop.index0 %}
-        <a href="{{link.url}}"
+        
+        {% assign block_found = false %}
+        {% for block in section.blocks %}
+          
+          {% if block.type == block_type %}
+            {% assign block_found = true %}
+            <a href="{{link.url}}"
               @mouseover="menuOpen = true"
               :class="{ 'menu-open': menuOpen }"
               class="megamenu-toggle"
@@ -112,9 +105,6 @@
               {{- link.title | escape | upcase-}}
               
             </a>
-
-        {% for block in section.blocks %}
-          {% if block.type == block_type %}
             
             <div
               x-show="menuOpen"
@@ -176,8 +166,15 @@
                   
               </ul>
             </div>
+          
+              
           {% endif %}
+
+           
         {% endfor %}
+        {% if block_found == false %}
+          {% render 'nav-dropdown-single-link',link:link %}
+        {% endif %}
 
       {% else %}
         <a

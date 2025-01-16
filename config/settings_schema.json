@@ -26,6 +26,16 @@
         "label": "t:settings_schema.logo.settings.logo_height.label"
       },
       {
+        "type": "range",
+        "id": "logo_height_mobile",
+        "min": 2,
+        "max": 100,
+        "step": 2,
+        "default": 66,
+        "unit": "px",
+        "label": "t:settings_schema.logo.settings.logo_height.label"
+      },
+      {
         "type": "image_picker",
         "id": "favicon",
         "label": "t:settings_schema.logo.settings.favicon.label",

@@ -1,0 +1,37 @@
+<style>
+
+</style>
+<div>
+    <div>
+        <img src="{{section.settings.image_banner|  img_url: 'grande'}}" alt="{{section.settings.image_banner.alt}}" width="" height="">
+    </div>
+    
+</div>
+
+{% schema %}
+{
+    "name": "Image Banner",
+    "settings": [
+        {
+            "type": "image_picker",
+            "label": "Image",
+            "id":"image_banner"
+        },
+        {
+            "type": "text",
+            "label": "Banner Title",
+            "id": "title"
+        },
+        {
+            "type": "text",
+            "label": "Banner Subtitle",
+            "id": "subtitle"
+        },
+        {
+            "type": "text",
+            "label": "Button's Text",
+            "id": "button_text"
+        }
+        ]
+}
+{% endschema %}
