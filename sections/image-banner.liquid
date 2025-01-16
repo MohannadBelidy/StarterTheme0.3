@@ -1,10 +1,27 @@
 <style>
-
+    .banner_container{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+.banner_content{
+    position: absolute;
+    margin: 0 40px;
+    width: 530px;
+}
 </style>
 <div>
-    <div>
-        <img src="{{section.settings.image_banner|  img_url: 'grande'}}" alt="{{section.settings.image_banner.alt}}" width="" height="">
+    <div class="banner_container">
+        <img src="{{section.settings.image_banner|  img_url: '7000x7000'}}" alt="{{section.settings.image_banner.alt}}" width="100%" height="">
+        <div class="banner_content">
+            <h1>{{section.settings.title}}</h1>
+            <h2>{{section.settings.subtitle}}</h2>
+            <a href="{{section.settings.button_text}}" class="button">{{section.settings.button_text}}</a>
+        </div>
     </div>
+
     
 </div>
 
