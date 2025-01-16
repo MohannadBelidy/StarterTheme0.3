@@ -60,19 +60,24 @@
 }
 
 .mobile_banner_content{
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
+    text-align: left;
     position: absolute;
     margin: 0 40px;
-    width: 530px;
+    bottom: 10px;
+    left: 10px;
     color: white;
     font-family: Poppins;
     
 }
 .mobile_banner_content h2{
-    font-size: 32px;
+    display: flex;
+    font-size: 2rem;
     font-weight: 300;
     margin: 0;
-    line-height: 38px;
+    line-height: 2.5rem;
     letter-spacing: 3px;
     display: flex;
     align-items: end;
@@ -80,14 +85,12 @@
     
 }
 .mobile_banner_content p{
-    font-size: 15px;
+    display: flex;
+    font-size: 0.8rem;
     line-height: 22px;
     letter-spacing: 1px;
     margin: 0 0 24px !important;
     box-sizing: border-box;
-    padding: 0 80px;
-
-
 }
 .mobile_banner_content a{
     background-color: white;
@@ -107,7 +110,7 @@
     text-decoration: none;
 
 }
-@media(max-width:768px){
+@media(max-width:767px){
     .hide-mobile{
     display: none;
 }
@@ -121,10 +124,10 @@
 }
 
 </style>
-<div>
+<div >
     <div class="banner_container">
         <img src="{{section.settings.image_banner|  img_url: '7000x7000'}}" alt="{{section.settings.image_banner.alt}}" width="100%" height="" class="hide-mobile">
-        <img src="{{section.settings.image_banner_mobile}}" alt="{{section.settings.image_banner_mobile.alt}}" width="100%" height="" class="hide-desktop">
+        <img src="{{section.settings.image_banner_mobile |  img_url: '7000x7000'}}" alt="{{section.settings.image_banner_mobile.alt}}" width="100%" height="" class="hide-desktop" style="max-height: 600px;">
 
         <div class="banner_content hide-mobile">
             <h2>{{section.settings.title}}</h2>
@@ -134,8 +137,7 @@
 
         <div class="mobile_banner_content hide-desktop" >
             <h2>
-                <br>
-                <span>{{section.settings.title}}</span>
+                {{section.settings.title}}
             </h2>
             
             <p>{{section.settings.subtitle}}</p>
