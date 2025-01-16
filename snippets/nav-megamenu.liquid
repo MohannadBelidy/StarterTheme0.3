@@ -27,12 +27,41 @@
     display: block;
   }
   #main-header .nav-megamenu_heading {
-    font-weight: 600;
+    font-weight: 300;
+    font-size: 13px;
+    margin-bottom: 45px;
   }
   #main-header .nav-megamenu_child a {
     display: block;
     padding: 6px 0;
-    font-size: 15px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #373735;
+  }
+
+  #main-header .nav-megamenu_child a:hover {
+    display: block;
+    color: black;
+    padding: 6px 0;
+    text-decoration: underline;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  #main-header .nav-megamenu .imageColumn a{
+    display: block;
+    padding: 6px 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #373735;
+  }
+
+  #main-header .nav-megamenu .imageColumn a:hover{
+    display: block;
+    color: black;
+    padding: 6px 0;
+    text-decoration: underline;
+    font-size: 13px;
     line-height: 1.5;
   }
 
@@ -46,9 +75,17 @@
 
   }
 
-  #main-header .menu-toggle{
-    padding: 2px;
-  }
+  
+  
+
+  #main-header  .megamenu-toggle {
+    display: flex;
+    padding: 0 12px 13px;
+    font-size: 14px; 
+    color: #373735;
+    letter-spacing: 1px;
+}
+
 
 
   #main-header .nav-megamenu .imageContainer {
@@ -67,17 +104,18 @@
     <li x-data="{ menuOpen: false }" @mouseover.away="menuOpen = false">
       {% if link.links != blank %}
         {% assign block_type = 'megamenu' | append: forloop.index0 %}
+        <a href="{{link.url}}"
+              @mouseover="menuOpen = true"
+              :class="{ 'menu-open': menuOpen }"
+              class="megamenu-toggle"
+            >
+              {{- link.title | escape | upcase-}}
+              
+            </a>
 
         {% for block in section.blocks %}
           {% if block.type == block_type %}
-            <button
-              @mouseover="menuOpen = true"
-              :class="{ 'menu-open': menuOpen }"
-              class="menu-toggle"
-            >
-              {{- link.title | escape -}}
-              
-            </button>
+            
             <div
               x-show="menuOpen"
               x-transition
@@ -119,20 +157,20 @@
                 {%- endfor -%}
                 
                   {% if block.settings.image1 %}
-                    <div style="imageColumn">
+                    <div class="imageColumn">
                       <div style="imageContainer">
                         <img src="{{ block.settings.image1 | img_url: 'medium'}}" alt="{{ image1.alt }}">
                       </div>
-                      <p>{{ block.settings.title1 }}</p>
+                      <a>{{ block.settings.title1 }}</a>
                     </div>
                   {% endif %}
 
                   {% if block.settings.image2 %}
-                    <div style="imageColumn">
+                    <div class="imageColumn">
                       <div style="imageConainer">
                         <img src="{{ block.settings.image2 | img_url: 'medium'}}" alt="{{ image2.alt }}">
                       </div>
-                      <p>{{ block.settings.title2 }}</p>
+                      <a>{{ block.settings.title2 }}</a>
                     </div>
                   {% endif %}
                   
@@ -147,8 +185,9 @@
           {% if link.current %}
             aria-current="page"
           {% endif %}
+          class="megamenu-toggle"
         >
-          {{- link.title | escape -}}
+          {{- link.title | escape | upcase-}}
         </a>
       {% endif %}
     </li>

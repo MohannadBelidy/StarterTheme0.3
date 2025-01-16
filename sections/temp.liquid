@@ -64,7 +64,7 @@
     box-sizing: border-box;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0 48px !important;
     justify-content: center ;
     width: 100%;
     display: flex;
@@ -277,8 +277,6 @@
     #header-stripe .stripe-text-message{
       margin: 0 !important; 
       line-height: 18px;
-      display: flex;
-      align-items: flex-end;
       
     }
 
@@ -299,18 +297,18 @@
   <header id="main-header" x-data="{ searchOpen: false }" @click.outside="searchOpen = false">
     <div id="header-stripe">
       <div class="header-stripe-content">
-        <div style="display:flex;align-items:flex-start;gap:8px  ">
-          <img class="img" src="//printfresh.com/cdn/shop/files/Asset_1_2.png?v=1722345901" height="" width="" >
+        <div style="display:flex;align-items:flex-end ;gap:8px  ">
+          <img class="img" src="//printfresh.com/cdn/shop/files/Asset_1_2.png?v=1722345901" height="" width="">
           <p class="stripe-text-message">Free Shipping Over $195 & Easy Returns</p>
         </div>
         <p style="margin:0">|</p>
-        <div style="display:flex;gap:8px ">
+        <div style="display:flex;align-items:flex-end ;gap:8px ">
           <img class="img" src="//printfresh.com/cdn/shop/files/Asset_2_1.png?v=1722345916" height="" width="">
           <p class="stripe-text-message">Joyful Designs and Premium Fabrics</p>
         </div>
         <p style="margin: 0;">|</p>
-        <div style="display:flex;gap:8px">
-          <img class="img" src="//printfresh.com/cdn/shop/files/Asset_3_1.png?v=1722345926" height="" width="" >
+        <div style="display:flex;align-items:flex-end ;gap:8px">
+          <img class="img" src="//printfresh.com/cdn/shop/files/Asset_3_1.png?v=1722345926" height="" width="">
           <p class="stripe-text-message">Size Inclusive Styles From XXS To 6X</p>
         </div>
         

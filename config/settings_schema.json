@@ -18,9 +18,9 @@
       {
         "type": "range",
         "id": "logo_height",
-        "min": 10,
+        "min": 5,
         "max": 200,
-        "step": 10,
+        "step": 5,
         "default": 50,
         "unit": "px",
         "label": "t:settings_schema.logo.settings.logo_height.label"
