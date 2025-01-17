@@ -1,10 +1,18 @@
 <style>
     .banner{
+        
         min-height:650px;
         width: 50%;
         position: relative;
+        background-size: cover;
+        background-position: center;
         
-        
+    }
+    .right-banner{
+        background-image: url( '{{section.settings.image2| img_url: 'master'}}' );
+    }
+    .left-banner{
+        background-image: url( '{{section.settings.image1| img_url: 'master'}}' );
     }
     
     .banner-collection-content {
@@ -34,11 +42,24 @@
         padding: 0 20px;
         font-family: Poppins;
         margin-bottom: 24px;
+        box-sizing: border-box;
     }
     .banner-collection-content a{
         background-color: black;
         border-color: black;
         color: white;
+        display: inline-flex;
+        height: 50px;
+        width: 100%;
+        max-width: 150px;
+        justify-content: center;
+        letter-spacing: 1px;
+        font-size: 14px;
+        line-height: 21px;
+        border: 1px solid;
+        font-family: Poppins;
+        text-decoration: none;
+        align-items: center;
     }
     .banner-collection-content a:hover{
         background-color: white;
@@ -47,12 +68,10 @@
 
 </style>
 
-<div style="display: flex;flex-wrap:wrap;"> 
-    <div class="banner">
-        <img src="{{section.settings.image1| img_url: '4000x4000'}}" alt="{{section.settings.image2}}" width="100%" height="">
-    </div>
-    <div class="banner ">
-        <img src="{{section.settings.image2| img_url: '4000x4000'}}" alt="{{section.settings.image2}}" width="100%" height="">
+<div style="display: flex;flex-wrap:wrap;margin-top:40px;"> 
+    <div class="banner left-banner"></div>
+    <div class="banner right-banner">
+        
         <div class="banner-collection-content">
             <h1>{{section.settings.title}}</h1>
             <p>{{section.settings.subtitle}}</p>
