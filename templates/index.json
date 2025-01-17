@@ -19,7 +19,56 @@
         "image_banner_mobile": "shopify://shop_images/01-16_header-Spring1Launch_mobile_500x_b932e29f-174f-4d49-b9bc-b1205577083f.webp"
       }
     },
-    
+    "featured_collections_1_3FppRK": {
+      "type": "featured-collections-1",
+      "blocks": {
+        "collection_69WtcL": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/01-02_CT-PajamaSets-VintageValentineLongSet_300x_1c8ba487-605c-4de5-96c7-4b80e05282b2.webp",
+            "collection_title": "Valentine's Day"
+          }
+        },
+        "collection_iW9WrG": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/12-16_CT-Loungewear-Hens_300x_316739ae-7398-46d3-b7f3-76d02d3fec1c.webp",
+            "collection_title": "Loungewear"
+          }
+        },
+        "collection_CRWAPw": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/01-02_CT-Satin-Bagheera-Blush-Wildest-Dreams_300x_2e14960c-9ae2-47c6-9de7-c706a3bbd74e.webp",
+            "collection_title": "Satin"
+          }
+        },
+        "collection_YxEenV": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/01-16_CT-Apparel-PoppyDress_300x_ada6e548-718c-4517-8fcc-4c5ffdfcd490.webp",
+            "collection_title": "Apparel"
+          }
+        },
+        "collection_diyKkP": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/01-16_CT-BestSellers-DachshundDate_300x_72c28a2e-e069-44e9-8691-b64613a8cfe9.webp",
+            "collection_title": "Best Sellers"
+          }
+        }
+      },
+      "block_order": [
+        "collection_69WtcL",
+        "collection_iW9WrG",
+        "collection_CRWAPw",
+        "collection_YxEenV",
+        "collection_diyKkP"
+      ],
+      "settings": {
+        "title": "Live On The Bright Side"
+      }
+    },
     "hero": {
       "type": "hero",
       "settings": {}
@@ -31,6 +80,7 @@
   },
   "order": [
     "banner",
+    "featured_collections_1_3FppRK",
     "hero",
     "fist-of-collections"
   ]
