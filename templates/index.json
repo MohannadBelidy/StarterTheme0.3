@@ -69,6 +69,55 @@
         "title": "Live On The Bright Side"
       }
     },
+    "home_policy_and_review_7fhfWb": {
+      "type": "home-policy-and-review",
+      "blocks": {
+        "text_with_link_gXrBV7": {
+          "type": "text_with_link",
+          "settings": {
+            "title": "Inclusive sizes from XS to 6X",
+            "link": "shopify://collections/frontpage",
+            "link_text": "read about us"
+          }
+        },
+        "text_with_link_dBxU3T": {
+          "type": "text_with_link",
+          "settings": {
+            "title": "Organic cotton, ethically created",
+            "link": "shopify://collections/frontpage",
+            "link_text": "READ SUSTAINABILITY"
+          }
+        },
+        "stars_with_link_QmKp3i": {
+          "type": "stars_with_link",
+          "settings": {
+            "image1": "shopify://shop_images/Star_FUll_b8f0c070-7ddf-4582-a072-01800f24b6d0.png",
+            "image2": "shopify://shop_images/Star_FUll_b8f0c070-7ddf-4582-a072-01800f24b6d0.png",
+            "image3": "shopify://shop_images/Star_FUll_b8f0c070-7ddf-4582-a072-01800f24b6d0.png",
+            "image4": "shopify://shop_images/Star_FUll_b8f0c070-7ddf-4582-a072-01800f24b6d0.png",
+            "image5": "shopify://shop_images/star_half.png",
+            "link": "shopify://collections",
+            "link_text": "(4.73) 27,000+ REVIEWS"
+          }
+        },
+        "image_with_link2_VPhQjD": {
+          "type": "image_with_link2",
+          "settings": {
+            "image1": "shopify://shop_images/vogue-logo-png-transparent_1.webp",
+            "image2": "shopify://shop_images/0-2545_people-magazine-logo-transparent-hd-png-download_1.png",
+            "link": "shopify://collections",
+            "link_text": "See all press"
+          }
+        }
+      },
+      "block_order": [
+        "text_with_link_gXrBV7",
+        "text_with_link_dBxU3T",
+        "stars_with_link_QmKp3i",
+        "image_with_link2_VPhQjD"
+      ],
+      "settings": {}
+    },
     "hero": {
       "type": "hero",
       "settings": {}
@@ -81,6 +130,7 @@
   "order": [
     "banner",
     "featured_collections_1_3FppRK",
+    "home_policy_and_review_7fhfWb",
     "hero",
     "fist-of-collections"
   ]
