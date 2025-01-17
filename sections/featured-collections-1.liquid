@@ -1,0 +1,116 @@
+<style>
+    .collection-container{
+        background-color: #fff5f5;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .custom-featured-collection{
+        
+        padding:40px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .custom-featured-collection h2{
+        color: #373735;
+        text-align: center;
+        margin-bottom: 20px;
+        line-height: 50px;
+        font-size: 35px;
+    }
+    .collection-grid{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 15px;
+        gap: 13px;
+    }
+    @media(max-width:768px){
+        .collection-grid{
+            justify-content: space-between !important;
+        }
+        .custom-featured-collection .collection-container{
+            width: 47% !important;
+        }
+        
+    }
+    .custom-featured-collection .collection-container{
+        width: 19%;
+        cursor: pointer;
+        
+    }
+
+    .custom-featured-collection .collection-container:hover{
+        margin-top:20px ;  
+    }
+
+    .custom-featured-collection .collection-container:hover p{
+        display: none; 
+    }
+
+    .custom-featured-collection .collection-container img{
+        width: 100%;
+        object-fit: cover;
+    }
+    .custom-featured-collection .collection-container p{
+        color: #373735;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 0;
+        margin-top: 14px;
+        line-height: 34px;
+
+    }
+
+
+</style>
+
+<div class="collection-container">
+  <div class="custom-featured-collection">
+    <h2>{{ section.settings.title }}</h2>
+    <div class="collection-grid">
+      {% for block in section.blocks%}
+        <div class="collection-container"> 
+          <img src="{{block.settings.image| img_url: '7000x7000'}}" alt="{{block.settings.image.alt}}" height="" width="100%">
+          <p>{{ block.settings.collection_title }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Collections 1",
+  "settings": [
+    {
+      "label": "Title",
+      "id": "title",
+      "type": "text",
+      "default": "Live On The Bright Side"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        },
+        {
+          "type": "text",
+          "label": "Collection Title",
+          "id": "collection_title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+        "name": "Featured Collections 1"
+    }
+  ]
+}
+{% endschema %}

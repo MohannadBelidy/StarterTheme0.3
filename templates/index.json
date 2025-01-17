@@ -19,6 +19,7 @@
         "image_banner_mobile": "shopify://shop_images/01-16_header-Spring1Launch_mobile_500x_b932e29f-174f-4d49-b9bc-b1205577083f.webp"
       }
     },
+    
     "hero": {
       "type": "hero",
       "settings": {}
