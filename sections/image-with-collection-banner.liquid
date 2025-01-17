@@ -1,0 +1,106 @@
+<style>
+    .banner{
+        min-height:650px;
+        width: 50%;
+        position: relative;
+        
+        
+    }
+    
+    .banner-collection-content {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 500px;
+        min-height: 500px;
+        display: flex;
+        text-align: center;
+        background-color: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .banner-collection-content h1{
+        font-size: 42px;
+        line-height: 50px;
+    }
+    .banner-collection-content p{
+        font-size: 15px;
+        line-height: 23px;
+        max-width: 400px;
+        padding: 0 20px;
+        font-family: Poppins;
+        margin-bottom: 24px;
+    }
+    .banner-collection-content a{
+        background-color: black;
+        border-color: black;
+        color: white;
+    }
+    .banner-collection-content a:hover{
+        background-color: white;
+        color: black;
+    }
+
+</style>
+
+<div style="display: flex;flex-wrap:wrap;"> 
+    <div class="banner">
+        <img src="{{section.settings.image1| img_url: '4000x4000'}}" alt="{{section.settings.image2}}" width="100%" height="">
+    </div>
+    <div class="banner ">
+        <img src="{{section.settings.image2| img_url: '4000x4000'}}" alt="{{section.settings.image2}}" width="100%" height="">
+        <div class="banner-collection-content">
+            <h1>{{section.settings.title}}</h1>
+            <p>{{section.settings.subtitle}}</p>
+            <a href="{{section.settings.link}}">{{section.settings.link_text}}</a>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Image Banner & Collection",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image1",
+            "label": "Image 1"
+        },
+        {
+            "type": "image_picker",
+            "id": "image2",
+            "label": "Image 2"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Collection Title"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Collection Subtitle"
+        },
+        {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+        },
+        {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link Text",
+            "default": "Shop Now"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Image Banner & Collection"
+        }
+    ]
+}
+{% endschema %}
