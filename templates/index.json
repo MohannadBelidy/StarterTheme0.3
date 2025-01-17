@@ -159,15 +159,18 @@
       ],
       "settings": {}
     },
-    "image_with_collection_banner_wgTpUD": {
-      "type": "image-with-collection-banner",
+    "banner_with_collection2_46wJBk": {
+      "type": "banner-with-collection2",
       "settings": {
-        "image1": "shopify://shop_images/01-16_CB-DaschundDate_copy_955x_3dad3cae-bdb9-491f-bf84-4a792f6c1cc1.webp",
-        "image2": "shopify://shop_images/01-16_CB-DaschundDate-pattern_955x_46c9c30b-7c4f-4b52-bbfe-f4012370dcad.webp",
-        "title": "Join Us For a Dachshund Date",
-        "subtitle": "Sweet as a sundae, this collection perfectly blends retro charm and Valentine’s Day fun into one lovable print.",
-        "link": "",
-        "link_text": "Shop Now"
+        "left_banner_title": "Printfresh Home",
+        "right_banner_title": "Get Comfy in PF Merch",
+        "left_banner_subtitle": "Wallpaper that gives your guests a reason to stare.",
+        "right_banner_subtitle": "Sport your favorite brand.",
+        "left_banner_link": "",
+        "right_banner_link": "",
+        "button_text": "Shop Now",
+        "image1": "shopify://shop_images/12-16_CB-WallPaper_935x_8dfc7743-de92-4aba-983a-c920be463122.webp",
+        "image2": "shopify://shop_images/12-16_Blocks-Sweats_935x_95609836-d37f-4d44-ae35-bc17a6900944.webp"
       }
     },
     "hero": {
@@ -184,7 +187,7 @@
     "featured_collections_1_3FppRK",
     "home_policy_and_review_7fhfWb",
     "featured_collections_2_m3LCQi",
-    "image_with_collection_banner_wgTpUD",
+    "banner_with_collection2_46wJBk",
     "hero",
     "fist-of-collections"
   ]
