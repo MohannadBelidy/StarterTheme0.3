@@ -125,7 +125,7 @@
           "type": "collection",
           "settings": {
             "link": "shopify://collections/hydrogen",
-            "image": "shopify://shop_images/01-02_CT-Satin-Bagheera-Blush-Wildest-Dreams_300x_4aa11961-a31b-46ee-81df-efc93a208b53.webp",
+            "image": "shopify://shop_images/01-02_CF-BundlesB_600x_d8bcedf3-56f4-4209-be10-23d40c8b4c38.webp",
             "title": "Pj Bundles",
             "description": "We picked out the perfect pairing… so you don’t have to!",
             "link_text": "SHOP ALL"
@@ -135,7 +135,7 @@
           "type": "collection",
           "settings": {
             "link": "shopify://collections/automated-collection",
-            "image": "shopify://shop_images/01-02_CT-PajamaSets-VintageValentineLongSet_300x_d429f9c5-522a-4755-b654-7c590bdac420.webp",
+            "image": "shopify://shop_images/12-16_CT-Loungewear-Hens_300x_316739ae-7398-46d3-b7f3-76d02d3fec1c.webp",
             "title": "The Finishing Touch",
             "description": "Heartfelt monogramming for PJs and more.",
             "link_text": "SHOP ALL"
@@ -145,7 +145,7 @@
           "type": "collection",
           "settings": {
             "link": "shopify://collections/frontpage",
-            "image": "shopify://shop_images/12-16_CT-Loungewear-Hens_300x_316739ae-7398-46d3-b7f3-76d02d3fec1c.webp",
+            "image": "shopify://shop_images/01-16_CF-3rdParty-Tea_600x_a63ad18d-d931-4e35-9b30-16e0adfdab54.webp",
             "title": "Friends Of Printfresh",
             "description": "All our favorites - handpicked with love.",
             "link_text": "SHOP ALL"
@@ -158,6 +158,17 @@
         "collection_bWj7Lh"
       ],
       "settings": {}
+    },
+    "banner_with_collection_PJ8aVc": {
+      "type": "banner-with-collection",
+      "settings": {
+        "image1": "shopify://shop_images/01-16_CB-DaschundDate_copy_955x_3dad3cae-bdb9-491f-bf84-4a792f6c1cc1.webp",
+        "image2": "shopify://shop_images/01-16_CB-DaschundDate-pattern_955x_46c9c30b-7c4f-4b52-bbfe-f4012370dcad.webp",
+        "title": "Join Us For a Dachshund Date",
+        "subtitle": "Sweet as a sundae, this collection perfectly blends retro charm and Valentine’s Day fun into one lovable print.",
+        "link": "shopify://collections/hydrogen",
+        "link_text": "Shop Now"
+      }
     },
     "banner_with_collection2_46wJBk": {
       "type": "banner-with-collection2",
@@ -187,6 +198,7 @@
     "featured_collections_1_3FppRK",
     "home_policy_and_review_7fhfWb",
     "featured_collections_2_m3LCQi",
+    "banner_with_collection_PJ8aVc",
     "banner_with_collection2_46wJBk",
     "hero",
     "fist-of-collections"
