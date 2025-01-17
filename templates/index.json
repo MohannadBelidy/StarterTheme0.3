@@ -166,6 +166,17 @@
     "fist-of-collections": {
       "type": "list-of-collections",
       "settings": {}
+    },
+    "image_with_collection_banner_wgTpUD": {
+      "type": "image-with-collection-banner",
+      "settings": {
+        "image1": "shopify://shop_images/01-16_CB-DaschundDate_copy_955x_3dad3cae-bdb9-491f-bf84-4a792f6c1cc1.webp",
+        "image2": "shopify://shop_images/01-16_CB-DaschundDate-pattern_955x_46c9c30b-7c4f-4b52-bbfe-f4012370dcad.webp",
+        "title": "Join Us For a Dachshund Date",
+        "subtitle": "Sweet as a sundae, this collection perfectly blends retro charm and Valentine’s Day fun into one lovable print.",
+        "link": "",
+        "link_text": "Shop Now"
+      }
     }
   },
   "order": [
@@ -174,6 +185,7 @@
     "home_policy_and_review_7fhfWb",
     "featured_collections_2_m3LCQi",
     "hero",
-    "fist-of-collections"
+    "fist-of-collections",
+    "image_with_collection_banner_wgTpUD"
   ]
 }
