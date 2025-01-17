@@ -118,6 +118,47 @@
       ],
       "settings": {}
     },
+    "featured_collections_2_m3LCQi": {
+      "type": "featured-collections-2",
+      "blocks": {
+        "collection_GatYKV": {
+          "type": "collection",
+          "settings": {
+            "link": "shopify://collections/hydrogen",
+            "image": "shopify://shop_images/01-02_CT-Satin-Bagheera-Blush-Wildest-Dreams_300x_4aa11961-a31b-46ee-81df-efc93a208b53.webp",
+            "title": "Pj Bundles",
+            "description": "We picked out the perfect pairing… so you don’t have to!",
+            "link_text": "SHOP ALL"
+          }
+        },
+        "collection_wTryVc": {
+          "type": "collection",
+          "settings": {
+            "link": "shopify://collections/automated-collection",
+            "image": "shopify://shop_images/01-02_CT-PajamaSets-VintageValentineLongSet_300x_d429f9c5-522a-4755-b654-7c590bdac420.webp",
+            "title": "The Finishing Touch",
+            "description": "Heartfelt monogramming for PJs and more.",
+            "link_text": "SHOP ALL"
+          }
+        },
+        "collection_bWj7Lh": {
+          "type": "collection",
+          "settings": {
+            "link": "shopify://collections/frontpage",
+            "image": "shopify://shop_images/12-16_CT-Loungewear-Hens_300x_316739ae-7398-46d3-b7f3-76d02d3fec1c.webp",
+            "title": "Friends Of Printfresh",
+            "description": "All our favorites - handpicked with love.",
+            "link_text": "SHOP ALL"
+          }
+        }
+      },
+      "block_order": [
+        "collection_GatYKV",
+        "collection_wTryVc",
+        "collection_bWj7Lh"
+      ],
+      "settings": {}
+    },
     "hero": {
       "type": "hero",
       "settings": {}
@@ -131,6 +172,7 @@
     "banner",
     "featured_collections_1_3FppRK",
     "home_policy_and_review_7fhfWb",
+    "featured_collections_2_m3LCQi",
     "hero",
     "fist-of-collections"
   ]
