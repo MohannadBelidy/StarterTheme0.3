@@ -159,14 +159,6 @@
       ],
       "settings": {}
     },
-    "hero": {
-      "type": "hero",
-      "settings": {}
-    },
-    "fist-of-collections": {
-      "type": "list-of-collections",
-      "settings": {}
-    },
     "image_with_collection_banner_wgTpUD": {
       "type": "image-with-collection-banner",
       "settings": {
@@ -177,6 +169,14 @@
         "link": "",
         "link_text": "Shop Now"
       }
+    },
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "fist-of-collections": {
+      "type": "list-of-collections",
+      "settings": {}
     }
   },
   "order": [
@@ -184,8 +184,8 @@
     "featured_collections_1_3FppRK",
     "home_policy_and_review_7fhfWb",
     "featured_collections_2_m3LCQi",
+    "image_with_collection_banner_wgTpUD",
     "hero",
-    "fist-of-collections",
-    "image_with_collection_banner_wgTpUD"
+    "fist-of-collections"
   ]
 }
