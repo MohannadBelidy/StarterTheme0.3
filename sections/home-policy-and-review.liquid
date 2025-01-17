@@ -3,7 +3,7 @@
         height: 20px;
         background-color: #efc0c3;
     }
-    @media(max-width:78px){
+    @media(max-width:768px){
         .top-bar-bgcolor{
         height: 10px !important;
         }
@@ -50,9 +50,9 @@
     }
     .blocks img{
         width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
-        border-radius: 5px;
+        
     }
     .blocks p{
         margin: 0;
@@ -62,6 +62,7 @@
         font-family: Poppins;
         color: black;
     }
+    
 
 
     
@@ -69,7 +70,7 @@
 </style>
 <div class="top-bar-bgcolor"></div>
 <div>
-    <div class="info-bar">
+    <div class="info-bar hide-mobile">
         {% for block in section.blocks %}
             {% case block.type %}
                 {% when 'text_with_link' %}
