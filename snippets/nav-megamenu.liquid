@@ -2,7 +2,7 @@
   #main-header .nav-megamenu {
     display: flex;
     justify-items: center;
-    
+
     margin-inline: auto;
     padding: 2;
     position: absolute;
@@ -46,14 +46,14 @@
     font-size: 13px;
     line-height: 1.5;
   }
-  #main-header .nav-megamenu .imageColumn a{
+  #main-header .nav-megamenu .imageColumn a {
     display: block;
     padding: 6px 0;
     font-size: 13px;
     line-height: 1.5;
     color: #373735;
   }
-  #main-header .nav-megamenu .imageColumn a:hover{
+  #main-header .nav-megamenu .imageColumn a:hover {
     display: block;
     color: black;
     padding: 6px 0;
@@ -61,17 +61,17 @@
     font-size: 13px;
     line-height: 1.5;
   }
-  #main-header .nav-megamenu .imageColumn{
+  #main-header .nav-megamenu .imageColumn {
     width: 20%;
     padding: 2px;
     display: flex;
     flex-direction: column;
     gap: 2px;
   }
-  #main-header  .megamenu-toggle {
+  #main-header .megamenu-toggle {
     display: flex;
     padding: 0 12px 13px;
-    font-size: 14px; 
+    font-size: 14px;
     color: #373735;
     letter-spacing: 1px;
   }
@@ -91,21 +91,20 @@
     <li x-data="{ menuOpen: false }" @mouseover.away="menuOpen = false">
       {% if link.links != blank %}
         {% assign block_type = 'megamenu' | append: forloop.index0 %}
-        
+
         {% assign block_found = false %}
         {% for block in section.blocks %}
-          
           {% if block.type == block_type %}
             {% assign block_found = true %}
-            <a href="{{link.url}}"
+            <a
+              href="{{link.url}}"
               @mouseover="menuOpen = true"
               :class="{ 'menu-open': menuOpen }"
               class="megamenu-toggle"
             >
-              {{- link.title | escape | upcase-}}
-              
+              {{- link.title | escape | upcase -}}
             </a>
-            
+
             <div
               x-show="menuOpen"
               x-transition
@@ -117,16 +116,16 @@
                   <li>
                     {% unless childlink.title == '-' %}
                       <a
-                      href="{{ childlink.url }}"
-                      class="nav-megamenu_heading"
-                      {% if childlink.current %}
-                        aria-current="page"
-                      {% endif %}
-                    >
-                      {{ childlink.title | escape }}
-                    </a>
+                        href="{{ childlink.url }}"
+                        class="nav-megamenu_heading"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ childlink.title | escape }}
+                      </a>
                     {% endunless %}
-                    
+
                     {%- if childlink.links != blank -%}
                       <ul class="nav-megamenu_child" role="list">
                         {%- for grandchildlink in childlink.links -%}
@@ -145,35 +144,30 @@
                     {%- endif -%}
                   </li>
                 {%- endfor -%}
-                
-                  {% if block.settings.image1 %}
-                    <div class="imageColumn">
-                      <div style="imageContainer">
-                        <img src="{{ block.settings.image1 | img_url: 'medium'}}" alt="{{ image1.alt }}">
-                      </div>
-                      <a>{{ block.settings.title1 }}</a>
-                    </div>
-                  {% endif %}
 
-                  {% if block.settings.image2 %}
-                    <div class="imageColumn">
-                      <div style="imageConainer">
-                        <img src="{{ block.settings.image2 | img_url: 'medium'}}" alt="{{ image2.alt }}">
-                      </div>
-                      <a>{{ block.settings.title2 }}</a>
+                {% if block.settings.image1 %}
+                  <div class="imageColumn">
+                    <div style="imageContainer">
+                      <img src="{{ block.settings.image1 | img_url: 'medium'}}" alt="{{ image1.alt }}">
                     </div>
-                  {% endif %}
-                  
+                    <a>{{ block.settings.title1 }}</a>
+                  </div>
+                {% endif %}
+
+                {% if block.settings.image2 %}
+                  <div class="imageColumn">
+                    <div style="imageConainer">
+                      <img src="{{ block.settings.image2 | img_url: 'medium'}}" alt="{{ image2.alt }}">
+                    </div>
+                    <a>{{ block.settings.title2 }}</a>
+                  </div>
+                {% endif %}
               </ul>
             </div>
-          
-              
           {% endif %}
-
-           
         {% endfor %}
         {% if block_found == false %}
-          {% render 'nav-dropdown-single-link',link:link %}
+          {% render 'nav-dropdown-single-link', link: link %}
         {% endif %}
 
       {% else %}
@@ -184,7 +178,7 @@
           {% endif %}
           class="megamenu-toggle"
         >
-          {{- link.title | escape | upcase-}}
+          {{- link.title | escape | upcase -}}
         </a>
       {% endif %}
     </li>

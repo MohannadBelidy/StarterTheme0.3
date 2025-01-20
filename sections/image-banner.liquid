@@ -1,24 +1,23 @@
 <style>
-    .banner_container{
-        display: flex;
-        position: relative;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-.banner_content{
+  .banner_container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .banner_content {
     display: flex;
     flex-direction: column;
-    
+
     align-items: center;
     position: absolute;
     margin: 0 40px;
     width: 530px;
     color: white;
     font-family: Poppins;
-    
-}
-.banner_content h2{
+  }
+  .banner_content h2 {
     font-size: 47px;
     font-weight: 300;
     margin: 0;
@@ -27,20 +26,16 @@
     height: 150px;
     display: flex;
     align-items: end;
-    
-    
-}
-.banner_content p{
+  }
+  .banner_content p {
     font-size: 15px;
     line-height: 22px;
     letter-spacing: 1px;
     margin: 0 0 24px !important;
     box-sizing: border-box;
     padding: 0 80px;
-
-
-}
-.banner_content a{
+  }
+  .banner_content a {
     background-color: white;
     color: black;
     border-color: white !important;
@@ -56,14 +51,13 @@
     margin-top: 15px;
     font-size: 14px;
     text-decoration: none;
-
-}
-.banner_content a:hover{
+  }
+  .banner_content a:hover {
     background-color: transparent;
     color: white;
-}
+  }
 
-.mobile_banner_content{
+  .mobile_banner_content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -74,9 +68,8 @@
     left: 10px;
     color: white;
     font-family: Poppins;
-    
-}
-.mobile_banner_content h2{
+  }
+  .mobile_banner_content h2 {
     display: flex;
     font-size: 2rem;
     font-weight: 300;
@@ -85,18 +78,16 @@
     letter-spacing: 3px;
     display: flex;
     align-items: end;
-    
-    
-}
-.mobile_banner_content p{
+  }
+  .mobile_banner_content p {
     display: flex;
     font-size: 0.8rem;
     line-height: 22px;
     letter-spacing: 1px;
     margin: 0 0 24px !important;
     box-sizing: border-box;
-}
-.mobile_banner_content a{
+  }
+  .mobile_banner_content a {
     background-color: white;
     color: black;
     border-color: white !important;
@@ -112,75 +103,83 @@
     margin-top: 15px;
     font-size: 14px;
     text-decoration: none;
+  }
+  @media (max-width: 767px) {
+    .hide-mobile {
+      display: none;
+    }
+  }
 
-}
-@media(max-width:767px){
-    .hide-mobile{
-    display: none;
-}
-
-}
-
-@media(min-width: 768px){
-    .hide-desktop{
-    display: none !important;
-}
-}
-
+  @media (min-width: 768px) {
+    .hide-desktop {
+      display: none !important;
+    }
+  }
 </style>
-<div >
-    <div class="banner_container">
-        <img src="{{section.settings.image_banner|  img_url: '7000x7000'}}" alt="{{section.settings.image_banner.alt}}" width="100%" height="" class="hide-mobile">
-        <img src="{{section.settings.image_banner_mobile |  img_url: '7000x7000'}}" alt="{{section.settings.image_banner_mobile.alt}}" width="100%" height="" class="hide-desktop" style="max-height: 700px;">
+<div>
+  <div class="banner_container">
+    <img
+      src="{{section.settings.image_banner|  img_url: '7000x7000'}}"
+      alt="{{section.settings.image_banner.alt}}"
+      width="100%"
+      height=""
+      class="hide-mobile"
+    >
+    <img
+      src="{{section.settings.image_banner_mobile |  img_url: '7000x7000'}}"
+      alt="{{section.settings.image_banner_mobile.alt}}"
+      width="100%"
+      height=""
+      class="hide-desktop"
+      style="max-height: 700px;"
+    >
 
-        <div class="banner_content hide-mobile">
-            <h2>{{section.settings.title}}</h2>
-            <p>{{section.settings.subtitle}}</p>
-            <a href="{{section.settings.button_text}}" class="button">{{section.settings.button_text}}</a>
-        </div>
-
-        <div class="mobile_banner_content hide-desktop" >
-            <h2>
-                {{section.settings.title}}
-            </h2>
-            
-            <p>{{section.settings.subtitle}}</p>
-            <a href="{{section.settings.button_text}}" class="button">{{section.settings.button_text}}</a>
-        </div>
+    <div class="banner_content hide-mobile">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.subtitle }}</p>
+      <a href="{{section.settings.button_text}}" class="button">{{ section.settings.button_text }}</a>
     </div>
 
-    
+    <div class="mobile_banner_content hide-desktop">
+      <h2>
+        {{ section.settings.title }}
+      </h2>
+
+      <p>{{ section.settings.subtitle }}</p>
+      <a href="{{section.settings.button_text}}" class="button">{{ section.settings.button_text }}</a>
+    </div>
+  </div>
 </div>
 
 {% schema %}
 {
-    "name": "Image Banner",
-    "settings": [
-        {
-            "type": "image_picker",
-            "label": "Image",
-            "id":"image_banner"
-        },
-        {
-            "type": "text",
-            "label": "Banner Title",
-            "id": "title"
-        },
-        {
-            "type": "text",
-            "label": "Banner Subtitle",
-            "id": "subtitle"
-        },
-        {
-            "type": "text",
-            "label": "Button's Text",
-            "id": "button_text"
-        },
-        {
-            "type": "image_picker",
-            "label": "Mobile Image Banner",
-            "id": "image_banner_mobile"
-        }
-        ]
+  "name": "Image Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "image_banner"
+    },
+    {
+      "type": "text",
+      "label": "Banner Title",
+      "id": "title"
+    },
+    {
+      "type": "text",
+      "label": "Banner Subtitle",
+      "id": "subtitle"
+    },
+    {
+      "type": "text",
+      "label": "Button's Text",
+      "id": "button_text"
+    },
+    {
+      "type": "image_picker",
+      "label": "Mobile Image Banner",
+      "id": "image_banner_mobile"
+    }
+  ]
 }
 {% endschema %}
