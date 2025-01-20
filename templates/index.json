@@ -266,7 +266,9 @@
         "subtitle": "Join Our Community",
         "title": "#PRINTFRESH",
         "main_text": "Jump into the conversation and share what styles, designs, wellness routines and stories keep you feeling inspired. Use our hashtag on Instagram, and you might even score a feature on the PF Mag.",
-        "grid_columns": 4
+        "grid_columns": 4,
+        "button_text": "load more",
+        "url": "shopify://collections"
       }
     },
     "hero": {
