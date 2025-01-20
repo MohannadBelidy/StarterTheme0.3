@@ -184,6 +184,91 @@
         "image2": "shopify://shop_images/12-16_Blocks-Sweats_935x_95609836-d37f-4d44-ae35-bc17a6900944.webp"
       }
     },
+    "pf_community_m7GYRh": {
+      "type": "pf-community",
+      "blocks": {
+        "product_fpiimN": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution_1.webp",
+            "button_text": "Buy Now",
+            "url": "shopify://collections"
+          }
+        },
+        "product_fcddpj": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution.jpg",
+            "button_text": "Buy Now",
+            "url": "shopify://collections/automated-collection"
+          }
+        },
+        "product_mCg6Vz": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution_2.webp",
+            "button_text": "Buy Now",
+            "url": "shopify://collections/automated-collection"
+          }
+        },
+        "product_Lzytmw": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution.webp",
+            "button_text": "Buy Now",
+            "url": "shopify://collections/frontpage"
+          }
+        },
+        "product_DiTRm7": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution_3.webp",
+            "button_text": "Buy Now",
+            "url": "shopify://collections/hydrogen"
+          }
+        },
+        "product_BzbTea": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution_4.webp",
+            "button_text": "Buy Now",
+            "url": "shopify://collections/automated-collection"
+          }
+        },
+        "product_GATj4t": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution_1.jpg",
+            "button_text": "Buy Now",
+            "url": "shopify://products/gift-card"
+          }
+        },
+        "product_8Nawf6": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution_5.webp",
+            "button_text": "Buy Now",
+            "url": "shopify://products/the-3p-fulfilled-snowboard"
+          }
+        }
+      },
+      "block_order": [
+        "product_fpiimN",
+        "product_fcddpj",
+        "product_mCg6Vz",
+        "product_Lzytmw",
+        "product_DiTRm7",
+        "product_BzbTea",
+        "product_GATj4t",
+        "product_8Nawf6"
+      ],
+      "settings": {
+        "subtitle": "",
+        "title": "",
+        "main_text": "",
+        "grid_columns": 4
+      }
+    },
     "hero": {
       "type": "hero",
       "settings": {}
@@ -200,6 +285,7 @@
     "featured_collections_2_m3LCQi",
     "banner_with_collection_PJ8aVc",
     "banner_with_collection2_46wJBk",
+    "pf_community_m7GYRh",
     "hero",
     "fist-of-collections"
   ]
