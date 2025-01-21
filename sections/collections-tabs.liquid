@@ -16,13 +16,12 @@
   .collections-tabs-title {
     width: 25%;
   }
-	.collections-tabs-title h2 {
+  .collections-tabs-title h2 {
     font-size: 35px;
-		line-height: 49px;
-		margin: 0;
-		font-weight: 500;
-		color: #373735;
-		
+    line-height: 49px;
+    margin: 0;
+    font-weight: 500;
+    color: #373735;
   }
   .collections-tabs {
     text-align: center;
@@ -39,11 +38,11 @@
     min-height: 41px;
     border: 1px solid transparent;
     font-family: Poppins;
-		cursor: pointer;
+    cursor: pointer;
   }
-	.collections-tab:hover{
-		background: #fff5f5;
-	}
+  .collections-tab:hover {
+    background: #fff5f5;
+  }
   .collections-tab_active {
     background: #245490 !important;
     color: white !important;
@@ -58,7 +57,7 @@
     font-size: 13.6px;
     line-height: 20.5px;
     font-weight: 600;
-		text-decoration: none;
+    text-decoration: none;
     text-transform: uppercase;
     border-bottom: 2px solid;
     font-family: Poppins;
@@ -83,25 +82,27 @@
     width: 100%;
     padding: 0 15px;
   }
-	.product-title a{
-		font-size: 13px;
-		font-family: Poppins;
-		line-height: 0.8rem;
-		font-weight: 400px;
-		text-decoration: none;
-		color: #373735 ;
-	}
-	hr{
-		border-top:1.5px solid #efc0c3;
-		margin-top: 0;
-		width: 100%;
-		max-width: 96%;
-	}
+  .product-title a {
+    font-size: 13px;
+    font-family: Poppins;
+    line-height: 0.8rem;
+    font-weight: 400px;
+    text-decoration: none;
+    color: #373735;
+  }
+  hr {
+    border-top: 1.5px solid #efc0c3;
+    margin-top: 0;
+    width: 100%;
+    max-width: 96%;
+  }
 </style>
 
 <div class="collections-tabs-container">
   <div class="collections-tabs-header">
-    <div class="collections-tabs-title"><h2>{{ section.settings.title }}</h2></div>
+    <div class="collections-tabs-title">
+      <h2>{{ section.settings.title }}</h2>
+    </div>
     <div class="collections-tabs">
       {% for block in section.blocks %}
         <button class="collections-tab" data-tab="{{ forloop.index }}">{{ block.settings.tab_title }}</button>
@@ -182,9 +183,7 @@
     {% endfor %}
   </div>
 </div>
-<hr> 
-
-
+<hr>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {

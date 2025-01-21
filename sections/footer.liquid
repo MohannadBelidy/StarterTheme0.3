@@ -1,0 +1,269 @@
+<style>
+  .footer-container {
+    background: #fff5f5;
+    padding: 0 1.5rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .footer-main-content {
+    position: relative;
+    width: 100%;
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+    margin-right: auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+  }
+  .footer-main-content .title {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .footer-main-content .title h6 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    font-family: Apris-Regular;
+  }
+  .footer-form-text {
+    font-size: 12px;
+    line-height: 18px;
+    font-family: Poppins;
+    color: black;
+  }
+  .footer-form-text p {
+    margin-bottom: 3px;
+  }
+  .footer-form {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+  }
+  .form-input {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    display: block;
+    line-height: 1rem;
+    font-size: 1.2rem;
+    height: auto;
+    border-color: #373735;
+    padding: 5px 15px 0 0;
+    color: #495057;
+    background-clip: padding-box;
+    font-family: Poppins;
+    border-bottom: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .footer-form button {
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    font-family: Poppins;
+    letter-spacing: 1px;
+    height: auto;
+    vertical-align: middle;
+    padding: 9px 18px;
+    color: #373735;
+  }
+  .footer-custom-links {
+    display: flex;
+    gap: 15;
+    margin-top: 15px;
+  }
+  .footer-custom-links a {
+    font-size: 1em;
+    line-height: 1rem;
+    color: #373735;
+    font-family: Poppins;
+    font-weight: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+  }
+  .footer-menu {
+    padding: 3rem 1.5rem;
+    margin: 1rem 0;
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .footer-menu-header{
+    margin-bottom: 0.5rem;
+    box-sizing: border-box;
+  }
+  .footer-menu-header h6 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    font-family: Apris-Regular;
+    line-height: 1.2;
+    box-sizing: border-box;
+  }
+  .footer-menu-items{
+    font-size: 15px;
+    line-height: 21px;
+    color: black;
+    font-family: Poppins;
+    margin-bottom: 0.5rem;
+    box-sizing: border-box;
+  }
+</style>
+
+<div class="footer-container">
+  <div class="footer-content">
+    <div class="footer-main-content">
+      <div style="padding: 3rem 0;margin: 1rem 0;color:#373735">
+        <div class="title">
+          <h6>{{ section.settings.menu_header }}</h6>
+        </div>
+        {% form 'customer', class: 'footer-forms' %}
+          <div class="footer-form-text">
+            <p>{{ section.settings.text }}</p>
+          </div>
+          <div class="footer-form">
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input type="email" name="contact[email]" placeholder="{{section.settings.placeholder}}" class="form-input">
+            <div style="margin-left: -1px;display:flex">
+              <button>{{ section.settings.button }}</button>
+            </div>
+          </div>
+        {% endform %}
+        <div class="footer-custom-links">
+          <a href="{{ section.settings.custom_link1_url }}">{{ section.settings.custome_link1 }}</a>
+          <a href="{{ section.settings.custom_link2_url }}">{{ section.settings.custome_link2 }}</a>
+          <a href="{{ section.settings.custom_link3_url }}">{{ section.settings.custome_link3 }}</a>
+        </div>
+      </div>
+    </div>
+
+    {% for block in section.blocks %}
+      <div class="footer-menu">
+        <div class="footer-menu-header">
+          <h6>{{ block.menu_header }}</h6>
+        </div>
+
+        {% for link in block.links %}
+          <div class="footer-menu-items">
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="footer-logo"></div>
+  <div class="foooter-copyright"></div>
+</div>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "menu_header",
+      "label": "Menu Header"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Placeholder"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button"
+    },
+    {
+      "type": "url",
+      "id": "instagram_link",
+      "label": "Instagram Link"
+    },
+    {
+      "type": "url",
+      "id": "facebook_link",
+      "label": "Facebook Link"
+    },
+    {
+      "type": "url",
+      "id": "pinterest_link",
+      "label": "Pinterest Link"
+    },
+    {
+      "type": "url",
+      "id": "tiktok_link",
+      "label": "TikTok Link"
+    },
+    {
+      "type": "text",
+      "id": "custome_link1",
+      "label": "Custom Link 1"
+    },
+    {
+      "type": "url",
+      "id": "custom_link1_url",
+      "label": "Custom Link 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "custome_link2",
+      "label": "Custom Link 2"
+    },
+    {
+      "type": "url",
+      "id": "custom_link2_url",
+      "label": "Custom Link 2 URL"
+    },
+    {
+      "type": "text",
+      "id": "custome_link3",
+      "label": "Custom Link 3"
+    },
+    {
+      "type": "url",
+      "id": "custom_link3_url",
+      "label": "Custom Link 3 URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_header",
+          "label": "Menu Header"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
