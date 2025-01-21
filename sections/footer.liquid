@@ -69,6 +69,7 @@
     border-right: 0;
     border-left: 0;
     background: transparent;
+    outline: none;
     border-bottom: 1px solid #ced4da;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
@@ -179,6 +180,17 @@
     justify-content: center;
     margin: 0;
   }
+  .copyright-label{
+    padding: 24px;
+    width:auto;
+    font-family:Poppins;
+    font-size:15px;
+    line-height: 21px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: black;
+    box-sizing: border-box;
+  }
   
 </style>
 
@@ -246,7 +258,7 @@
       <img src="{{section.settings.logo|  img_url: 'master'}}" alt="{{section.settings.logo.alt}} " width="" height="" style="max-width: 200px;">
   </div>
   <div class="footer-copyright">
-    <div style="padding: 24px;width:auto">
+    <div class="copyright-label">
       {{section.settings.copyright}}
     </div>
   </div>
