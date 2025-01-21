@@ -1,17 +1,238 @@
-<div class="section-container">
-    <div>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  .pf-mag-container {
+    background-image: url({{section.settings.bg_image|img_url:'master'}});
+    background-size: cover;
+    min-height: 780px;
+    background-position: center;
+    position: relative;
+    box-sizing: border-box;
+  }
 
-    </div>
-    <div>
+  .mag-header {
+    max-width: 1200px;
+    text-align: center;
+    margin: 0 auto;
+  }
 
+  .mag-header h2 {
+    padding-top: 70px;
+    font-size: 35px;
+    line-height: 35px;
+    margin-bottom: 8px;
+    font-family: Apris-Regular;
+    color: white;
+    font-weight: 500;
+  }
+
+  .mag-header p {
+    font-size: 15px;
+    line-height: 22px;
+    margin: 0;
+    font-family: Poppins;
+    color: white;
+  }
+  .mag-header a {
+    display: inline-flex;
+    height: 50px;
+    width: 100%;
+    max-width: 150px;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    font-size: 14px;
+    line-height: 21px;
+    border: 1px solid;
+    font-family: Poppins;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: #ffffff;
+    background-color: #245490;
+    border-color: #efc0c3;
+    text-decoration: none;
+  }
+  .mag-articles {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  .right-side-mag {
+    width: 50%;
+    box-sizing: border-box;
+  }
+  .article-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: nowrap;
+  }
+  .left-side-mag {
+    width: 50%;
+  }
+
+  .article-container h2 {
+    font-size: 19px;
+    line-height: 26px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #373735;
+
+  }
+
+  .article-container p{
+    font-weight: 400;
+    color: #373735;
+    font-size: 14px;
+    font-family: Poppins;
+    font-style: italic;
+    line-height: 21px;
+    margin-top: 0px;
+  }
+
+  .article-container a{
+    color: #373735;
+    font-weight: 600;
+    font-size: 13px;
+    list-style: 20px;
+    padding-top: 15px;
+    font-family: Poppins;
+  }
+
+  .article-left-side {
+    background-color: white;
+    padding: 20px;
+    width: 45%;
+  }
+  .article-right-side {
+    width: 55%;
+    box-sizing: border-box;
+  }
+  .article-bottom-side{
+    background-color: white;
+    padding:20px 24px;
+  }
+</style>
+
+<div class="pf-mag-container">
+  <div class="mag-header">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.subtitle }}</p>
+    <a href="{{section.settings.button_link}}">{{ section.settings.button_text }}</a>
+  </div>
+  <div class="mag-articles">
+    <div class="article-container">
+      <div class="left-side-mag">
+        <div style="padding-bottom: 15px;display:flex">
+          <div class="article-left-side">
+             <h2>{{ section.settings.left_top_article.title| strip_html }}</h2>
+            <p>{{ section.settings.left_top_article.content | truncate: 300 | strip_html}}</p>
+            <a href="{{section.settings.left_top_article.url}}">READ</a> 
+            
+          </div>
+          <div class="article-right-side">
+             <img
+              src="{{section.settings.left_top_article.image| img_url: 'master'}}"
+              alt="{{section.settings.left_top_article.image.alt}}"
+              width=""
+              height="100%"
+              style="object-fit: cover;object-position:center;max-width:100%"
+            > 
+          </div>
+        </div>
+
+        <div style="display: flex;">
+          <div class="article-left-side">
+            <h2>{{ section.settings.left_bottom_article.title| strip_html }}</h2>
+            <p>{{ section.settings.left_top_article.content | truncate: 300 | strip_html}}</p>
+            <a href="{{section.settings.left_top_article.url}}">READ</a>
+          </div>
+          <div class="article-right-side">
+            <img
+              src="{{section.settings.left_bottom_article.image| img_url: 'master'}}"
+              alt="{{section.settings.left_bottom_article.image.alt}}"
+              width=""
+              height="100%"
+              style="object-fit: cover;object-position:center;max-width:100%"
+            >
+          </div> 
+        </div>
+      </div>
+       <div class="right-side-mag">
+        <div style="box-sizing: border-box;">
+          <img
+            src="{{section.settings.right_article.image| img_url: 'master'}}"
+            alt="{{section.settings.right_article.image.alt}}"
+            width="100%"
+            height=""
+            style="max-height:280px;object-fit:cover;object-position:center;display:block"
+          >
+        </div>
+        <div class="article-bottom-side">
+          <h2>{{ section.settings.right_article.title| strip_html }}</h2>
+          <div class="content">
+            <p>{{ section.settings.right_article.content | truncate: 390 | strip_html}}</p>
+          </div>
+          <a href="{{section.settings.right_article.url}}">READ</a>
+        </div>
+      </div> 
     </div>
+  </div>
 </div>
 
 {% schema %}
 {
-    "name": "Featured Articles ",
-    "settings": [
-        
-        ]
+  "name": "Featured Articles ",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "article",
+      "id": "left_top_article",
+      "label": "Left Top Article"
+    },
+    {
+      "type": "article",
+      "id": "left_bottom_article",
+      "label": "Left Bottom Article"
+    },
+    {
+      "type": "article",
+      "id": "right_article",
+      "label": "Right Article"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PF Mag"
+    }
+  ]
 }
 {% endschema %}
