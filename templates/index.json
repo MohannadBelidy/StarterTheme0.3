@@ -262,7 +262,7 @@
         "review_Mg8Vfp"
       ],
       "settings": {
-        "bg-color": "linear-gradient(133deg, rgba(73, 71, 59, 1) 11%, rgba(254, 98, 146, 1) 49%, rgba(250, 220, 54, 1) 87%)",
+        "bg-color": "#fbf4ed",
         "title": "Reviews"
       }
     },
