@@ -215,6 +215,57 @@
         "link_text": "Shop Now"
       }
     },
+    "review_slider_YAxPgb": {
+      "type": "review-slider",
+      "blocks": {
+        "review_48KQmd": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Review03-Bagheera_png.webp",
+            "title": "\"Great color. So fun! Cotton breathes in the warm weather and is warm in cool weather.\"",
+            "author": "Andria L.",
+            "rating": "5"
+          }
+        },
+        "review_7c86dV": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Review02-UG_SS_png.webp",
+            "title": "\"Fantastic! High quality, soft cotton and unique. Purchasing another set for friend!\"",
+            "author": "Melissa B.",
+            "rating": "5"
+          }
+        },
+        "review_nUeWgd": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Review01-Tobacco_png.webp",
+            "title": "\"Such great pajamas, gorgeous happy prints, beautifully made, & pockets make them perfect!\"",
+            "author": "Ann B.",
+            "rating": "5"
+          }
+        },
+        "review_Mg8Vfp": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Review04-Bag_png.webp",
+            "title": "\"So good! This bag is wonderful! So roomy and yet so lightweight. I can easily fit my entire life in there.\"",
+            "author": "Charlotte L.",
+            "rating": "5"
+          }
+        }
+      },
+      "block_order": [
+        "review_48KQmd",
+        "review_7c86dV",
+        "review_nUeWgd",
+        "review_Mg8Vfp"
+      ],
+      "settings": {
+        "bg-color": "linear-gradient(133deg, rgba(73, 71, 59, 1) 11%, rgba(254, 98, 146, 1) 49%, rgba(250, 220, 54, 1) 87%)",
+        "title": "Reviews"
+      }
+    },
     "banner_with_collection2_46wJBk": {
       "type": "banner-with-collection2",
       "settings": {
@@ -227,6 +278,19 @@
         "button_text": "Shop Now",
         "image1": "shopify://shop_images/12-16_CB-WallPaper_935x_8dfc7743-de92-4aba-983a-c920be463122.webp",
         "image2": "shopify://shop_images/12-16_Blocks-Sweats_935x_95609836-d37f-4d44-ae35-bc17a6900944.webp"
+      }
+    },
+    "featured_articles_Hajphp": {
+      "type": "featured-articles",
+      "settings": {
+        "bg_image": "shopify://shop_images/06-13_blogbackgroundB_1900x_6fb957d5-4685-47f3-9fdf-19beaeb6f4a6.webp",
+        "title": "PF Mag",
+        "subtitle": "With new articles and interviews added weekly, there's always more to discover on PF Mag.",
+        "button_text": "Explore",
+        "button_link": "",
+        "left_top_article": "news/behind-the-collection-vintage-valentine",
+        "left_bottom_article": "news/printfresh-x-simon-schuster-meet-author-martha-waters",
+        "right_article": "news/sincerely-amy-happy-valentines-day"
       }
     },
     "pf_community_m7GYRh": {
@@ -323,19 +387,6 @@
     "fist-of-collections": {
       "type": "list-of-collections",
       "settings": {}
-    },
-    "featured_articles_Hajphp": {
-      "type": "featured-articles",
-      "settings": {
-        "bg_image": "shopify://shop_images/06-13_blogbackgroundB_1900x_6fb957d5-4685-47f3-9fdf-19beaeb6f4a6.webp",
-        "title": "PF Mag",
-        "subtitle": "With new articles and interviews added weekly, there's always more to discover on PF Mag.",
-        "button_text": "Explore",
-        "button_link": "",
-        "left_top_article": "news/behind-the-collection-vintage-valentine",
-        "left_bottom_article": "news/printfresh-x-simon-schuster-meet-author-martha-waters",
-        "right_article": "news/sincerely-amy-happy-valentines-day"
-      }
     }
   },
   "order": [
@@ -345,6 +396,7 @@
     "collections_tabs_ziDdKU",
     "featured_collections_2_m3LCQi",
     "banner_with_collection_PJ8aVc",
+    "review_slider_YAxPgb",
     "banner_with_collection2_46wJBk",
     "featured_articles_Hajphp",
     "pf_community_m7GYRh",
