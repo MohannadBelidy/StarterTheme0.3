@@ -278,6 +278,64 @@
     "fist-of-collections": {
       "type": "list-of-collections",
       "settings": {}
+    },
+    "featured_articles_Hajphp": {
+      "type": "featured-articles",
+      "settings": {
+        "bg_image": "shopify://shop_images/06-13_blogbackgroundB_1900x_6fb957d5-4685-47f3-9fdf-19beaeb6f4a6.webp",
+        "title": "PF Mag",
+        "subtitle": "With new articles and interviews added weekly, there's always more to discover on PF Mag.",
+        "button_text": "Explore",
+        "button_link": "",
+        "left_top_article": "news/behind-the-collection-vintage-valentine",
+        "left_bottom_article": "news/printfresh-x-simon-schuster-meet-author-martha-waters",
+        "right_article": "news/sincerely-amy-happy-valentines-day"
+      }
+    },
+    "collections_tabs_ziDdKU": {
+      "type": "collections-tabs",
+      "blocks": {
+        "tab_R3cJAq": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Luxe Pjs",
+            "product1": "",
+            "product2": "",
+            "product3": "",
+            "product4": ""
+          }
+        },
+        "tab_yGtjcH": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "",
+            "product1": "",
+            "product2": "",
+            "product3": "",
+            "product4": ""
+          }
+        },
+        "tab_6rcpfg": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "",
+            "product1": "",
+            "product2": "",
+            "product3": "",
+            "product4": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_R3cJAq",
+        "tab_yGtjcH",
+        "tab_6rcpfg"
+      ],
+      "settings": {
+        "title": "Our Favorites",
+        "link_text": "Shop All",
+        "link_url": ""
+      }
     }
   },
   "order": [
@@ -289,6 +347,8 @@
     "banner_with_collection2_46wJBk",
     "pf_community_m7GYRh",
     "hero",
-    "fist-of-collections"
+    "fist-of-collections",
+    "featured_articles_Hajphp",
+    "collections_tabs_ziDdKU"
   ]
 }
