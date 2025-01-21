@@ -52,11 +52,13 @@
         "pinterest_link": "",
         "tiktok_link": "",
         "custome_link1": "Let's Text",
+        "custom_links_header": "FOLLOW US @printfresh",
         "custom_link1_url": "",
         "custome_link2": "PF app",
         "custom_link2_url": "",
         "custome_link3": "Rewards",
-        "custom_link3_url": ""
+        "custom_link3_url": "",
+        "copyright": "© 2025 Printfresh"
       }
     }
   },
