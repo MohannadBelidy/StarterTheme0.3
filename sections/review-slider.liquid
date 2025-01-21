@@ -73,7 +73,7 @@
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
-<div style="background-color: #{{ section.settings.bg-color }};">
+<div style="background-color: {{ section.settings.bg-color }};">
   <div class="review-section-container">
     <h2>{{ section.settings.title }}</h2>
     <div class="carousel" data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround": true }'>
@@ -150,7 +150,7 @@
   "name": "Review Slide",
   "settings": [
     {
-      "type": "color_background",
+      "type": "color",
       "id": "bg-color",
       "label": "Background Color"
     },
