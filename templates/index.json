@@ -387,6 +387,10 @@
     "fist-of-collections": {
       "type": "list-of-collections",
       "settings": {}
+    },
+    "bar_seperator_pFbbxM": {
+      "type": "bar-seperator",
+      "settings": {}
     }
   },
   "order": [
@@ -396,6 +400,7 @@
     "collections_tabs_ziDdKU",
     "featured_collections_2_m3LCQi",
     "banner_with_collection_PJ8aVc",
+    "bar_seperator_pFbbxM",
     "review_slider_YAxPgb",
     "banner_with_collection2_46wJBk",
     "featured_articles_Hajphp",
