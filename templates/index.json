@@ -209,11 +209,15 @@
       "settings": {
         "image1": "shopify://shop_images/01-16_CB-DaschundDate_copy_955x_3dad3cae-bdb9-491f-bf84-4a792f6c1cc1.webp",
         "image2": "shopify://shop_images/01-16_CB-DaschundDate-pattern_955x_46c9c30b-7c4f-4b52-bbfe-f4012370dcad.webp",
-        "title": "Join Us For a Dachshund Date",
+        "title": "Join Us For a<br>Dachshund Date",
         "subtitle": "Sweet as a sundae, this collection perfectly blends retro charm and Valentine’s Day fun into one lovable print.",
         "link": "shopify://collections/hydrogen",
         "link_text": "Shop Now"
       }
+    },
+    "bar_seperator_pFbbxM": {
+      "type": "bar-seperator",
+      "settings": {}
     },
     "review_slider_YAxPgb": {
       "type": "review-slider",
@@ -386,10 +390,6 @@
     },
     "fist-of-collections": {
       "type": "list-of-collections",
-      "settings": {}
-    },
-    "bar_seperator_pFbbxM": {
-      "type": "bar-seperator",
       "settings": {}
     }
   },
