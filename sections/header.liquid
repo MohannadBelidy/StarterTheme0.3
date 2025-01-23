@@ -1,6 +1,6 @@
 <style>
-    #shopify-section-{{ section.id }} {
-      position: {% unless section.settings.sticky_header_type == 'none' %}sticky{% else %}relative{% endunless %};
+  #shopify-section-{{ section.id }} {
+    position: {% unless section.settings.sticky_header_type == 'none' %}sticky{% else %}relative{% endunless %};
     top: 0;
     background: #fff;
     width: 100%;
@@ -20,7 +20,7 @@
   {% endif %}
 
   #main-header {
-
+    overflow: hidden;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -33,8 +33,8 @@
     align-items: center;
     gap: 0 1.5rem;
     padding: 0 !important;
-
-
+    box-sizing: border-box;
+    font-family: Poppins !important;
     padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
   }
   #main-header .header-shop_name {
@@ -43,9 +43,13 @@
     margin: 0;
     line-height: 1;
   }
+  #main-header nav{
+    width: 100%;
+  }
   {% if section.settings.logo_position == 'middle-center' %}
     #main-header nav {
       grid-area: 1 / 1;
+      width: 100%;
     }
   {% elsif section.settings.logo_position == 'top-left' or section.settings.logo_position == 'top-center' %}
   #main-header nav {
@@ -54,16 +58,18 @@
   }
   {% endif %}
   #main-header nav ul {
+    box-sizing: border-box;
     list-style: none;
     margin: 0;
     padding: 0;
+    justify-content: center ;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     {% if section.settings.logo_position == 'top-center' %}
       justify-content: center;
     {% endif %}
-    gap: 1rem;
   }
   #main-header .header-drawer_icons,
   #main-header .menu-toggle {
@@ -89,6 +95,8 @@
     width: auto;
     height: {{ settings.logo_height | append: 'px' }};
     transition: height 300ms ease;
+    position: relative;
+    left: 14px
   }
   {% if section.settings.sticky_header_type == 'reduce-logo-size' %}
     #shopify-section-{{ section.id }}
@@ -112,24 +120,28 @@
     position: absolute;
     display: grid;
     place-items: center;
-    top: -2px;
-    right: -6px;
+    top: 22px;
+    right: 16px;
     width: 16px;
     height: 16px;
-    color: rgb(var(--color-background));
-    background: rgb(var(--color-foreground));
+    font-size: 13px;
+    color: rgb(var(--color-foreground));
     font-size: 10px;
     border-radius: 10rem;
   }
   .header-actions
    {
     transform: scale(1.1);
-    padding-right: 30px;
+    padding-right: 48px;
     display: flex;
     flex: 1;
     justify-content:end;
-    gap: 1.5rem;
-
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .header-actions a{
+    padding: 12px !important;
+    color: #373735 !important;
   }
 
   #header-actions_search {
@@ -137,11 +149,9 @@
   }
   #header-search {
     position: relative;
-    inset: 0;
     color: rgb(var(--color-foreground));
     background: rgb(var(--color-background));
-
-    gap: 1rem;
+    margin-top: 5px;
   }
   #header-search.active {
     display: flex;
@@ -149,30 +159,34 @@
   #header-search form {
     position: relative;
     border-bottom: 1px solid ;
-    width: min(600px, 100%);
+    width: 94%;
     height: 40px;
     display: flex;
     justify-content: space-between;
 
   }
   #header-search form input {
-    width: 100%;
+    width: 1%;
     border: 0;
-    font-size: 15px;
+    padding: 5px 15px 0 0;
+    font-size: 14.5px;
+    margin-bottom: 0;
     color: inherit;
     background: transparent;
+    flex: 1 1 auto;
+    position: relative;
   }
   #header-search button {
     background: transparent;
     border: 0;
     cursor: pointer;
     padding: 0;
+    position: relative;
   }
   #header-search svg {
     width: 20px;
     color: rgb(var(--color-foreground));
   }
-
   @media (min-width: 768px) {
     {% unless section.settings.menu_type_desktop == 'drawer' %}
       #header-drawer {
@@ -194,49 +208,142 @@
         auto 1fr auto
       {% endif %};
     }
-  }
+    .mobile-hide{
+      display: none !important;
+    }
+    [data-cart-count] {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    top: 13px !important;
+    right:7px !important;
+    width: 16px;
+    height: 16px;
+    font-size: 13px;
+    color: rgb(var(--color-foreground));
 
+    font-size: 10px;
+    border-radius: 10rem;
+    }
+  }
   #top-header {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 10px 40px;
+    padding: 0 24px;
     align-items: center;
-    gap: 1rem;
+    margin-left: 12px;
     box-sizing: border-box;
-
+  }
+  #logo{
+    display: flex;
+    justify-content: center;
+    margin: 14px 0 15px;
+  }
+  #header-actions_wishlist{
+    cursor: pointer;
+    transition: transform 300ms ease;
+    display: block;
+  }
+  #header-stripe{
+    background-color: #245490;
+    display: flex;
+    width: 100%;
+    color: white;
+    font-size: 14px;
+    align-items:center;
+    box-sizing: border-box;
+    padding: 0 20px;
+    min-height: 36px;
+  }
+  #header-stripe .header-stripe-content{
+    display:flex;
+    justify-content:space-between;
+    width:100%;
+    margin:0 auto;
+    align-items:flex-end;
+    max-width:1063px;
+    box-sizing: border-box;
+    height: 24px;
+    line-height: 18px;
+    font-weight: 400;
+  }
+  .logo_link{
+  justify-content:center ;
+  display: flex;
+  width:300px
+  } 
+  @media (max-width:768px) {
+    #header-stripe .header-stripe-content{
+      display:flex;
+      justify-content:center;
+      width:100%;
+      margin:0 auto;
+      align-items:flex-end;
+      max-width:1063px;
+      box-sizing: border-box;
+      height: 24px;
+      line-height: 18px;
+      font-weight: 400;
     }
-
-    #logo{
+    .logo_link{
+      justify-content:center ;
       display: flex;
-      justify-content: center;
+      width:auto
+    } 
+    .header-logo {
+      width: auto;
+      height: {{ settings.logo_height_mobile | append: 'px' }};
+      transition: height 300ms ease;
+      position: relative;
     }
-
-    #header-actions_wishlist{
-      cursor: pointer;
-      transition: transform 300ms ease;
-      display: block;
+    .header-logo a{
+      width: auto !important;
     }
-
-    #header-stripe{
-      background-color: #245490;
+    #top-header {
       display: flex;
-      width: 99%;
-      justify-content: space-around;
-      color: white;
-      font-size: 14px;
-      align-items:center;
-      padding-right: 20px;
-      padding-left: 20px;
-      min-height: 36px;
-      
-
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+      padding:0 18px !important ;
+      align-items: center;
+      margin: 0 !important;
+      box-sizing: border-box;
     }
-
-    #header-search form input::placeholder{
-      color:black;
-      font-weight: 300;
+    .header-actions{
+    display: flex;
+    flex: 1;
+    justify-content:end;
+    box-sizing: border-box;
+    padding: 0;
     }
+    .header-actions a{
+      padding: 3px !important;
+      color: #373735 !important;
+    }
+    #header-search form {
+      position: relative;
+      border: 0;
+      width: 94%;
+      height: 0px !important;
+      display: flex;
+      justify-content: space-between;
+    }
+    #header-search form input {
+      display: none !important;
+    }
+  }
+  #header-stripe .stripe-text-message{
+    margin: 0 !important;
+    line-height: 18px;
+    display: flex;
+    align-items: flex-end;
+  }
+  #header-search form input::placeholder{
+    color:black;
+    font-weight: 400;
+    font-family: Poppins;
+  }
 </style>
 
 {% capture header_search %}
@@ -248,33 +355,32 @@
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <header id="main-header" x-data="{ searchOpen: false }" @click.outside="searchOpen = false">
     <div id="header-stripe">
-      <div style="display:flex; justify-content:space-between;width:100%; padding; 0 20px; margin:auto; align-items:center ;max-width:1063px">
-        <div style="display:flex; align-items:center ;gap:0.5rem ; font-family:Poppins">
-          <img class="img" src="//printfresh.com/cdn/shop/files/Asset_1_2.png?v=1722345901">
-          <p style="margin: 0;"> Free Shipping Over $195 & Easy Returns</p>
+      <div class="header-stripe-content">
+        <div style="display:flex;align-items:flex-start;gap:8px" class="mobile-hide">
+          <img class="img" src="//printfresh.com/cdn/shop/files/Asset_1_2.png?v=1722345901" height="" width="">
+          <p class="stripe-text-message">Free Shipping Over $195 & Easy Returns</p>
         </div>
-        <p style="margin: 0;">|</p>
-        <div style="display:flex;align-items:center ;gap:0.5rem">
-          <img class="img" src="//printfresh.com/cdn/shop/files/Asset_2_1.png?v=1722345916">
-          <p style="margin: 0;">Joyful Designs and Premium Fabrics</p>
+        <p style="margin:0" class="mobile-hide">|</p>
+        <div style="display:flex;gap:8px " class="mobile-hide">
+          <img class="img" src="//printfresh.com/cdn/shop/files/Asset_2_1.png?v=1722345916" height="" width="">
+          <p class="stripe-text-message">Joyful Designs and Premium Fabrics</p>
         </div>
-        <p style="margin: 0;">|</p>
-        <div style="display:flex;align-items:center ;gap:0.5rem">
-          <img class="img" src="//printfresh.com/cdn/shop/files/Asset_3_1.png?v=1722345926">
-          <p style="margin: 0;">Size Inclusive Styles From XXS To 6X</p>
-        </div>
-        <div>
-          
+        <p style="margin: 0;" class="mobile-hide">|</p>
+        <div style="display:flex;gap:8px">
+          <img class="img" src="//printfresh.com/cdn/shop/files/Asset_3_1.png?v=1722345926" height="" width="">
+          <p class="stripe-text-message">Size Inclusive Styles From XXS To 6X</p>
         </div>
       </div>
     </div>
     <div id="top-header">
       <div style="flex:1">
-        <h1></h1>
+        {% comment %} <h1> {% endcomment %}
+        {% render 'nav-drawer' %}
+        {% comment %} </h1> {% endcomment %}
       </div>
       <div id="logo">
         {% if request.page_type == 'index' %}<h1 style="margin: 0">{% endif %}
-        <a href="{{ routes.root_url }}" style="display: flex">
+        <a href="{{ routes.root_url }}" class="logo_link" >
           {% if settings.logo != blank %}
             {{ settings.logo | image_url: width: 900 | image_tag: class: 'header-logo' }}
           {% else %}
@@ -323,7 +429,6 @@
         </a>
       </div>
     </div>
-    {% render 'nav-drawer' %}
 
     {% if section.settings.logo_position == 'top-center' or section.settings.menu == blank %}
       {{ header_search }}
@@ -334,8 +439,10 @@
         {% if section.settings.menu_type_desktop == 'dropdown' %}
           {% render 'nav-dropdown', nav_style: 'dropdown' %}
         {% elsif section.settings.menu_type_desktop != 'drawer' %}
-          
-          {% render 'nav-megamenu' , image1:section.settings.mega_menu_image_1, image2 : section.settings.mega_menu_image_2%}
+          {% render 'nav-megamenu',
+            image1: section.settings.mega_menu_image_1,
+            image2: section.settings.mega_menu_image_2
+          %}
         {% endif %}
       </nav>
     {% endif %}
@@ -415,7 +522,7 @@
 {
   "name": "t:sections.header.name",
   "class": "section-header",
-  
+
   "settings": [
     {
       "type": "select",
@@ -442,7 +549,7 @@
       "label": "t:sections.header.settings.logo_position.label",
       "info": "t:sections.header.settings.logo_help.content"
     },
-    
+
     {
       "type": "link_list",
       "id": "menu",

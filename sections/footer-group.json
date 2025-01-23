@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "footer",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu_8pLpzW": {
+          "type": "menu",
+          "settings": {
+            "menu_header": "Support",
+            "menu": "footer-support"
+          }
+        },
+        "menu_Rt6Rq4": {
+          "type": "menu",
+          "settings": {
+            "menu_header": "Company",
+            "menu": "footer-company"
+          }
+        },
+        "menu_tmrP8a": {
+          "type": "menu",
+          "settings": {
+            "menu_header": "Shop",
+            "menu": "footer-shop"
+          }
+        }
+      },
+      "block_order": [
+        "menu_8pLpzW",
+        "menu_Rt6Rq4",
+        "menu_tmrP8a"
+      ],
+      "settings": {
+        "logo": "shopify://shop_images/logo-shop.svg",
+        "menu_header": "JOIN OUR MAILING LIST",
+        "text": "Sign up for our email list to unlock $20 off your first $100 order.",
+        "placeholder": "",
+        "button": "Join",
+        "instagram_link": "",
+        "facebook_link": "",
+        "pinterest_link": "",
+        "tiktok_link": "",
+        "custome_link1": "Let's Text",
+        "custom_links_header": "FOLLOW US @printfresh",
+        "custom_link1_url": "",
+        "custome_link2": "PF app",
+        "custom_link2_url": "",
+        "custome_link3": "Rewards",
+        "custom_link3_url": "",
+        "copyright": "© 2025 Printfresh"
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

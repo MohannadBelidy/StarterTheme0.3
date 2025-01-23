@@ -1,0 +1,199 @@
+<style>
+  .collections-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 80px !important;
+    padding: 0 15px;
+    display: block;
+  }
+  .collections-grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .collection-content {
+    width: 31.5%;
+    margin: 10px;
+    transition: 0.4s linear margin-top;
+  }
+  .collection-content:hover {
+    margin-top: -20px;
+  }
+
+  .collection-img-container {
+    background-size: cover;
+    aspect-ratio: 2/2.65;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  .collection-content h2 {
+    font-size: 30px;
+    line-height: 42px;
+    margin: 0;
+    color: #373735;
+    font-weight: 500;
+  }
+  .collection-content p {
+    font-size: 15px;
+    line-height: 22px;
+    margin: 0;
+    max-width: 300px;
+    position: relative;
+    color: #373735;
+    background-color: white;
+  }
+  .collection-content .link {
+    font-size: 13px;
+    line-height: 20px;
+    text-decoration: underline;
+    color: black;
+    font-weight: 600;
+    margin-top: -34px;
+    padding-top: 10px;
+    transition: 0.4s linear margin-top;
+    z-index: 0;
+  }
+  .collection-content:hover .link {
+    margin-top: 0 !important;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-cell {
+      width: 70% !important;
+      margin: 10px;
+      transition: 0.4s linear margin-top;
+    }
+    .carousel-cell.is-selected {
+      margin-top: -20px;
+    }
+    .carousel-cell.is-selected .link {
+      margin-top: 0px !important;
+    }
+    .collection-img-container {
+      background-size: cover;
+      aspect-ratio: 2/2.65;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .carousel-cell h2 {
+      font-size: 30px;
+      line-height: 42px;
+      margin: 0;
+      color: #373735;
+      font-weight: 500;
+    }
+    .carousel-cell p {
+      font-size: 15px;
+      line-height: 22px;
+      margin: 0;
+      max-width: 300px;
+      position: relative;
+      color: #373735;
+      background-color: white;
+    }
+    .carousel-cell .link {
+      font-size: 13px;
+      line-height: 20px;
+      text-decoration: underline;
+      color: #373735;
+      font-weight: 600;
+      margin-top: -34px;
+      padding-top: 10px;
+      transition: 0.4s linear margin-top;
+      z-index: 0;
+    }
+  }
+</style>
+
+<div class="collections-container">
+  <div class="collections-grid hide-mobile">
+    {% for block in section.blocks %}
+      <div class="collection-content">
+        <a style="text-decoration: none;" href="{{block.settings.url}}">
+          <div
+            class="collection-img-container"
+            style="background-image: url({{block.settings.image| img_url: 'master'}});"
+          ></div>
+
+          <div style="padding:14px 0 0 10px;font-family:Poppins;background-color:white;z-index:1">
+            <h2>{{ block.settings.title }}</h2>
+            <p>{{ block.settings.description }}</p>
+            <div class="link">{{ block.settings.link_text }}</div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="mobile-collections-grid hide-desktop">
+    <div
+      class="main-carousel"
+      data-flickity='{ "contain": true, "wrapAround": true, "autoPlay":true,"prevNextButtons":false ,"pageDots" : true}'
+    >
+      {% for block in section.blocks %}
+        <div class="carousel-cell">
+          <a style="text-decoration: none;" href="{{block.settings.url}}">
+            <div
+              class="collection-img-container"
+              style="background-image: url({{block.settings.image| img_url: 'master'}});"
+            ></div>
+
+            <div style="padding:14px 0 0 10px;font-family:Poppins;background-color:white;z-index:1">
+              <h2>{{ block.settings.title }}</h2>
+              <p>{{ block.settings.description }}</p>
+              <div class="link">{{ block.settings.link_text }}</div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Collection 2",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "url",
+          "label": "Link",
+          "id": "link"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        },
+        {
+          "type": "text",
+          "label": "Collection Title",
+          "id": "title"
+        },
+        {
+          "type": "text",
+          "label": "Collection Description",
+          "id": "description"
+        },
+        {
+          "type": "text",
+          "label": "Link Text",
+          "id": "link_text",
+          "default": "SHOP ALL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection 2"
+    }
+  ]
+}
+{% endschema %}

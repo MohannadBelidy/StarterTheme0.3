@@ -1,0 +1,330 @@
+<style>
+  .collections-tabs-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 80px 0 40px;
+    box-sizing: border-box;
+  }
+  .collections-tabs-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    align-items: center;
+    margin: 0 15px;
+  }
+  .collections-tabs-title {
+    width: 25%;
+  }
+  .collections-tabs-title h2 {
+    font-size: 35px;
+    line-height: 49px;
+    margin: 0;
+    font-weight: 500;
+    color: #373735;
+  }
+  .collections-tabs {
+    text-align: center;
+    width: 55%;
+  }
+  .collections-tab {
+    background: none;
+    line-height: 22px;
+    font-size: 15px;
+    text-transform: capitalize;
+    padding: 10px;
+    margin-right: 30px;
+    min-width: 137px;
+    min-height: 41px;
+    border: 1px solid transparent;
+    font-family: Poppins;
+    cursor: pointer;
+  }
+  .collections-tab-last-tab {
+    margin-right: 0 !important;
+  }
+  .collections-tab:hover {
+    background: #fff5f5;
+  }
+  .collections-tab_active {
+    background: #245490 !important;
+    color: white !important;
+    padding: 10px !important;
+    box-sizing: border-box;
+  }
+  .collections-tabs-general-link {
+    width: 20%;
+    text-align: right;
+  }
+  .collections-tabs-general-link a {
+    font-size: 13.6px;
+    line-height: 20.5px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 2px solid;
+    font-family: Poppins;
+    color: #373735;
+  }
+  .collection-tab-body {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .collection-tab-body.active {
+    position: relative;
+    left: auto;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .collection-tab-products {
+    flex: 0 0 25%;
+    max-width: 25%;
+    position: relative;
+    width: 100%;
+    padding: 0 15px;
+    margin-bottom: 12px;
+    line-height: 21px;
+  }
+
+  .product-title a {
+    position: relative;
+    top: 3px;
+    font-size: 13px;
+    font-family: Poppins;
+    line-height: 0.8rem;
+    font-weight: 400px;
+    text-decoration: none;
+    color: #373735;
+  }
+  hr {
+    border-top: 1.5px solid #efc0c3;
+    margin-top: 0;
+    width: 100%;
+    max-width: 96%;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .collections-tabs-container {
+      position: relative;
+      padding: 30px 0 40px !important;
+    }
+    .collections-tabs-header {
+      flex-wrap: wrap;
+    }
+    .collections-tabs-title {
+      width: 100%;
+    }
+    .collections-tabs {
+      width: 100% !important;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+    .collections-tab {
+      background: #cd35301f ;
+      color: #000;
+      margin-right: 12px !important;
+      min-height: unset !important;
+      min-width: unset !important;
+    }
+    
+    .collections-tabs-general-link {
+      position: absolute;
+      top: 92%;
+      left: 46%;
+      transform: translate(-50%, -50%);
+      z-index: 19;
+    }
+  }
+</style>
+<div class="collections-tabs-container">
+  <collections-tabs>
+    <div class="collections-tabs-header">
+      <div class="collections-tabs-title">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+      <div class="collections-tabs">
+        {% for block in section.blocks %}
+          <button class="collections-tab" data-tab="{{ forloop.index }}">{{ block.settings.tab_title }}</button>
+        {% endfor %}
+      </div>
+      <div class="collections-tabs-general-link">
+        <a href="{{section.settings.link_url}}">
+          {{ section.settings.link_text }}
+        </a>
+      </div>
+    </div>
+    <div>
+      {% for block in section.blocks %}
+        <div class="collection-tab-body" data-tab-content="{{ forloop.index }}">
+          <div style="display: flex; ">
+            {% if block.settings.product1 %}
+              <div class="collection-tab-products">
+                <div>
+                  <a href="{{ block.settings.product1.url }}">
+                    <img
+                      src="{{ block.settings.product1.featured_image| img_url: 'master'}}"
+                      alt="{{block.settings.product1.featured_image.alt}}"
+                      width="100%"
+                      height=""
+                    >
+                  </a>
+                </div>
+                <div class="product-title">
+                  <a href="{{block.settings.product1.url}}">{{ block.settings.product1.title }}</a>
+                </div>
+              </div>
+            {% endif %}
+            {% if block.settings.product2 %}
+              <div class="collection-tab-products">
+                <div>
+                  <a href="{{ block.settings.product2.url }}">
+                    <img
+                      src="{{ block.settings.product2.featured_image| img_url: 'master'}}"
+                      alt="{{block.settings.product2.featured_image.alt}}"
+                      width="100%"
+                      height=""
+                    >
+                  </a>
+                </div>
+                <div class="product-title">
+                  <a href="{{block.settings.product2.url}}">{{ block.settings.product2.title }}</a>
+                </div>
+              </div>
+            {% endif %}
+            {% if block.settings.product3 %}
+              <div class="collection-tab-products">
+                <div>
+                  <a href="{{ block.settings.product3.url }}">
+                    <img
+                      src="{{ block.settings.product3.featured_image| img_url: 'master'}}"
+                      alt="{{block.settings.product3.featured_image.alt}}"
+                      width="100%"
+                      height=""
+                    >
+                  </a>
+                </div>
+                <div class="product-title">
+                  <a href="{{block.settings.product3.url}}">{{ block.settings.product3.title }}</a>
+                </div>
+              </div>
+            {% endif %}
+            {% if block.settings.product4 %}
+              <div class="collection-tab-products">
+                <div>
+                  <a href="{{ block.settings.product4.url }}">
+                    <img
+                      src="{{ block.settings.product4.featured_image| img_url: 'master'}}"
+                      alt="{{block.settings.product4.featured_image.alt}}"
+                      width="100%"
+                      height=""
+                    >
+                  </a>
+                </div>
+                <div class="product-title">
+                  <a href="{{block.settings.product4.url}}">{{ block.settings.product4.title }}</a>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </collections-tabs>
+</div>
+
+<hr>
+
+<script>
+  class CollectionsTabs extends HTMLElement {
+    constructor() {
+      super();
+      this.tabs = this.querySelectorAll('.collections-tab');
+      this.lastTab = this.tabs[this.tabs.length - 1];
+      this.lastTab.classList.add('collections-tab-last-tab');
+      this.tabContents = this.querySelectorAll('.collection-tab-body');
+      if (this.tabs.length > 0) {
+        this.switchTab(0);
+      }
+      this.tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+          this.switchTab(index);
+        });
+      });
+    }
+
+    switchTab(tabIndex) {
+      this.tabs.forEach((tab) => tab.classList.remove('collections-tab_active'));
+      this.tabContents.forEach((content) => content.classList.remove('active'));
+
+      this.tabs[tabIndex].classList.add('collections-tab_active');
+      this.tabContents[tabIndex].classList.add('active');
+    }
+  }
+  
+    customElements.define('collections-tabs', CollectionsTabs);
+</script>
+
+{% schema %}
+{
+  "name": "Collections Tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Label for general collections link"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "URL for general collections link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title"
+        },
+        {
+          "type": "product",
+          "id": "product1",
+          "label": "Product 1"
+        },
+        {
+          "type": "product",
+          "id": "product2",
+          "label": "Product 2"
+        },
+        {
+          "type": "product",
+          "id": "product3",
+          "label": "Product 3"
+        },
+        {
+          "type": "product",
+          "id": "product4",
+          "label": "Product 4"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections Tabs"
+    }
+  ]
+}
+{% endschema %}

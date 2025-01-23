@@ -1,0 +1,272 @@
+<style>
+  .mobile-review-section-container {
+    display: block;
+    margin-top: 65px;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+  }
+
+  .mobile-review-section-container h2 {
+    text-align: center;
+    font-size: 20px;
+    line-height: 32px;
+    font-family: Apris-Regular;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 12px;
+    text-transform: capitalize;
+    color: #373735;
+  }
+
+  .swiper-container {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+    box-sizing: content-box;
+    transition-duration: 0ms;
+    transform: translate3d(-948px, 0px, 0px);
+    transition-delay: 0ms;
+  }
+
+  .swiper-slide {
+    margin-right: 10px;
+    padding: 0 15px;
+    flex-shrink: 0;
+    height: 100%;
+    position: relative;
+    display: block;
+    transition-property: transform;
+  }
+
+  .swiper-pagination {
+    width: 100% !important;
+    bottom: unset !important;
+  }
+
+  .swiper-pagination-bullet {
+    width: 6px !important;
+    height: 6px !important;
+    margin: 0 8px !important;
+    background: #efc0c3 !important;
+  }
+  .swiper-pagination-bullet-active {
+    background: #245490 !important;
+    width: 33px !important;
+    height: 6px !important;
+    margin: 0 8px !important;
+    border-radius: 10px !important;
+  }
+
+  
+
+  .customer-review-content {
+    width: 100%;
+    padding: 21px 16px;
+    background-color: #fff5f5;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .mobile-carousel-img-container {
+    padding: 0 7px 10px 0;
+    box-sizing: border-box;
+  }
+
+  .mobile-carousel-img-container img {
+    width: 45px;
+    height: 45px;
+    max-width: 45px;
+  }
+
+  .mobile-customer-review p {
+    color: #373735;
+    font-family: Poppins;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 1px;
+    padding-top: 5px;
+    max-width: 100%;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .mobile-rating {
+    font-size: 13px;
+    display: block;
+    font-weight: 400;
+    line-height: 1rem;
+  }
+
+  .mobile-customer-name p {
+    font-size: 17px;
+    font-style: italic;
+    font-family: Poppins;
+    color: #373735;
+    line-height: 25px;
+    letter-spacing: 1px;
+    margin-right: 7px;
+    height: 23px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .mobile-carousel-top-side {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+</style>
+
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+
+<div style="background-color: {{ section.settings.bg-color }};">
+  <div class="mobile-review-section-container">
+    <h2>{{ section.settings.title }}</h2>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            <span class="customer-review-content">
+              <div class="mobile-carousel-top-side">
+                <div class="mobile-carousel-img-container">
+                  {% if block.settings.image %}
+                    <img
+                      src="{{ block.settings.image | img_url: 'medium' }}"
+                      alt="{{ block.settings.title }}"
+                      width=""
+                      height=""
+                    >
+                  {% endif %}
+                </div>
+                <div class="mobile-customer-name">
+                  <p>{{ block.settings.author }}</p>
+                </div>
+                <div class="mobile-rating">
+                  {% assign rating = block.settings.rating | times: 1 %}
+                  {% for i in (1..5) %}
+                    {% if i <= rating %}
+                      {{ 'icon-star.svg' | inline_asset_content }}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+
+              <div>
+                <div class="mobile-customer-review">
+                  <p>{{ block.settings.title }}</p>
+                </div>
+              </div>
+            </span>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let swiper = new Swiper('.swiper-container', {
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      slidesPerView: 1,
+      spaceBetween: 10,
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Mobile Review Slide",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg-color",
+      "label": "Background Color"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author"
+        },
+        {
+          "type": "select",
+          "id": "rating",
+          "label": "Rating",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "4",
+              "label": "4"
+            },
+            {
+              "value": "5",
+              "label": "5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mobile Review Slide"
+    }
+  ]
+}
+{% endschema %}

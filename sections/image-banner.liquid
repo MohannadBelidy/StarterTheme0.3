@@ -1,0 +1,220 @@
+<style>
+  .banner_container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .banner_content h2 {
+    font-size: 47px;
+    font-weight: 300;
+    margin: 0;
+    line-height: 75px;
+    letter-spacing: 3px;
+    height: 150px;
+    display: flex;
+    align-items: end;
+  }
+  .banner_content p {
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    margin: 0 0 24px !important;
+    box-sizing: border-box;
+    padding: 0 80px;
+  }
+  .banner_content a {
+    background-color: white;
+    color: black;
+    border-color: white !important;
+    display: inline-flex;
+    height: 50px;
+    width: 100%;
+    max-width: 150px;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    line-height: 21px;
+    border: 1px solid;
+    margin-top: 15px;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .banner_content a:hover {
+    background-color: transparent;
+    color: white;
+  }
+  .banner_content {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    position: absolute;
+    margin: 0 40px;
+    width: 530px;
+    color: white;
+    font-family: Poppins;
+  }
+  @media(max-width:768px){
+    .banner_content{
+      align-items: flex-start !important;
+      margin:0 25px 15px !important;
+      width: 80% !important;
+      text-align: left;
+    }
+    .banner_content h2 {
+      font-size: 36px !important;
+      line-height: 36px;
+    }
+    .banner_content p {
+      padding: 0 !important;
+    }
+    
+  }
+
+  .mobile_banner_content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80%;
+    color: white;
+    font-family: Poppins;
+  }
+  .mobile_banner_content h2 {
+    display: flex;
+    font-size: 25.6px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 38px;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: end;
+  }
+  .mobile_banner_content p {
+    display: flex;
+    font-size: 0.8rem;
+    line-height: 22px;
+    letter-spacing: 1px;
+    margin: 0 0 24px !important;
+    box-sizing: border-box;
+  }
+  .mobile_banner_content a {
+    background-color: white;
+    color: black;
+    border-color: white !important;
+    display: inline-flex;
+    height: 50px;
+    width: 100%;
+    max-width: 150px;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    line-height: 21px;
+    border: 1px solid;
+    margin-top: 15px;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  @media (max-width: 768px) {
+    .hide-mobile-and-tablet {
+      display: none;
+    }
+  }
+  @media(min-width: 768px) {
+    .hide-desktop {
+      display: none;
+    }
+  }
+  @media (max-width: 480px) {
+    .hide-mobile{
+      display: none;
+    }
+  }
+  @media (max-width: 480px) and (min-width:767px){
+    .hide-mobile-and-desktop {
+      display: none;
+    }
+  }
+
+  @media (min-width: 479px) {
+    .hide-tablet-and-desktop {
+      display: none !important;
+    }
+  }
+</style>
+<div>
+  <div class="banner_container">
+    <img
+      src="{{section.settings.image_banner|  img_url: 'master'}}"
+      alt="{{section.settings.image_banner.alt}}"
+      width="100%"
+      height=""
+      class="hide-mobile"
+    >
+    <img
+      src="{{section.settings.image_banner_mobile |  img_url: 'master'}}"
+      alt="{{section.settings.image_banner_mobile.alt}}"
+      width="100%"
+      height=""
+      class="hide-tablet-and-desktop"
+      style="max-height: 700px;"
+    >
+    <div class="banner_content hide-mobile">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.subtitle }}</p>
+      <a href="{{section.settings.button_text}}" class="button">{{ section.settings.button_text }}</a>
+    </div>
+   
+    <div class="mobile_banner_content hide-tablet-and-desktop">
+      <h2>
+        {{ section.settings.title }}
+      </h2>
+      <p>{{ section.settings.subtitle }}</p>
+      <a href="{{section.settings.url}}" class="button">{{ section.settings.button_text }}</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "image_banner"
+    },
+    {
+      "type": "text",
+      "label": "Banner Title",
+      "id": "title"
+    },
+    {
+      "type": "text",
+      "label": "Banner Subtitle",
+      "id": "subtitle"
+    },
+    {
+      "type": "text",
+      "label": "Button's Text",
+      "id": "button_text"
+    },
+    {
+      "type": "image_picker",
+      "label": "Mobile Image Banner",
+      "id": "image_banner_mobile"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Url"
+    }
+  ]
+}
+{% endschema %}

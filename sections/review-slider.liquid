@@ -1,0 +1,224 @@
+<style>
+  .review-section-container {
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 0 80px 80px;
+    box-sizing: border-box;
+  }
+
+  .review-section-container h2 {
+    text-align: center;
+    font-size: 35px;
+    line-height: 50px;
+    padding-top: 60px;
+    padding-bottom: 30px;
+    font-family: Apris-Regular;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #373735;
+  }
+	
+
+  .flickity-viewport {
+    height: 405px;
+    overflow: hidden;
+  }
+
+	@media (min-width:1300px){
+		.flickity-prev-next-button,{
+			display: none;
+		}	
+	}
+
+  .carousel {
+    width: 100%;
+  }
+
+  .carousel-cell {
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+    padding: 22px 7px 21px 16px;
+    box-sizing: border-box;
+  }
+
+  .carousel-img-container {
+    padding: 10px 0;
+    box-sizing: border-box;
+  }
+
+  .carousel-cell img {
+    max-width: 100%;
+  }
+
+  .customer-review p {
+    font-size: 17px;
+    line-height: 25px;
+    max-width: 300px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding-top: 10px;
+    font-family: Poppins;
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: #373735;
+  }
+  .customer-name p {
+    font-size: 15px;
+    line-height: 22px;
+    margin: 0;
+    font-weight: 600;
+    font-family: Poppins;
+    color: #373735;
+  }
+</style>
+
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js" defer></script>
+
+<div class="hide-mobile-and-tablet" style="background-color: {{ section.settings.bg-color }};">
+  <div class="review-section-container">
+    <h2>{{ section.settings.title }}</h2>
+    <div class="carousel" data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround": true,"pageDots":false }'>
+      {% for block in section.blocks %}
+        {% assign is_even = forloop.index0 | modulo: 2 %}
+        {% if is_even == 0 %}
+          <div class="carousel-cell">
+            <div class="carousel-img-container">
+              {% if block.settings.image %}
+                <img
+                  src="{{ block.settings.image | img_url: 'medium' }}"
+                  alt="{{ block.settings.title }}"
+                  width=""
+                  height=""
+                >
+              {% endif %}
+            </div>
+            <div>
+              <div class="rating">
+                {% assign rating = block.settings.rating | times: 1 %}
+                {% for i in (1..5) %}
+                  {% if i <= rating %}
+                    {{ 'icon-star.svg' | inline_asset_content }}
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <div class="customer-review">
+                <p>{{ block.settings.title }}</p>
+              </div>
+              <hr style="max-width:66px;border-top:1px solid;margin:15px 0;">
+              <div class="customer-name">
+                <p>{{ block.settings.author }}</p>
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div class="carousel-cell">
+            <div>
+              <div class="rating">
+                {% assign rating = block.settings.rating | times: 1 %}
+                {% for i in (1..5) %}
+                  {% if i <= rating %}
+                    {{ 'icon-star.svg' | inline_asset_content }}
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <div class="customer-review">
+                <p>{{ block.settings.title }}</p>
+              </div>
+              <hr style="max-width:66px;border-top:1px solid;margin:15px 0;">
+              <div class="customer-name">
+                <p>{{ block.settings.author }}</p>
+              </div>
+            </div>
+            <div class="carousel-img-container">
+              {% if block.settings.image %}
+                <img
+                  src="{{ block.settings.image | img_url: 'medium' }}"
+                  alt="{{ block.settings.title }}"
+                  width=""
+                  height=""
+                >
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Review Slide",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg-color",
+      "label": "Background Color"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author"
+        },
+        {
+          "type": "select",
+          "id": "rating",
+          "label": "Rating",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "4",
+              "label": "4"
+            },
+            {
+              "value": "5",
+              "label": "5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review Slide"
+    }
+  ]
+}
+{% endschema %}

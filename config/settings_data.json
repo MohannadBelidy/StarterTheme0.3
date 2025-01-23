@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/design-graphic.png",
-    "logo_height": 60,
+    "logo": "shopify://shop_images/logo-shop.svg",
+    "logo_height": 105,
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
@@ -130,10 +130,23 @@
     "sections": {
       "header": {
         "type": "header",
+        "blocks": {
+          "megamenu1_pF38L9": {
+            "type": "megamenu1",
+            "settings": {
+              "image1": "shopify://shop_images/12-04-MEGA-New-ArrivalsB.webp",
+              "title1": "",
+              "title2": ""
+            }
+          }
+        },
+        "block_order": [
+          "megamenu1_pF38L9"
+        ],
         "settings": {
           "logo_position": "middle-left",
           "menu": "main-menu",
-          "menu_type_desktop": "dropdown",
+          "menu_type_desktop": "mega",
           "sticky_header_type": "on-scroll-up",
           "show_line_separator": true,
           "color_scheme": "",

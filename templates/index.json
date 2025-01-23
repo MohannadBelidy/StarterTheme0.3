@@ -1,16 +1,403 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero": {
-      "type": "hero",
+    "banner": {
+      "type": "image-banner",
+      "settings": {
+        "image_banner": "shopify://shop_images/01-16_header-Spring1Launch_desktopB_3b8fb8eb-e40a-4201-a731-68b0c43cbe65_1.webp",
+        "title": "Spring in Bloom",
+        "subtitle": "No matter where the season takes you, make it feel like paradise in colorful pieces that awaken happiness.",
+        "button_text": "SHOP NOW",
+        "image_banner_mobile": "shopify://shop_images/01-16_header-Spring1Launch_mobile_500x_b932e29f-174f-4d49-b9bc-b1205577083f.webp"
+      }
+    },
+    "featured_collections_1_3FppRK": {
+      "type": "featured-collections-1",
+      "blocks": {
+        "collection_69WtcL": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/01-02_CT-PajamaSets-VintageValentineLongSet_300x_1c8ba487-605c-4de5-96c7-4b80e05282b2.webp",
+            "collection_title": "Valentine's Day"
+          }
+        },
+        "collection_iW9WrG": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/12-16_CT-Loungewear-Hens_300x_316739ae-7398-46d3-b7f3-76d02d3fec1c.webp",
+            "collection_title": "Loungewear"
+          }
+        },
+        "collection_CRWAPw": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/01-02_CT-Satin-Bagheera-Blush-Wildest-Dreams_300x_2e14960c-9ae2-47c6-9de7-c706a3bbd74e.webp",
+            "collection_title": "Satin"
+          }
+        },
+        "collection_YxEenV": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/01-16_CT-Apparel-PoppyDress_300x_ada6e548-718c-4517-8fcc-4c5ffdfcd490.webp",
+            "collection_title": "Apparel"
+          }
+        },
+        "collection_diyKkP": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/01-16_CT-BestSellers-DachshundDate_300x_72c28a2e-e069-44e9-8691-b64613a8cfe9.webp",
+            "collection_title": "Best Sellers"
+          }
+        }
+      },
+      "block_order": [
+        "collection_69WtcL",
+        "collection_iW9WrG",
+        "collection_CRWAPw",
+        "collection_YxEenV",
+        "collection_diyKkP"
+      ],
+      "settings": {
+        "title": "Live On The Bright Side"
+      }
+    },
+    "home_policy_and_review_7fhfWb": {
+      "type": "home-policy-and-review",
+      "blocks": {
+        "text_with_link_gXrBV7": {
+          "type": "text_with_link",
+          "settings": {
+            "title": "Inclusive sizes from XS to 6X",
+            "link": "shopify://collections/frontpage",
+            "link_text": "read about us"
+          }
+        },
+        "text_with_link_dBxU3T": {
+          "type": "text_with_link",
+          "settings": {
+            "title": "Organic cotton, ethically created",
+            "link": "shopify://collections/frontpage",
+            "link_text": "READ SUSTAINABILITY"
+          }
+        },
+        "stars_with_link_QmKp3i": {
+          "type": "stars_with_link",
+          "settings": {
+            "image1": "shopify://shop_images/Star_FUll_b8f0c070-7ddf-4582-a072-01800f24b6d0.png",
+            "image2": "shopify://shop_images/Star_FUll_b8f0c070-7ddf-4582-a072-01800f24b6d0.png",
+            "image3": "shopify://shop_images/Star_FUll_b8f0c070-7ddf-4582-a072-01800f24b6d0.png",
+            "image4": "shopify://shop_images/Star_FUll_b8f0c070-7ddf-4582-a072-01800f24b6d0.png",
+            "image5": "shopify://shop_images/star_half.png",
+            "link": "shopify://collections",
+            "link_text": "(4.73) 27,000+ REVIEWS"
+          }
+        },
+        "image_with_link2_VPhQjD": {
+          "type": "image_with_link2",
+          "settings": {
+            "image1": "shopify://shop_images/vogue-logo-png-transparent_1.webp",
+            "image2": "shopify://shop_images/0-2545_people-magazine-logo-transparent-hd-png-download_1.png",
+            "link": "shopify://collections",
+            "link_text": "See all press"
+          }
+        }
+      },
+      "block_order": [
+        "text_with_link_gXrBV7",
+        "text_with_link_dBxU3T",
+        "stars_with_link_QmKp3i",
+        "image_with_link2_VPhQjD"
+      ],
       "settings": {}
     },
-    "fist-of-collections": {
-      "type": "list-of-collections",
+    "collections_tabs_ziDdKU": {
+      "type": "collections-tabs",
+      "blocks": {
+        "tab_R3cJAq": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Luxe Pjs",
+            "product1": "bagheera-satin-wildest-dream-set",
+            "product2": "camels-courtyard-satin-sweet-dreams-set",
+            "product3": "bagheera-satin-jaipur-jumpsuit",
+            "product4": "ostrich-dance-satin-robe-satin-chic-to-sleep-shortie"
+          }
+        },
+        "tab_yGtjcH": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Pajamas",
+            "product1": "candy-hearts-long-pj-set",
+            "product2": "candy-hearts-nashville-nights-nightgown",
+            "product3": "dachshund-date-pintuck-nightgown",
+            "product4": "vintage-valentine-long-pj-set"
+          }
+        },
+        "tab_6rcpfg": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Apparel",
+            "product1": "hello-hexagon-poppy-dress",
+            "product2": "painters-garden-jasmine-dress",
+            "product3": "glass-flower-dunmore-dress",
+            "product4": "gardenscape-monaco-dress"
+          }
+        }
+      },
+      "block_order": [
+        "tab_R3cJAq",
+        "tab_yGtjcH",
+        "tab_6rcpfg"
+      ],
+      "settings": {
+        "title": "Our Favorites",
+        "link_text": "Shop All",
+        "link_url": ""
+      }
+    },
+    "featured_collections_2_m3LCQi": {
+      "type": "featured-collections-2",
+      "blocks": {
+        "collection_GatYKV": {
+          "type": "collection",
+          "settings": {
+            "link": "shopify://collections/hydrogen",
+            "image": "shopify://shop_images/01-02_CF-BundlesB_600x_d8bcedf3-56f4-4209-be10-23d40c8b4c38.webp",
+            "title": "Pj Bundles",
+            "description": "We picked out the perfect pairing… so you don’t have to!",
+            "link_text": "SHOP ALL"
+          }
+        },
+        "collection_wTryVc": {
+          "type": "collection",
+          "settings": {
+            "link": "shopify://collections/automated-collection",
+            "image": "shopify://shop_images/12-16_CT-Loungewear-Hens_300x_316739ae-7398-46d3-b7f3-76d02d3fec1c.webp",
+            "title": "The Finishing Touch",
+            "description": "Heartfelt monogramming for PJs and more.",
+            "link_text": "SHOP ALL"
+          }
+        },
+        "collection_bWj7Lh": {
+          "type": "collection",
+          "settings": {
+            "link": "shopify://collections/frontpage",
+            "image": "shopify://shop_images/01-16_CF-3rdParty-Tea_600x_a63ad18d-d931-4e35-9b30-16e0adfdab54.webp",
+            "title": "Friends Of Printfresh",
+            "description": "All our favorites - handpicked with love.",
+            "link_text": "SHOP ALL"
+          }
+        }
+      },
+      "block_order": [
+        "collection_GatYKV",
+        "collection_wTryVc",
+        "collection_bWj7Lh"
+      ],
+      "settings": {}
+    },
+    "banner_with_collection_PJ8aVc": {
+      "type": "banner-with-collection",
+      "settings": {
+        "image1": "shopify://shop_images/01-16_CB-DaschundDate_copy_955x_3dad3cae-bdb9-491f-bf84-4a792f6c1cc1.webp",
+        "image2": "shopify://shop_images/01-16_CB-DaschundDate-pattern_955x_46c9c30b-7c4f-4b52-bbfe-f4012370dcad.webp",
+        "title": "Join Us For a Dachshund Date",
+        "subtitle": "Sweet as a sundae, this collection perfectly blends retro charm and Valentine’s Day fun into one lovable print.",
+        "link": "shopify://collections/hydrogen",
+        "link_text": "Shop Now"
+      }
+    },
+    "review_slider_YAxPgb": {
+      "type": "review-slider",
+      "blocks": {
+        "review_48KQmd": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Review03-Bagheera_png.webp",
+            "title": "\"Great color. So fun! Cotton breathes in the warm weather and is warm in cool weather.\"",
+            "author": "Andria L.",
+            "rating": "5"
+          }
+        },
+        "review_7c86dV": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Review02-UG_SS_png.webp",
+            "title": "\"Fantastic! High quality, soft cotton and unique. Purchasing another set for friend!\"",
+            "author": "Melissa B.",
+            "rating": "5"
+          }
+        },
+        "review_nUeWgd": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Review01-Tobacco_png.webp",
+            "title": "\"Such great pajamas, gorgeous happy prints, beautifully made, & pockets make them perfect!\"",
+            "author": "Ann B.",
+            "rating": "5"
+          }
+        },
+        "review_Mg8Vfp": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Review04-Bag_png.webp",
+            "title": "\"So good! This bag is wonderful! So roomy and yet so lightweight. I can easily fit my entire life in there.\"",
+            "author": "Charlotte L.",
+            "rating": "5"
+          }
+        }
+      },
+      "block_order": [
+        "review_48KQmd",
+        "review_7c86dV",
+        "review_nUeWgd",
+        "review_Mg8Vfp"
+      ],
+      "settings": {
+        "bg-color": "#fbf4ed",
+        "title": "Reviews"
+      }
+    },
+    "banner_with_collection2_46wJBk": {
+      "type": "banner-with-collection2",
+      "settings": {
+        "left_banner_title": "Printfresh Home",
+        "right_banner_title": "Get Comfy in PF Merch",
+        "left_banner_subtitle": "Wallpaper that gives your guests a reason to stare.",
+        "right_banner_subtitle": "Sport your favorite brand.",
+        "left_banner_link": "",
+        "right_banner_link": "",
+        "button_text": "Shop Now",
+        "image1": "shopify://shop_images/12-16_CB-WallPaper_935x_8dfc7743-de92-4aba-983a-c920be463122.webp",
+        "image2": "shopify://shop_images/12-16_Blocks-Sweats_935x_95609836-d37f-4d44-ae35-bc17a6900944.webp"
+      }
+    },
+    "featured_articles_Hajphp": {
+      "type": "featured-articles",
+      "settings": {
+        "bg_image": "shopify://shop_images/06-13_blogbackgroundB_1900x_6fb957d5-4685-47f3-9fdf-19beaeb6f4a6.webp",
+        "title": "PF Mag",
+        "subtitle": "With new articles and interviews added weekly, there's always more to discover on PF Mag.",
+        "button_text": "Explore",
+        "button_link": "",
+        "left_top_article": "news/behind-the-collection-vintage-valentine",
+        "left_bottom_article": "news/printfresh-x-simon-schuster-meet-author-martha-waters",
+        "right_article": "news/sincerely-amy-happy-valentines-day"
+      }
+    },
+    "pf_community_m7GYRh": {
+      "type": "pf-community",
+      "blocks": {
+        "product_fpiimN": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution_1.webp",
+            "button_text": "Buy Now",
+            "url": "shopify://collections"
+          }
+        },
+        "product_fcddpj": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution.jpg",
+            "button_text": "Buy Now",
+            "url": "shopify://collections/automated-collection"
+          }
+        },
+        "product_mCg6Vz": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution_2.webp",
+            "button_text": "Buy Now",
+            "url": "shopify://collections/automated-collection"
+          }
+        },
+        "product_Lzytmw": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution.webp",
+            "button_text": "Buy Now",
+            "url": "shopify://collections/frontpage"
+          }
+        },
+        "product_DiTRm7": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution_3.webp",
+            "button_text": "Buy Now",
+            "url": "shopify://collections/hydrogen"
+          }
+        },
+        "product_BzbTea": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution_4.webp",
+            "button_text": "Buy Now",
+            "url": "shopify://collections/automated-collection"
+          }
+        },
+        "product_GATj4t": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution_1.jpg",
+            "button_text": "Buy Now",
+            "url": "shopify://products/gift-card"
+          }
+        },
+        "product_8Nawf6": {
+          "type": "Product",
+          "settings": {
+            "image": "shopify://shop_images/low_resolution_5.webp",
+            "button_text": "Buy Now",
+            "url": "shopify://products/the-3p-fulfilled-snowboard"
+          }
+        }
+      },
+      "block_order": [
+        "product_fpiimN",
+        "product_fcddpj",
+        "product_mCg6Vz",
+        "product_Lzytmw",
+        "product_DiTRm7",
+        "product_BzbTea",
+        "product_GATj4t",
+        "product_8Nawf6"
+      ],
+      "settings": {
+        "subtitle": "Join Our Community",
+        "title": "#PRINTFRESH",
+        "main_text": "Jump into the conversation and share what styles, designs, wellness routines and stories keep you feeling inspired. Use our hashtag on Instagram, and you might even score a feature on the PF Mag.",
+        "grid_columns": 4,
+        "button_text": "load more",
+        "url": "shopify://collections"
+      }
+    },
+    
+    "bar_seperator_pFbbxM": {
+      "type": "bar-seperator",
       "settings": {}
     }
   },
   "order": [
-    "hero",
-    "fist-of-collections"
+    "banner",
+    "featured_collections_1_3FppRK",
+    "home_policy_and_review_7fhfWb",
+    "collections_tabs_ziDdKU",
+    "featured_collections_2_m3LCQi",
+    "banner_with_collection_PJ8aVc",
+    "bar_seperator_pFbbxM",
+    "review_slider_YAxPgb",
+    "banner_with_collection2_46wJBk",
+    "featured_articles_Hajphp",
+    "pf_community_m7GYRh",
+  
   ]
 }

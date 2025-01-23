@@ -1,0 +1,255 @@
+<style>
+  .top-bar-bgcolor {
+    height: 20px;
+    background-color: #efc0c3;
+  }
+  @media (max-width: 480px) {
+    .top-bar-bgcolor {
+      height: 10px !important;
+    }
+    .blocks {
+      padding: 0 30px;
+    }
+    .blocks p {
+    }
+  }
+
+  .blocks:after,
+  .blocks:before {
+    content: '';
+    width: 85px;
+    height: 1px;
+    border: 1px solid rgba(239, 192, 195, 0.31);
+    transform: rotate(-90deg);
+    position: absolute;
+    right: -35px;
+    top: 42px;
+  }
+  .blocks {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 53%;
+    gap: 12px;
+    position: relative;
+    justify-content: flex-end;
+    min-height: 85px;
+    box-sizing: border-box;
+  }
+  .blocks a {
+    font-size: 13px;
+    line-height: 19.5px;
+    color: black;
+    font-family: Poppins;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .blocks img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .blocks p {
+    margin: 0;
+    text-align: center;
+    line-height: 24px;
+    font-family: Poppins;
+    color: black;
+    padding: 0;
+    width: 140px;
+    white-space: pre-wrap;
+  }
+
+  .flickity-viewport {
+    min-height: 100px;
+  }
+  .flickity-page-dots .dot {
+    width: 6px !important;
+    height: 6px !important;
+    margin: 0 8px !important;
+    background: #efc0c3 !important;
+  }
+  .flickity-page-dots .dot.is-selected {
+    background: #245490 !important;
+    width: 33px !important;
+    height: 6px !important;
+    margin: 0 8px !important;
+    border-radius: 10px !important;
+  }
+</style>
+
+<div class="top-bar-bgcolor"></div>
+<div>
+  <div>
+    <div
+      class="flickity-container"
+      data-flickity='{ "cellAlign":"left","contain":true,"prevNextButtons":false,"autoPlay":true }'
+    >
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'text_with_link' %}
+            <div class="blocks">
+              <p>{{ block.settings.title }}</p>
+              <a href="{{ block.settings.link }}">{{ block.settings.link_text }}</a>
+            </div>
+          {% when 'stars_with_link' %}
+            <div class="blocks">
+              <div style="display: flex; gap: 7px;">
+                <img
+                  src="{{ block.settings.image1 | img_url: '4000x4000' }}"
+                  alt="{{ block.settings.image1.alt }}"
+                  width=""
+                  height=""
+                >
+                <img
+                  src="{{ block.settings.image2 | img_url: '4000x4000' }}"
+                  alt="{{ block.settings.image2.alt }}"
+                  width=""
+                  height=""
+                >
+                <img
+                  src="{{ block.settings.image3 | img_url: '4000x4000' }}"
+                  alt="{{ block.settings.image3.alt }}"
+                  width=""
+                  height=""
+                >
+                <img
+                  src="{{ block.settings.image4 | img_url: '4000x4000' }}"
+                  alt="{{ block.settings.image4.alt }}"
+                  width=""
+                  height=""
+                >
+                <img
+                  src="{{ block.settings.image5 | img_url: '4000x4000' }}"
+                  alt="{{ block.settings.image5.alt }}"
+                  width=""
+                  height=""
+                >
+              </div>
+              <a href="{{ block.settings.link }}">{{ block.settings.link_text }}</a>
+            </div>
+          {% when 'image_with_link2' %}
+            <div class="blocks">
+              <div style="display: flex; gap: 21px;">
+                <img
+                  src="{{ block.settings.image1 | img_url: '4000x4000' }}"
+                  alt="{{ block.settings.image1.alt }}"
+                  width=""
+                  height=""
+                >
+                <img
+                  src="{{ block.settings.image2 | img_url: '4000x4000' }}"
+                  alt="{{ block.settings.image2.alt }}"
+                  width=""
+                  height=""
+                >
+              </div>
+              <a href="{{ block.settings.link }}">{{ block.settings.link_text }}</a>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "News Bar",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "text_with_link",
+      "name": "Text with link",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Title",
+          "id": "title"
+        },
+        {
+          "type": "url",
+          "label": "Link",
+          "id": "link"
+        },
+        {
+          "type": "text",
+          "label": "Link Text",
+          "id": "link_text"
+        }
+      ]
+    },
+    {
+      "type": "stars_with_link",
+      "name": "Stars with link",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Star",
+          "id": "image1"
+        },
+        {
+          "type": "image_picker",
+          "label": "Star",
+          "id": "image2"
+        },
+        {
+          "type": "image_picker",
+          "label": "Star",
+          "id": "image3"
+        },
+        {
+          "type": "image_picker",
+          "label": "Star",
+          "id": "image4"
+        },
+        {
+          "type": "image_picker",
+          "label": "Star",
+          "id": "image5"
+        },
+        {
+          "type": "url",
+          "label": "Link",
+          "id": "link"
+        },
+        {
+          "type": "text",
+          "label": "Link Text",
+          "id": "link_text"
+        }
+      ]
+    },
+    {
+      "type": "image_with_link2",
+      "name": "2 Images with link",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image 1",
+          "id": "image1"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image 2",
+          "id": "image2"
+        },
+        {
+          "type": "url",
+          "label": "Link",
+          "id": "link"
+        },
+        {
+          "type": "text",
+          "label": "Link Text",
+          "id": "link_text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "News Bar"
+    }
+  ]
+}
+{% endschema %}

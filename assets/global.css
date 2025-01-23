@@ -9,6 +9,38 @@ body {
   background-color: #f4f4f4;
 }
 
+@font-face {
+  font-family: Apris-Regular;
+  src: url("https://cdn.shopify.com/s/files/1/0737/5850/7222/files/Apris-Regular.otf?v=1737390982");
+}
+
+@font-face {
+  font-family: Apris-Medium;
+  src: url("https://cdn.shopify.com/s/files/1/0737/5850/7222/files/Apris-Medium.otf?v=1737390982");
+}
+
+@font-face {
+  font-family: Apris-Light;
+  src: url("https://cdn.shopify.com/s/files/1/0737/5850/7222/files/Apris-Light.otf?v=1737390982");
+}
+
+@font-face {
+  font-family: Apris-Bold;
+  src: url("https://cdn.shopify.com/s/files/1/0737/5850/7222/files/Apris-Bold.otf?v=1737390982");
+}
+
+@font-face {
+  font-family: Apris-Thin;
+  src: url("https://cdn.shopify.com/s/files/1/0737/5850/7222/files/Apris-Thin.otf?v=1737390982");
+}
+
+h1,h2,h3{
+  font-family: Apris-Regular;
+}
+p{
+  font-family: Poppins;
+}
+
 .container {
   padding: 20px;
   width: 90%;
