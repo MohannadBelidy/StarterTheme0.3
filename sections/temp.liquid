@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style>
   .collections-tabs-container {
     max-width: 1300px;
@@ -328,3 +329,72 @@
   ]
 }
 {% endschema %}
+=======
+<div class="pf-mag-container">
+  <div class="mag-header">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.subtitle }}</p>
+    <a href="{{section.settings.button_link}}">{{ section.settings.button_text }}</a>
+  </div>
+  <div class="mag-articles">
+    <div class="article-container">
+      <div class="left-side-mag">
+        <div style="padding-bottom: 15px;display:flex">
+          <div class="article-left-side">
+            <h2>{{ section.settings.left_top_article.title | strip_html }}</h2>
+            <div class="content">
+              <p>{{ section.settings.left_top_article.content | truncate: 180| strip_html }}</p>
+            </div>
+            <a href="{{section.settings.left_top_article.url}}">READ</a>
+          </div>
+          <div class="article-right-side">
+            <img
+              src="{{section.settings.left_top_article.image| img_url: 'master'}}"
+              alt="{{section.settings.left_top_article.image.alt}}"
+              width=""
+              height=""
+              style="object-fit: cover;object-position:center"
+            >
+          </div>
+        </div>
+        <div style="display:flex ;">
+          <div class="article-left-side">
+            <h2>{{ section.settings.left_bottom_article.title| strip_html  }}</h2>
+            <div class="content">
+              <p>{{ section.settings.left_bottom_article.content | truncate: 180| strip_html  }}</p>
+            </div>
+            <a href="{{section.settings.left_bottom_article.url}}">READ</a>
+          </div>
+          <div class="article-right-side">
+            <img
+              src="{{section.settings.left_bottom_article.image| img_url: 'master'}}"
+              alt="{{section.settings.left_bottom_article.image.alt}}"
+              width=""
+              height=""
+              style="object-fit: cover;object-position:center"
+            >
+          </div>
+        </div>
+      </div>
+      <div class="right-side-mag">
+        <div>
+          <img
+            src="{{section.settings.right_article.image| img_url: 'master'}}"
+            alt="{{section.settings.right_article.image.alt}}"
+            width="100%"
+            height=""
+            style="max-height:280px;object-fit:cover;object-position:center"
+          >
+        </div>
+        <div class="article-bottom-side">
+          <h2>{{ section.settings.right_article.title| strip_html  }}</h2>
+          <div class="content">
+            <p>{{ section.settings.right_article.content | truncate: 30 | strip_html }}</p>
+          </div>
+          <a href="{{section.settings.right_article.url}}">READ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+>>>>>>> 5fe31f01eb7a85b8eea1935661f4dfa8a5e1aa65
