@@ -11,6 +11,12 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      justify-content: center;
+    }
+  }
   .footer-main-content {
     position: relative;
     width: 100%;
@@ -191,12 +197,79 @@
     color: black;
     box-sizing: border-box;
   }
-</style>
 
+  .mobile-footer-menu {
+    display: none;
+    border-top: 2px solid #fff;
+    text-align: center;
+    padding: 0 12px;
+    flex: 0 0 100%;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .mobile-footer-menu-header button {
+    background-color: transparent;
+    color: #373735;
+    padding: 18px;
+    border: none;
+    text-align: left;
+    outline: 0;
+    font-size: 15px;
+    transition: 0.4s;
+    margin-bottom: 0 !important;
+    font-weight: 700;
+    font-family: Apris-Regular;
+    text-transform: uppercase;
+  }
+  .mobile-footer-menu-header button:after {
+    content: '+';
+    color: #373735;
+    font-weight: 700;
+    float: right;
+    margin-left: 10px;
+  }
+
+  .mobile-footer-menu-header.active button:after {
+    content: '\2212';
+  }
+  .mobile-children-menu {
+    padding: 0 18px;
+    background-color: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
+  .mobile-children-menu.active {
+    max-height: 288px !important;
+  }
+
+  @media (max-width: 768px) {
+    .footer-menu {
+      display: none;
+    }
+    .mobile-footer-menu {
+      display: block !important;
+    }
+    .footer-container {
+      padding-right: 12px !important;
+      padding-left: 12px !important;
+    }
+    .footer-main-content {
+      padding: 0 12px !important;
+      margin: 0 auto;
+      flex: 0 0 100%;
+      max-width: unset !important;
+    }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
 <div class="footer-container">
   <div class="footer-content">
     <div class="footer-main-content">
-      <div style="padding: 72px 0;margin: 24px 0;color:#373735">
+      <div class="footer-main-content-container">
         <div class="title">
           <h6>{{ section.settings.menu_header }}</h6>
         </div>
@@ -232,6 +305,20 @@
         {% endfor %}
       </div>
     {% endfor %}
+    {% for block in section.blocks %}
+      <mobile-footer-menu class="mobile-footer-menu">
+        <div class="mobile-footer-menu-header">
+          <button>{{ block.settings.menu_header }}</button>
+        </div>
+        <div class="mobile-children-menu">
+          {% for link in block.settings.menu.links %}
+            <div class="footer-menu-items">
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </div>
+          {% endfor %}
+        </div>
+      </mobile-footer-menu>
+    {% endfor %}
     <div class="footer-social-media">
       <div class="footer-social-media-header">
         <h6>{{ section.settings.custom_links_header }}</h6>
@@ -252,13 +339,13 @@
       </ul>
     </div>
   </div>
-  <div style="text-align: center;">
+  <div style="text-align: center;display:block">
     <img
       src="{{section.settings.logo|  img_url: 'master'}}"
       alt="{{section.settings.logo.alt}} "
       width=""
       height=""
-      style="max-width: 200px;"
+      style="max-width: 200px; display: block; margin: 0 auto;"
     >
   </div>
   <div class="footer-copyright">
@@ -267,6 +354,24 @@
     </div>
   </div>
 </div>
+
+<script>
+  class MobileFooterMenu extends HTMLElement {
+    constructor() {
+      super();
+      this.mobileFooterMenuHeader = this.querySelectorAll('.mobile-footer-menu-header');
+      this.mobileChildrenMenu = this.querySelectorAll('.mobile-children-menu');
+      this.mobileFooterMenuHeader.forEach((menu, index) => {
+        menu.addEventListener('click', () => {
+          menu.classList.toggle('active');
+          this.mobileChildrenMenu[index].classList.toggle('active');
+        });
+      });
+    }
+  }
+
+  customElements.define('mobile-footer-menu', MobileFooterMenu);
+</script>
 
 {% schema %}
 {
