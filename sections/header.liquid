@@ -272,7 +272,7 @@
   justify-content:center ;
   display: flex;
   width:300px
-  } 
+  }
   @media (max-width:768px) {
     #header-stripe .header-stripe-content{
       display:flex;
@@ -290,7 +290,7 @@
       justify-content:center ;
       display: flex;
       width:auto
-    } 
+    }
     .header-logo {
       width: auto;
       height: {{ settings.logo_height_mobile | append: 'px' }};
@@ -380,7 +380,7 @@
       </div>
       <div id="logo">
         {% if request.page_type == 'index' %}<h1 style="margin: 0">{% endif %}
-        <a href="{{ routes.root_url }}" class="logo_link" >
+        <a href="{{ routes.root_url }}" class="logo_link">
           {% if settings.logo != blank %}
             {{ settings.logo | image_url: width: 900 | image_tag: class: 'header-logo' }}
           {% else %}

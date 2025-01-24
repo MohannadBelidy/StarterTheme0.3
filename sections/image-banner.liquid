@@ -6,7 +6,7 @@
     align-items: center;
     text-align: center;
   }
-  
+
   .banner_content h2 {
     font-size: 47px;
     font-weight: 300;
@@ -57,10 +57,10 @@
     color: white;
     font-family: Poppins;
   }
-  @media(max-width:768px){
-    .banner_content{
+  @media (max-width: 768px) {
+    .banner_content {
       align-items: flex-start !important;
-      margin:0 25px 15px !important;
+      margin: 0 25px 15px !important;
       width: 80% !important;
       text-align: left;
     }
@@ -71,7 +71,6 @@
     .banner_content p {
       padding: 0 !important;
     }
-    
   }
 
   .mobile_banner_content {
@@ -126,17 +125,17 @@
       display: none;
     }
   }
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     .hide-desktop {
       display: none;
     }
   }
   @media (max-width: 480px) {
-    .hide-mobile{
+    .hide-mobile {
       display: none;
     }
   }
-  @media (max-width: 480px) and (min-width:767px){
+  @media (max-width: 480px) and (min-width: 767px) {
     .hide-mobile-and-desktop {
       display: none;
     }
@@ -170,7 +169,7 @@
       <p>{{ section.settings.subtitle }}</p>
       <a href="{{section.settings.button_text}}" class="button">{{ section.settings.button_text }}</a>
     </div>
-   
+
     <div class="mobile_banner_content hide-tablet-and-desktop">
       <h2>
         {{ section.settings.title }}

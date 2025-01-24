@@ -191,7 +191,7 @@
     width: auto;
     font-family: Poppins;
     font-size: 15px;
-    line-height: 21px;
+    line-height: 24px;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: black;
@@ -222,6 +222,7 @@
     font-weight: 700;
     font-family: Apris-Regular;
     text-transform: uppercase;
+    line-height: 24px;
   }
   .mobile-footer-menu-header button:after {
     content: '+';
@@ -229,10 +230,12 @@
     font-weight: 700;
     float: right;
     margin-left: 10px;
+    
   }
 
   .mobile-footer-menu-header.active button:after {
     content: '\2212';
+    
   }
   .mobile-children-menu {
     padding: 0 18px;
@@ -262,6 +265,20 @@
       margin: 0 auto;
       flex: 0 0 100%;
       max-width: unset !important;
+      margin: 20px 0 36px;
+    }
+    .footer-social-media{
+      text-align: center;
+      margin-top: 30px;
+    }
+    .footer-social-icons {
+      justify-content: center;
+    }
+    .mobile-white-border {
+      display: block !important;
+      width: 100%;
+      height: 2px;
+      background: #fff;
     }
   }
 </style>
@@ -319,6 +336,7 @@
         </div>
       </mobile-footer-menu>
     {% endfor %}
+    <div class="mobile-white-border"></div>
     <div class="footer-social-media">
       <div class="footer-social-media-header">
         <h6>{{ section.settings.custom_links_header }}</h6>
