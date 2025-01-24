@@ -11,6 +11,12 @@
     box-sizing: border-box;
   }
 
+  @media (max-width: 768px) {
+    .pf-mag-container {
+      min-height: 900px !important;
+    }
+  }
+
   .mag-header {
     max-width: 1200px;
     text-align: center;
@@ -81,10 +87,9 @@
     margin-top: 0;
     margin-bottom: 12px;
     color: #373735;
-
   }
 
-  .article-container p{
+  .article-container p {
     font-weight: 400;
     color: #373735;
     font-size: 14px;
@@ -94,7 +99,7 @@
     margin-top: 0px;
   }
 
-  .article-container a{
+  .article-container a {
     color: #373735;
     font-weight: 600;
     font-size: 13px;
@@ -112,9 +117,90 @@
     width: 55%;
     box-sizing: border-box;
   }
-  .article-bottom-side{
+  .article-bottom-side {
     background-color: white;
-    padding:20px 24px;
+    padding: 20px 24px;
+  }
+
+  .mobile-mag-articles {
+    display: none;
+    margin-left: 20px;
+  }
+  .mag-carousel-cell {
+    width: 90%;
+    padding-right: 20px;
+  }
+  .mag-carousel-img-container {
+    height: 350px;
+    box-sizing: border-box;
+  }
+  .mag-carousel-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .mobile-mag-content {
+    background: white;
+    padding: 22px 25px;
+  }
+
+  .mobile-mag-content a{
+    text-decoration: none;
+  }
+  .mobile-mag-content h2 {
+    font-size: 19px;
+    line-height: 26px;
+    font-weight: 700;
+    font-family: Poppins;
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #373735;
+    text-decoration: none !important;
+  }
+
+  .mobile-mag-paragraph a{
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+    font-family: Poppins;
+    color: #373735;
+    margin-top: 0;
+    margin-bottom: 24px;
+    text-decoration: none;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical
+  }
+  .mobile-mag-button a{
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 20px;
+    padding-top: 15px;
+    font-family: Poppins;
+    text-decoration: underline;
+    color: black;
+  }
+
+  .flickity-prev-next-button {
+    top: 50%;
+    border-radius:50% ;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+  }
+  .flickity-button-icon {
+    fill: white;
+  }
+
+  @media (max-width: 768px) {
+    .mag-articles {
+      display: none !important;
+    }
+    .mobile-mag-articles {
+      display: block !important;
+    }
   }
 </style>
 
@@ -147,7 +233,9 @@
         <div style="display: flex;">
           <div class="article-left-side">
             <h2>{{ section.settings.left_bottom_article.title | strip_html }}</h2>
-            <p style="display: block;">{{ section.settings.left_bottom_article.content | truncate: 150 | strip_html }}</p>
+            <p style="display: block;">
+              {{ section.settings.left_bottom_article.content | truncate: 150 | strip_html }}
+            </p>
             <a href="{{section.settings.left_bottom_article.url}}">READ</a>
           </div>
           <div class="article-right-side">
@@ -177,6 +265,88 @@
             <p>{{ section.settings.right_article.content | truncate: 390 | strip_html }}</p>
           </div>
           <a href="{{section.settings.right_article.url}}">READ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-mag-articles">
+    <div class="main-carousel" data-flickity='{"cellAlign":"left","contain":true, "pageDots":false}'>
+      <div class="mag-carousel-cell">
+        <div class="mag-carousel-img-container">
+          <a href="{{section.settings.left_top_article.url}}">
+            <img
+              src="{{section.settings.left_top_article.image| img_url: 'master'}}"
+              alt="{{section.settings.left_top_article.image.alt}}"
+              width=""
+              height=""
+            >
+          </a>
+        </div>
+        <div class="mobile-mag-content">
+          <a href="{{section.settings.left_top_article.url}}">
+            <h2>{{ section.settings.left_top_article.title | strip_html }}</h2>
+          </a>
+          <div class="mobile-mag-paragraph">
+            <a href="{{ section.settings.left_top_article.url }}">
+              {{ section.settings.left_top_article.content | strip_html }}
+            </a>
+          </div>
+          <div class="mobile-mag-button">
+            <a href="{{ section.settings.left_top_article.url }}">READ</a>
+          </div>
+        </div>
+      </div>
+      <div class="mag-carousel-cell">
+        <div class="mag-carousel-img-container">
+          <a href="{{section.settings.left_bottom_article.url}}">
+            <img
+              src="{{section.settings.left_bottom_article.image| img_url: 'master'}}"
+              alt="{{section.settings.left_bottom_article.image.alt}}"
+              width=""
+              height=""
+            >
+          </a>
+        </div>
+        <div class="mobile-mag-content">
+          <a href="{{section.settings.left_bottom_article.url}}">
+            <h2>{{ section.settings.left_bottom_article.title | strip_html }}</h2>
+          </a>
+          <div class="mobile-mag-paragraph">
+            <a href="{{ section.settings.left_bottom_article.url }}">
+              {{ section.settings.left_bottom_article.content | strip_html }}
+            </a>
+          </div>
+          <div class="mobile-mag-button">
+            <a href="{{ section.settings.left_bottom_article.url }}">READ</a>
+          </div>
+        </div>
+      </div>
+      <div class="mag-carousel-cell">
+        <div class="mag-carousel-img-container">
+          <a href="{{section.settings.right_article.url}}">
+            <img
+              src="{{section.settings.right_article.image| img_url: 'master'}}"
+              alt="{{section.settings.right_article.image.alt}}"
+              width=""
+              height=""
+            >
+          </a>
+        </div>
+        <div class="mobile-mag-content">
+          <a href="{{section.settings.right_article.url}}">
+            <h2>
+              {{ section.settings.right_article.title | strip_html }}
+            </h2>
+          </a>
+          <div class="mobile-mag-paragraph">
+            <a href="{{ section.settings.right_article.url }}">
+              {{ section.settings.right_article.content | strip_html }}
+            </a>
+          </div>
+          <div class="mobile-mag-button">
+            <a href="{{ section.settings.right_article.url }}">READ</a>
+          </div>
         </div>
       </div>
     </div>
