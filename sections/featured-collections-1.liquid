@@ -25,12 +25,23 @@
     padding: 0 15px;
     gap: 13px;
   }
+  .mobile-collection-grid {
+    display: none;
+  }
   @media (max-width: 768px) {
     .collection-grid {
+      display: none !important;
       justify-content: space-between !important;
     }
     .custom-featured-collection .collection-container {
       width: 47% !important;
+    }
+    .mobile-collection-grid {
+      display: flex !important;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0 15px;
+      gap: 13px;
     }
   }
   .custom-featured-collection .collection-container {
@@ -79,6 +90,23 @@
         </div>
       {% endfor %}
     </div>
+    <div class="mobile-collection-grid">
+      {% for block in section.blocks %}
+        {% unless block.settings.hide_collection %}
+          <div class="collection-container">
+            <a style="text-decoration: none;" href="{{ block.settings.url }}">
+              <img
+                src="{{block.settings.image| img_url: '7000x7000'}}"
+                alt="{{block.settings.image.alt}}"
+                height=""
+                width="100%"
+              >
+              <p>{{ block.settings.collection_title }}</p>
+            </a>
+          </div>
+        {% endunless %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 
@@ -112,6 +140,11 @@
           "type": "url",
           "id": "url",
           "label": "URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_collection",
+          "label": "Hide Collection on Mobile"
         }
       ]
     }
