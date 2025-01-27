@@ -332,6 +332,45 @@
         "title": "Reviews"
       }
     },
+    "home_policy_and_review_mobile_eHeYmr": {
+      "type": "home-policy-and-review-mobile",
+      "blocks": {
+        "text_with_link_rwLckb": {
+          "type": "text_with_link",
+          "settings": {
+            "title": "Inclusive sizes from XS to 6X",
+            "link": "shopify://collections",
+            "link_text": "read about us"
+          }
+        },
+        "text_with_link_X4qktE": {
+          "type": "text_with_link",
+          "settings": {
+            "title": "Organic cotton, ethically created",
+            "link": "shopify://pages/contact",
+            "link_text": "READ SUSTAINABILITY"
+          }
+        },
+        "stars_with_link_azyhxA": {
+          "type": "stars_with_link",
+          "settings": {
+            "image1": "shopify://shop_images/Star_FUll_b8f0c070-7ddf-4582-a072-01800f24b6d0.png",
+            "image2": "shopify://shop_images/Star_FUll_b8f0c070-7ddf-4582-a072-01800f24b6d0.png",
+            "image3": "shopify://shop_images/Star_FUll_b8f0c070-7ddf-4582-a072-01800f24b6d0.png",
+            "image4": "shopify://shop_images/Star_FUll_b8f0c070-7ddf-4582-a072-01800f24b6d0.png",
+            "image5": "shopify://shop_images/star_half.png",
+            "link": "shopify://products/candy-hearts-nashville-nights-nightgown",
+            "link_text": "(4.73) 27,000+ REVIEWS"
+          }
+        }
+      },
+      "block_order": [
+        "text_with_link_rwLckb",
+        "text_with_link_X4qktE",
+        "stars_with_link_azyhxA"
+      ],
+      "settings": {}
+    },
     "banner_with_collection2_46wJBk": {
       "type": "banner-with-collection2",
       "settings": {
@@ -457,6 +496,7 @@
     "banner_with_collection_PJ8aVc",
     "bar_seperator_pFbbxM",
     "review_slider_YAxPgb",
+    "home_policy_and_review_mobile_eHeYmr",
     "banner_with_collection2_46wJBk",
     "featured_articles_Hajphp",
     "pf_community_m7GYRh"
