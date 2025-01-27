@@ -74,6 +74,7 @@
   }
   .collection-tab-body.active {
     position: relative;
+    display: block;
     left: auto;
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
@@ -104,6 +105,9 @@
     width: 100%;
     max-width: 96%;
     margin-bottom: 24px;
+  }
+  .quickadd-button {
+    display:none;
   }
 
   @media (max-width: 768px) {
@@ -145,12 +149,37 @@
       display: flex;
     }
     .collection-tab-products {
-      max-width: 75%;
+      max-width: 67%;
+      flex: 0 0 75%;
       position: relative;
       width: 100%;
       padding: 0 15px;
+      
     }
+    .collection-tab-products img {
+      max-width: 100% !important;
+    }
+    .collection-tab-body {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .quickadd-button{
+      display: block !important;
+      width: 36px;
+      height: 36px;
+      position: absolute;
+      bottom: 8px;
+      border: none;
+      right: 3px;
+      background: #f9f5ef;
+      padding: 6px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+  
   }
+
 </style>
 <div class="collections-tabs-container">
   <collections-tabs>
@@ -175,7 +204,7 @@
           <div style="display: flex; ">
             {% if block.settings.product1 %}
               <div class="collection-tab-products">
-                <div>
+                <div style="position: relative; width: 100%;display:block">
                   <a href="{{ block.settings.product1.url }}">
                     <img
                       src="{{ block.settings.product1.featured_image| img_url: 'master'}}"
@@ -183,7 +212,9 @@
                       width="100%"
                       height=""
                     >
+                    
                   </a>
+                  <button class="quickadd-button">{{ 'icon-quickadd.svg' | inline_asset_content }}</button>
                 </div>
                 <div class="product-title">
                   <a href="{{block.settings.product1.url}}">{{ block.settings.product1.title }}</a>
@@ -192,7 +223,7 @@
             {% endif %}
             {% if block.settings.product2 %}
               <div class="collection-tab-products">
-                <div>
+                <div style="position: relative; width: 100%;">
                   <a href="{{ block.settings.product2.url }}">
                     <img
                       src="{{ block.settings.product2.featured_image| img_url: 'master'}}"
@@ -201,6 +232,7 @@
                       height=""
                     >
                   </a>
+                  <button class="quickadd-button">{{ 'icon-quickadd.svg' | inline_asset_content }}</button>
                 </div>
                 <div class="product-title">
                   <a href="{{block.settings.product2.url}}">{{ block.settings.product2.title }}</a>
@@ -209,7 +241,7 @@
             {% endif %}
             {% if block.settings.product3 %}
               <div class="collection-tab-products">
-                <div>
+                <div style="position: relative; width: 100%;">
                   <a href="{{ block.settings.product3.url }}">
                     <img
                       src="{{ block.settings.product3.featured_image| img_url: 'master'}}"
@@ -218,6 +250,7 @@
                       height=""
                     >
                   </a>
+                  <button class="quickadd-button">{{ 'icon-quickadd.svg' | inline_asset_content }}</button>
                 </div>
                 <div class="product-title">
                   <a href="{{block.settings.product3.url}}">{{ block.settings.product3.title }}</a>
@@ -226,7 +259,7 @@
             {% endif %}
             {% if block.settings.product4 %}
               <div class="collection-tab-products">
-                <div>
+                <div style="position: relative; width: 100%;">
                   <a href="{{ block.settings.product4.url }}">
                     <img
                       src="{{ block.settings.product4.featured_image| img_url: 'master'}}"
@@ -235,6 +268,7 @@
                       height=""
                     >
                   </a>
+                  <button class="quickadd-button">{{ 'icon-quickadd.svg' | inline_asset_content }}</button>
                 </div>
                 <div class="product-title">
                   <a href="{{block.settings.product4.url}}">{{ block.settings.product4.title }}</a>
