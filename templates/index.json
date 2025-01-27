@@ -362,12 +362,21 @@
             "link": "shopify://products/candy-hearts-nashville-nights-nightgown",
             "link_text": "(4.73) 27,000+ REVIEWS"
           }
+        },
+        "image_with_link_EAzYeG": {
+          "type": "image_with_link",
+          "settings": {
+            "image1": "shopify://shop_images/vogue-logo-png-transparent_1.webp",
+            "link": "shopify://blogs/news",
+            "link_text": "See all press"
+          }
         }
       },
       "block_order": [
         "text_with_link_rwLckb",
         "text_with_link_X4qktE",
-        "stars_with_link_azyhxA"
+        "stars_with_link_azyhxA",
+        "image_with_link_EAzYeG"
       ],
       "settings": {}
     },
