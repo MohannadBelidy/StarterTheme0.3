@@ -128,18 +128,12 @@
               </div>
               <a href="{{ block.settings.link }}">{{ block.settings.link_text }}</a>
             </div>
-          {% when 'image_with_link2' %}
+          {% when 'image_with_link' %}
             <div class="blocks">
               <div style="display: flex; gap: 21px;">
                 <img
                   src="{{ block.settings.image1 | img_url: '4000x4000' }}"
                   alt="{{ block.settings.image1.alt }}"
-                  width=""
-                  height=""
-                >
-                <img
-                  src="{{ block.settings.image2 | img_url: '4000x4000' }}"
-                  alt="{{ block.settings.image2.alt }}"
                   width=""
                   height=""
                 >
@@ -220,18 +214,13 @@
       ]
     },
     {
-      "type": "image_with_link2",
-      "name": "2 Images with link",
+      "type": "image_with_link",
+      "name": "Image with link",
       "settings": [
         {
           "type": "image_picker",
           "label": "Image 1",
           "id": "image1"
-        },
-        {
-          "type": "image_picker",
-          "label": "Image 2",
-          "id": "image2"
         },
         {
           "type": "url",
