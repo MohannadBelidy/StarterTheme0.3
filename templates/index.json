@@ -16,7 +16,8 @@
         "title": "Spring in Bloom",
         "subtitle": "No matter where the season takes you, make it feel like paradise in colorful pieces that awaken happiness.",
         "button_text": "SHOP NOW",
-        "image_banner_mobile": "shopify://shop_images/01-16_header-Spring1Launch_mobile_500x_b932e29f-174f-4d49-b9bc-b1205577083f.webp"
+        "image_banner_mobile": "shopify://shop_images/01-16_header-Spring1Launch_mobile_500x_b932e29f-174f-4d49-b9bc-b1205577083f.webp",
+        "url": ""
       }
     },
     "featured_collections_1_3FppRK": {
@@ -26,35 +27,45 @@
           "type": "collection",
           "settings": {
             "image": "shopify://shop_images/01-02_CT-PajamaSets-VintageValentineLongSet_300x_1c8ba487-605c-4de5-96c7-4b80e05282b2.webp",
-            "collection_title": "Valentine's Day"
+            "collection_title": "Valentine's Day",
+            "url": "",
+            "hide_collection": false
           }
         },
         "collection_iW9WrG": {
           "type": "collection",
           "settings": {
             "image": "shopify://shop_images/12-16_CT-Loungewear-Hens_300x_316739ae-7398-46d3-b7f3-76d02d3fec1c.webp",
-            "collection_title": "Loungewear"
+            "collection_title": "Loungewear",
+            "url": "",
+            "hide_collection": false
           }
         },
         "collection_CRWAPw": {
           "type": "collection",
           "settings": {
             "image": "shopify://shop_images/01-02_CT-Satin-Bagheera-Blush-Wildest-Dreams_300x_2e14960c-9ae2-47c6-9de7-c706a3bbd74e.webp",
-            "collection_title": "Satin"
+            "collection_title": "Satin",
+            "url": "",
+            "hide_collection": false
           }
         },
         "collection_YxEenV": {
           "type": "collection",
           "settings": {
             "image": "shopify://shop_images/01-16_CT-Apparel-PoppyDress_300x_ada6e548-718c-4517-8fcc-4c5ffdfcd490.webp",
-            "collection_title": "Apparel"
+            "collection_title": "Apparel",
+            "url": "",
+            "hide_collection": false
           }
         },
         "collection_diyKkP": {
           "type": "collection",
           "settings": {
             "image": "shopify://shop_images/01-16_CT-BestSellers-DachshundDate_300x_72c28a2e-e069-44e9-8691-b64613a8cfe9.webp",
-            "collection_title": "Best Sellers"
+            "collection_title": "Best Sellers",
+            "url": "",
+            "hide_collection": true
           }
         }
       },
@@ -67,6 +78,57 @@
       ],
       "settings": {
         "title": "Live On The Bright Side"
+      }
+    },
+    "review_slider_mobile_cQYxXK": {
+      "type": "review-slider-mobile",
+      "blocks": {
+        "review_wcMJ8N": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Review03-Bagheera_png.webp",
+            "title": "\"Great color. So fun! Cotton breathes in the warm weather and is warm in cool weather.\"",
+            "author": "Andria L.",
+            "rating": "5"
+          }
+        },
+        "review_y7QyK7": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Review02-UG_SS_png.webp",
+            "title": "\"Fantastic! High quality, soft cotton and unique. Purchasing another set for friend!\"",
+            "author": "Melissa B.",
+            "rating": "5"
+          }
+        },
+        "review_nRMrXB": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Review01-Tobacco_png.webp",
+            "title": "\"Such great pajamas, gorgeous happy prints, beautifully made, & pockets make them perfect!\"",
+            "author": "Ann B.",
+            "rating": "5"
+          }
+        },
+        "review_TxfGkR": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Review04-Bag_png.webp",
+            "title": "\"So good! This bag is wonderful! So roomy and yet so lightweight. I can easily fit my entire life in there.\"",
+            "author": "Charlotte L.",
+            "rating": "5"
+          }
+        }
+      },
+      "block_order": [
+        "review_wcMJ8N",
+        "review_y7QyK7",
+        "review_nRMrXB",
+        "review_TxfGkR"
+      ],
+      "settings": {
+        "bg-color": "",
+        "title": ""
       }
     },
     "home_policy_and_review_7fhfWb": {
@@ -214,6 +276,10 @@
         "link": "shopify://collections/hydrogen",
         "link_text": "Shop Now"
       }
+    },
+    "bar_seperator_pFbbxM": {
+      "type": "bar-seperator",
+      "settings": {}
     },
     "review_slider_YAxPgb": {
       "type": "review-slider",
@@ -379,16 +445,12 @@
         "button_text": "load more",
         "url": "shopify://collections"
       }
-    },
-    
-    "bar_seperator_pFbbxM": {
-      "type": "bar-seperator",
-      "settings": {}
     }
   },
   "order": [
     "banner",
     "featured_collections_1_3FppRK",
+    "review_slider_mobile_cQYxXK",
     "home_policy_and_review_7fhfWb",
     "collections_tabs_ziDdKU",
     "featured_collections_2_m3LCQi",
@@ -397,7 +459,6 @@
     "review_slider_YAxPgb",
     "banner_with_collection2_46wJBk",
     "featured_articles_Hajphp",
-    "pf_community_m7GYRh",
-  
+    "pf_community_m7GYRh"
   ]
 }
