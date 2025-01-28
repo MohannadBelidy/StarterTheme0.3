@@ -1,8 +1,7 @@
 .price {
-    font-size: 15px;
-    letter-spacing: .8px;
-    line-height: calc(1 + 0.5 / var(--font-body-scale));
-    color: rgb(var(--color-foreground));
+    font-size: 12px;
+    line-height: 18px;
+    font-family: Poppins;
   }
 
   .price > * {
@@ -20,11 +19,12 @@
 
   .price .price-item {
     display: inline-block;
-    margin: 0 10px 0 0;
+    color:#AB2328
   }
 
   .price__regular .price-item--regular {
     margin-right: 0;
+    color: black;
   }
 
   .price:not(.price--show-badge) .price-item--last:last-of-type {
@@ -68,10 +68,6 @@
     display: inline-block;
   }
 
-  .volume-pricing--sale-badge .price__badge-sale {
-    margin-left: 0.5rem;
-  }
-
   .price--on-sale .price__sale {
     display: initial;
     flex-direction: row;
@@ -85,7 +81,7 @@
 
   .price--on-sale .price-item--regular {
     text-decoration: line-through;
-    color: rgba(var(--color-foreground), 0.75);
+    color: black;
     font-size: 12px;
   }
 
