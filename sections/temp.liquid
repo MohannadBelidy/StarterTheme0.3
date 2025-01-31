@@ -1,400 +1,791 @@
-<<<<<<< HEAD
-<style>
-  .collections-tabs-container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 80px 0 40px;
-    box-sizing: border-box;
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
-  .collections-tabs-header {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 20px;
-    box-sizing: border-box;
-    align-items: center;
-    margin: 0 15px;
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
   }
-  .collections-tabs-title {
-    width: 25%;
-  }
-  .collections-tabs-title h2 {
-    font-size: 35px;
-    line-height: 49px;
+
+  /*====================================
+  START COLLECTION FILTERS & GRID STYLING
+  ======================================*/
+
+  .collection-hero__title {
     margin: 0;
-    font-weight: 500;
-    color: #373735;
+    font-size: 42px;
+    font-family:Apris-Regular;
+    padding:0 12px 16px;
+    font-weight: 400;
+    color: black;
+    text-align:center;
+    line-height:75px
   }
-  .collections-tabs {
-    text-align: center;
-    width: 55%;
+  @media (max-width: 990px) {
+    .collection-hero__title {
+      font-size: 28px;
+      line-height: 37px;
+      padding-bottom: 0 !important;
+      text-align:left !important;
+    }
   }
-  .collections-tab {
-    background: none;
-    line-height: 22px;
-    font-size: 15px;
-    text-transform: capitalize;
-    padding: 10px;
-    margin-right: 30px;
-    min-width: 137px;
-    min-height: 41px;
-    border: 1px solid transparent;
-    font-family: Poppins;
+
+  .sorting-wrapper {
+    top: 140px;
+    display: flex;
+    position: sticky;
+    z-index: 20;
+    background: white;
+    height: 53px;
+    align-items: center;
+    margin: 24px 0 32px;
+    padding: 0 36px;
+  }
+
+  .grid-view-options-container {
+    display: flex;
+    justify-content: flex-end;
+    width:50%;
+  }
+  .grid-view-options{
+    width: 213px;
+    margin-right: 13px;
+    height: 44px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #fafafa;
+  }
+  .cus-col{
+    padding: 10px 22px;
+    display: flex;
+    justify-content: flex-end;
     cursor: pointer;
   }
-  .collections-tab-last-tab {
-    margin-right: 0 !important;
+  .cus-col.active{
+    background-color: #245490;
+
   }
-  .collections-tab:hover {
-    background: #fff5f5;
+  .cus-col.active svg{
+    stroke: white;
   }
-  .collections-tab_active {
-    background: #245490 !important;
-    color: white !important;
-    padding: 10px !important;
+
+  .collection-filters-wrapper {
+    display: flex;
+    {%- if section.settings.enable_filtering and section.settings.filter_type == "vertical" -%}
+      flex-direction: row;
+    {%- elsif section.settings.enable_filtering and section.settings.filter_type == "horizontal" -%}
+      flex-direction: column;
+    {% else %}
+      flex-direction: column;
+    {%- endif -%}
+  }
+
+  .product-grid-container {
+    width: 100%;
+  }
+
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin:0;
+    padding:0 38.4px;
     box-sizing: border-box;
   }
-  .collections-tabs-general-link {
-    width: 20%;
-    text-align: right;
-  }
-  .collections-tabs-general-link a {
-    font-size: 13.6px;
-    line-height: 20.5px;
-    font-weight: 600;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-bottom: 2px solid;
-    font-family: Poppins;
-    color: #373735;
-  }
-  .collection-tab-body {
-    position: absolute;
-    left: -9999px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-  .collection-tab-body.active {
-    position: relative;
-    left: auto;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-  }
-  .collection-tab-products {
-    flex: 0 0 25%;
-    max-width: 25%;
-    position: relative;
-    width: 100%;
-    padding: 0 15px;
-    margin-bottom: 12px;
-    line-height: 21px;
-  }
-
-  .product-title a {
-    position: relative;
-    top: 3px;
-    font-size: 13px;
-    font-family: Poppins;
-    line-height: 0.8rem;
-    font-weight: 400px;
-    text-decoration: none;
-    color: #373735;
-  }
-  hr {
-    border-top: 1.5px solid #efc0c3;
-    margin-top: 0;
-    width: 100%;
-    max-width: 96%;
-    margin-bottom: 24px;
-  }
-
-  @media (max-width: 768px) {
-    .collections-tabs-container {
-      position: relative;
-      padding: 30px 0 40px !important;
+  @media (max-width: 990px) {
+    .product-grid {
+      padding:0 4.8px !important;
     }
-    .collections-tabs-header {
+  }
+
+  .facet-filters__label {
+    display: block;
+    color: rgba(var(--color-foreground), .85);
+    font-size: 14px;
+    margin: 0 20px 0 0;
+    font-weight: 400;
+    width: max-content;
+  }
+
+  .facet-filters__field {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+  }
+
+  .collection-filters-wrapper summary {
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .collection-filters-wrapper summary:hover {
+    text-decoration: underline;
+    color: rgba(var(--color-foreground), 1);
+  }
+
+  .collection-filters-wrapper summary span{
+    font-size: 14px;
+  }
+
+  .facets__label:hover,
+  .facets__label:has(:focus-visible) {
+    color: rgba(var(--color-foreground), 1);
+  }
+
+  .facet-filters__sort {
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    font-size: 14px;
+    height: auto;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 17px;
+    cursor: pointer;
+    color: rgba(var(--color-foreground),.75);
+    max-width: 130px;
+  }
+
+  .active-filter-item {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .active-filter-item span {
+    font-size: 14px;
+    margin-right: 10px;
+    pointer-events: none
+  }
+
+  .active-filter-group__item-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .filter-close .icon-close {
+    width: 15px;
+    height: 15px;
+    pointer-events: none;
+  }
+
+  .filter-close {
+    display: flex;
+  }
+
+  .active-filter-item.active-filter-clear-all {
+    background: none;
+    text-decoration: underline;
+  }
+
+  .horizontal-filters__parent-wrapper {
+    display: flex;
+    width: 50%;
+  }
+
+  .filter-type-horizontal .active-filter-group__item-wrapper {
+    gap: 0px;
+  }
+
+  .filter-type-horizontal .filter.active-filter-item {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, .2);
+    color: black;
+    margin-top: 15px;
+    margin-right: 15px;
+  }
+
+  .filter-type-horizontal .filter-close .icon-close {
+    width: 10px;
+    height: 10px;
+  }
+
+  .filter-type-horizontal .filter.active-filter-item.active-filter-clear-all {
+    border: none;
+  }
+
+  @media screen and (max-width: 990px) {
+    .product-grid {
+      grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    .small-hide {
+      display: none !important;
+    }
+  
+  }
+
+  /*====================================
+  END COLLECTION FILTERS & GRID STYLING
+  ======================================*/
+
+  #product-grid-{{ section.id }} {
+    position: relative;
+  }
+
+  /*====================================
+  START COLLECTION DESCRIPTION STYLING
+  ====================================*/
+
+  .collection-description-container {
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+  }
+  .collection-description-image{
+    width: 50%;
+  }
+  .collection-description-image img{
+    max-width: 100%;
+  }
+  .collection-description-text{
+    width: 50%;
+    padding: 0 60px;
+  }
+  .collection-description-text h1{
+    font-size: 42px;
+    line-height: 50px;
+    font-family: Apris-Regular;
+    margin: 0 0 15px;
+    color: black;
+    font-weight:400px;
+  }
+  .collection-description{
+    font-size: 12px;
+    line-height: 18px;
+    font-family: Poppins;
+    margin: 0;
+    color: #000;
+    font-weight:400;
+  }
+  .collection-description p{
+    margin: 0;
+  }
+  .collection-description h6{
+    font-size:24px;
+    font-weight:500;
+    line-height: 1.2;
+    margin-top:0;
+    margin-bottom:12px;
+    font-family:Apris-Regular;
+  }
+
+
+
+
+
+
+
+  .faq-title{
+    padding:60px 20px;
+  }
+  .faq-heading{
+      font-size:40px;
+      line-height:52px;
+      color:black;
+      text-align:center;
+      font-family:Apris-Regular;
+      margin-bottom:12px;
+      font-weight:500;
+      margin-top:0;
+  }
+
+
+
+  @media (max-width:990px){
+    .collection-description-container{
       flex-wrap: wrap;
+      flex-direction: column-reverse;
     }
-    .collections-tabs-title {
-      width: 100%;
-    }
-    .collections-tabs {
+    .collection-description-image{
       width: 100% !important;
-      display: flex;
-      justify-content: center;
-      padding: 10px 0;
     }
-    .collections-tab {
-      background: #cd35301f ;
-      color: #000;
-      margin-right: 12px !important;
-      min-height: unset !important;
-      min-width: unset !important;
-    }
-    
-    .collections-tabs-general-link {
-      position: absolute;
-      top: 92%;
-      left: 46%;
-      transform: translate(-50%, -50%);
-      z-index: 19;
+    .collection-description-text{
+      width: 100% !important;
+      padding: 0 15px 40px !important;
+      box-sizing: border-box;
     }
   }
-</style>
-<div class="collections-tabs-container">
-  <collections-tabs>
-    <div class="collections-tabs-header">
-      <div class="collections-tabs-title">
-        <h2>{{ section.settings.title }}</h2>
-      </div>
-      <div class="collections-tabs">
-        {% for block in section.blocks %}
-          <button class="collections-tab" data-tab="{{ forloop.index }}">{{ block.settings.tab_title }}</button>
-        {% endfor %}
-      </div>
-      <div class="collections-tabs-general-link">
-        <a href="{{section.settings.link_url}}">
-          {{ section.settings.link_text }}
-        </a>
-      </div>
+  
+{%- endstyle -%}
+
+{% comment %} COMPONENT STYLES {% endcomment %}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-card-product.css' | asset_url | stylesheet_tag }}
+
+<div class="color-{{ section.settings.color_scheme }} ">
+  <div class="collection-hero color-{{ section.settings.color_scheme }}">
+    <div class="collection-hero__text-wrapper">
+      <h1 class="collection-hero__title">{{ collection.title }}</h1>
     </div>
-    <div>
-      {% for block in section.blocks %}
-        <div class="collection-tab-body" data-tab-content="{{ forloop.index }}">
-          <div style="display: flex; ">
-            {% if block.settings.product1 %}
-              <div class="collection-tab-products">
-                <div>
-                  <a href="{{ block.settings.product1.url }}">
-                    <img
-                      src="{{ block.settings.product1.featured_image| img_url: 'master'}}"
-                      alt="{{block.settings.product1.featured_image.alt}}"
-                      width="100%"
-                      height=""
-                    >
-                  </a>
+  </div>
+  <div class="collection-info-wrapper ">
+    <collection-info
+      data-section="{{ section.id }}"
+    >
+      <div class="filter-type-{{ section.settings.filter_type | escape | downcase }}">
+        {%- paginate collection.products by section.settings.products_per_page -%}
+          <form id="collection-form" class="main-content">
+            <div class="collection-filters-wrapper">
+              <div class="sorting-wrapper">
+                <div class="horizontal-filters__parent-wrapper small-hide">
+                  {%- if section.settings.enable_filtering and section.settings.filter_type == 'horizontal' -%}
+                    {% render 'filters',
+                      results: collection,
+                      collapse_filters: section.settings.collapse_filters,
+                      filter_type: section.settings.filter_type
+                    %}
+                  {% endif %}
+                  {%- if section.settings.enable_sorting -%}
+                    {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                    <div class="facet-filters__field small-hide">
+                      <select
+                        data-render-section
+                        name="sort_by"
+                        id="SortBy"
+                        class="facet-filters__sort"
+                      >
+                        {%- for option in collection.sort_options -%}
+                          <option
+                            value="{{ option.value | escape }}"
+                            {% if option.value == sort_by %}
+                              selected="selected"
+                            {% endif %}
+                          >
+                            {{ option.name | escape }}
+                          </option>
+                        {%- endfor -%}
+                      </select>
+                    </div>
+                  {%- endif -%}
                 </div>
-                <div class="product-title">
-                  <a href="{{block.settings.product1.url}}">{{ block.settings.product1.title }}</a>
+
+                <div class="grid-view-options-container small-hide">
+                  <grid-options class="grid-view-options">
+                    <div>
+                      <div
+                        class="cus-col"
+                        data-index="1"
+                      >
+                        {{ 'icon-2col-grid.svg' | inline_asset_content }}
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        class="cus-col"
+                        data-index="2"
+                      >
+                        {{ 'icon-3col-grid.svg' | inline_asset_content }}
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        class="cus-col"
+                        data-index="3"
+                      >
+                        {{ 'icon-4col-grid.svg' | inline_asset_content }}
+                      </div>
+                    </div>
+                  </grid-options>
                 </div>
               </div>
-            {% endif %}
-            {% if block.settings.product2 %}
-              <div class="collection-tab-products">
-                <div>
-                  <a href="{{ block.settings.product2.url }}">
+              <div class="product-grid-container">
+                <div id="product-grid-{{ section.id }}">
+                  <div id="loading-overlay-{{ section.id }}" class="loading-overlay"></div>
+                  <div class="product-grid">
+                    {%- if collection.products.size == 0 -%}
+                      <p>Nothing Here</p>
+                    {%- else -%}
+                      {%- for product in collection.products -%}
+                        {% render 'card-product', card_product: product, index: forloop.index0 %}
+                      {%- endfor -%}
+                    {%- endif -%}
+                  </div>
+                  {%- if paginate.pages > 1 -%}
+                    {% render 'pagination', paginate: paginate, anchor: '' %}
+                  {%- endif -%}
+                </div>
+                <div class="collection-description-container">
+                  <div class="collection-description-image">
                     <img
-                      src="{{ block.settings.product2.featured_image| img_url: 'master'}}"
-                      alt="{{block.settings.product2.featured_image.alt}}"
-                      width="100%"
+                      src="{{ collection.image | img_url: 'master' }}"
+                      alt="{{ collection.image.alt | escape }}"
+                      width=""
                       height=""
                     >
-                  </a>
+                  </div>
+                  <div class="collection-description-text">
+                    <h1>{{ collection.title }}</h1>
+                    <div class="collection-description">
+                      {{ collection.description }}
+                    </div>
+                  </div>
                 </div>
-                <div class="product-title">
-                  <a href="{{block.settings.product2.url}}">{{ block.settings.product2.title }}</a>
-                </div>
+                
               </div>
-            {% endif %}
-            {% if block.settings.product3 %}
-              <div class="collection-tab-products">
-                <div>
-                  <a href="{{ block.settings.product3.url }}">
-                    <img
-                      src="{{ block.settings.product3.featured_image| img_url: 'master'}}"
-                      alt="{{block.settings.product3.featured_image.alt}}"
-                      width="100%"
-                      height=""
-                    >
-                  </a>
-                </div>
-                <div class="product-title">
-                  <a href="{{block.settings.product3.url}}">{{ block.settings.product3.title }}</a>
-                </div>
-              </div>
-            {% endif %}
-            {% if block.settings.product4 %}
-              <div class="collection-tab-products">
-                <div>
-                  <a href="{{ block.settings.product4.url }}">
-                    <img
-                      src="{{ block.settings.product4.featured_image| img_url: 'master'}}"
-                      alt="{{block.settings.product4.featured_image.alt}}"
-                      width="100%"
-                      height=""
-                    >
-                  </a>
-                </div>
-                <div class="product-title">
-                  <a href="{{block.settings.product4.url}}">{{ block.settings.product4.title }}</a>
-                </div>
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      {% endfor %}
+            </div>
+          </form>
+        {%- endpaginate -%}
+      </div>
+    </collection-info>
+  </div>
+
+  <div class="faq-section">
+    <div class="faq-title">
+      <h2 class="faq-heading">Frequently Asked Questions</h2>
     </div>
-  </collections-tabs>
+    <div></div>
+  </div>
 </div>
-
-<hr>
-
 <script>
-  class CollectionsTabs extends HTMLElement {
+  class GridOptions extends HTMLElement {
     constructor() {
       super();
-      this.tabs = this.querySelectorAll('.collections-tab');
-      this.lastTab = this.tabs[this.tabs.length - 1];
-      this.lastTab.classList.add('collections-tab-last-tab');
-      this.tabContents = this.querySelectorAll('.collection-tab-body');
-      if (this.tabs.length > 0) {
-        this.switchTab(0);
-      }
-      this.tabs.forEach((tab, index) => {
-        tab.addEventListener('click', () => {
-          this.switchTab(index);
+      this.colOptions = this.querySelectorAll('.cus-col');
+      this.colOptions.forEach((colOption) => {
+        colOption.addEventListener('click', (event) => {
+          this.switchView(event.currentTarget);
         });
       });
     }
 
-    switchTab(tabIndex) {
-      this.tabs.forEach((tab) => tab.classList.remove('collections-tab_active'));
-      this.tabContents.forEach((content) => content.classList.remove('active'));
-
-      this.tabs[tabIndex].classList.add('collections-tab_active');
-      this.tabContents[tabIndex].classList.add('active');
+    switchView(target) {
+      this.colOptions.forEach((col) => col.classList.remove('active'));
+      target.classList.add('active');
+      const index = target.dataset.index;
+      this.dispatchEvent(
+        new CustomEvent('view-change', {
+          bubbles: true,
+          detail: { index },
+        })
+      );
     }
   }
-  
-    customElements.define('collections-tabs', CollectionsTabs);
+  customElements.define('grid-options', GridOptions);
 </script>
+
+<script
+  type="text/javascript"
+>
+  function debounce(fn, wait) {
+    let t;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn.apply(this, args), wait);
+    };
+  }
+
+  if (!customElements.get('collection-info')) {
+    customElements.define(
+      'collection-info',
+      class CollectionInfo extends HTMLElement {
+        constructor() {
+          super();
+          this.debounceOnChange = debounce((event) => this.onChangeHandler(event), 800);
+          this.addEventListener('change', this.debounceOnChange.bind(this));
+          this.addEventListener('click', this.onClickHandler.bind(this));
+        }
+
+        onClickHandler = (event) => {
+          if (event.target.matches('[data-render-section-url]')) {
+            event.preventDefault();
+            const searchParams = new URLSearchParams(event.target.dataset.renderSectionUrl.split('?')[1]).toString();
+            this.fetchSection(searchParams);
+          }
+        };
+
+        onChangeHandler = (event) => {
+          if (!event.target.matches('[data-render-section]')) return;
+
+          const formData = new FormData(this.form);
+          const searchParams = new URLSearchParams(formData).toString();
+          this.fetchSection(searchParams);
+        };
+
+        get form() {
+          return this.querySelector('collection-info form');
+        }
+
+        updateSourceFromDestination = (html, id) => {
+          const source = html.getElementById(`${id}`);
+          const destination = this.querySelector(`#${id}`);
+          if (source && destination) {
+            destination.innerHTML = source.innerHTML;
+          }
+        };
+
+        updateURL(searchParams) {
+          history.pushState({}, '', `${window.location.pathname}?${searchParams}`);
+        }
+
+        updateFilters = (html) => {
+          const filtersFromFetch = html.querySelectorAll('#collection-form .js-filter');
+          const filtersFromDom = document.querySelectorAll('#collection-form .js-filter');
+
+          // Remove filters that are no longer returned from the server
+          Array.from(filtersFromDom).forEach((currentElement) => {
+            if (!Array.from(filtersFromFetch).some(({ id }) => currentElement.id === id)) {
+              currentElement.remove();
+            }
+          });
+
+          Array.from(filtersFromFetch).forEach((elementToRender, index) => {
+            document.getElementById(elementToRender.id).innerHTML = elementToRender.innerHTML;
+          });
+        };
+
+        showLoadingOverlay = () => {
+          this.querySelector(`#loading-overlay-${this.dataset.section}`).style.display = 'flex';
+          this.querySelector(`#loading-spinner-${this.dataset.section}`).style.display = 'block';
+          this.querySelector(`#results-count-${this.dataset.section}`).style.display = 'none';
+        };
+
+        hideLoadingOverlay = () => {
+          this.querySelector(`#loading-overlay-${this.dataset.section}`).style.display = 'none';
+          this.querySelector(`#loading-spinner-${this.dataset.section}`).style.display = 'none';
+          this.querySelector(`#results-count-${this.dataset.section}`).style.display = 'block';
+        };
+
+        fetchSection = (searchParams) => {
+          this.showLoadingOverlay();
+          fetch(`${window.location.pathname}?section_id=${this.dataset.section}&${searchParams}`)
+            .then((response) => response.text())
+            .then((responseText) => {
+              let html = new DOMParser().parseFromString(responseText, 'text/html');
+              this.updateSourceFromDestination(html, `product-grid-${this.dataset.section}`);
+              this.updateSourceFromDestination(html, `results-count-${this.dataset.section}`);
+              this.updateSourceFromDestination(html, `active-filter-group-${this.dataset.section}`);
+              this.updateFilters(html);
+              this.updateURL(searchParams);
+              this.hideLoadingOverlay();
+            })
+            .catch((error) => {
+              console.error(error);
+              this.hideLoadingOverlay();
+            });
+        };
+      }
+    );
+  }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  class ProductCard extends HTMLElement {
+    constructor() {
+      super();
+      this.updateLayout('3');
+      window.addEventListener('view-change', (e) => {
+        this.updateLayout(e.detail.index);
+      });
+    }
+
+    updateLayout(index) {
+      let flexBasis;
+      switch (index) {
+        case '1':
+          flexBasis = '50%';
+          break;
+        case '2':
+          flexBasis = '33.3333%';
+          break;
+        case '3':
+          flexBasis = '25%';
+          break;
+        default:
+          flexBasis = '50%';
+      }
+      this.style.flex = `0 0 ${flexBasis}`;
+      this.style.maxWidth = flexBasis;
+
+      const slider = this.querySelector('.card-media-slider');
+      if (slider && $(slider).hasClass('slick-initialized')) {
+        $(slider).slick('setPosition');
+      }
+    }
+  }
+  customElements.define('product-card', ProductCard);
+</script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 {% schema %}
 {
-  "name": "Collections Tabs",
+  "name": "t:sections.main-collection-product-grid.name",
+  "class": "section",
   "settings": [
     {
-      "type": "text",
-      "id": "title",
-      "label": "Title"
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 36,
+      "step": 4,
+      "default": 16,
+      "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
     },
     {
-      "type": "text",
-      "id": "link_text",
-      "label": "Label for general collections link"
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.main-collection-product-grid.settings.columns_desktop.label"
     },
     {
-      "type": "url",
-      "id": "link_url",
-      "label": "URL for general collections link"
-    }
-  ],
-  "blocks": [
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    },
     {
-      "type": "tab",
-      "name": "Tab",
-      "settings": [
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__3.content"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
         {
-          "type": "text",
-          "id": "tab_title",
-          "label": "Tab Title"
+          "value": "adapt",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__1.label"
         },
         {
-          "type": "product",
-          "id": "product1",
-          "label": "Product 1"
+          "value": "portrait",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__2.label"
         },
         {
-          "type": "product",
-          "id": "product2",
-          "label": "Product 2"
+          "value": "square",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.main-collection-product-grid.settings.image_ratio.label"
+    },
+
+    {
+      "type": "select",
+      "id": "quick_add",
+      "default": "none",
+      "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
+      "info": "t:sections.main-collection-product-grid.settings.quick_add.info",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_1"
         },
         {
-          "type": "product",
-          "id": "product3",
-          "label": "Product 3"
+          "value": "standard",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
         },
         {
-          "type": "product",
-          "id": "product4",
-          "label": "Product 4"
+          "value": "bulk",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
         }
       ]
-    }
-  ],
-  "presets": [
+    },
     {
-      "name": "Collections Tabs"
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__1.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
+      "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+    },
+    {
+      "type": "select",
+      "id": "filter_type",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__1.label"
+        },
+        {
+          "value": "vertical",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__2.label"
+        },
+        {
+          "value": "drawer",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__3.label"
+        }
+      ],
+      "default": "horizontal",
+      "label": "t:sections.main-collection-product-grid.settings.filter_type.label",
+      "info": "t:sections.main-collection-product-grid.settings.filter_type.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "collapse_filters",
+      "default": true,
+      "label": "Collapse filters by default"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header_mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "2",
+      "label": "t:sections.main-collection-product-grid.settings.columns_mobile.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__2.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
     }
   ]
 }
 {% endschema %}
-=======
-<div class="pf-mag-container">
-  <div class="mag-header">
-    <h2>{{ section.settings.title }}</h2>
-    <p>{{ section.settings.subtitle }}</p>
-    <a href="{{section.settings.button_link}}">{{ section.settings.button_text }}</a>
-  </div>
-  <div class="mag-articles">
-    <div class="article-container">
-      <div class="left-side-mag">
-        <div style="padding-bottom: 15px;display:flex">
-          <div class="article-left-side">
-            <h2>{{ section.settings.left_top_article.title | strip_html }}</h2>
-            <div class="content">
-              <p>{{ section.settings.left_top_article.content | truncate: 180| strip_html }}</p>
-            </div>
-            <a href="{{section.settings.left_top_article.url}}">READ</a>
-          </div>
-          <div class="article-right-side">
-            <img
-              src="{{section.settings.left_top_article.image| img_url: 'master'}}"
-              alt="{{section.settings.left_top_article.image.alt}}"
-              width=""
-              height=""
-              style="object-fit: cover;object-position:center"
-            >
-          </div>
-        </div>
-        <div style="display:flex ;">
-          <div class="article-left-side">
-            <h2>{{ section.settings.left_bottom_article.title| strip_html  }}</h2>
-            <div class="content">
-              <p>{{ section.settings.left_bottom_article.content | truncate: 180| strip_html  }}</p>
-            </div>
-            <a href="{{section.settings.left_bottom_article.url}}">READ</a>
-          </div>
-          <div class="article-right-side">
-            <img
-              src="{{section.settings.left_bottom_article.image| img_url: 'master'}}"
-              alt="{{section.settings.left_bottom_article.image.alt}}"
-              width=""
-              height=""
-              style="object-fit: cover;object-position:center"
-            >
-          </div>
-        </div>
-      </div>
-      <div class="right-side-mag">
-        <div>
-          <img
-            src="{{section.settings.right_article.image| img_url: 'master'}}"
-            alt="{{section.settings.right_article.image.alt}}"
-            width="100%"
-            height=""
-            style="max-height:280px;object-fit:cover;object-position:center"
-          >
-        </div>
-        <div class="article-bottom-side">
-          <h2>{{ section.settings.right_article.title| strip_html  }}</h2>
-          <div class="content">
-            <p>{{ section.settings.right_article.content | truncate: 30 | strip_html }}</p>
-          </div>
-          <a href="{{section.settings.right_article.url}}">READ</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
->>>>>>> 5fe31f01eb7a85b8eea1935661f4dfa8a5e1aa65

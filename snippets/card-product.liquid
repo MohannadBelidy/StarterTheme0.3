@@ -1,12 +1,7 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
-
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" defer>
-
-<script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-  defer
-></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+>
 
 {%- liquid
   assign ratio = 1
@@ -21,43 +16,48 @@
 -%}
 
 <product-card
-  class="product-card card--{{ settings.card_style }}{% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }}{% endif %}"
+  class="product-card mobile-product-card card--{{ settings.card_style }}{% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }}{% endif %}"
   data-product-id="{{ card_product.id }}"
 >
   <div class="product-card-child">
-    <a
-      href="{{ card_product.url }}"
-      class="card-media"
-      style="--media-ratio: {{ 1 | divided_by: ratio | times: 100 }}%;"
-    >
-      <div class="card-media-child">
-        {% if card_product.images.size > 1 %}
-          <div class="card-media-slider">
-            {% for image in card_product.images %}
-              <div class="card-media-image">
-                <img src="{{image| img_url: "master" }}" alt="{{image.alt}}" width="" height="">
+    <div class="card-media-wrapper">
+      <a
+        href="{{ card_product.url }}"
+        class="card-media"
+        style="--media-ratio: {{ 1 | divided_by: ratio | times: 100 }}%;"
+      >
+        <div class="card-media-child">
+          {% if card_product.images.size > 1 %}
+            <div class="swiper card-media-slider">
+              <div class="swiper-wrapper">
+                {% for image in card_product.images limit: 3 %}
+                  <div class="swiper-slide">
+                    <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt }}" width="100%" height="">
+                  </div>
+                {% endfor %}
               </div>
-            {% endfor %}
-          </div>
-
-        {% else %}
-          {{
-            card_product.featured_image
-            | image_url: width: card_product.featured_image.width
-            | image_tag:
-              width: card_product.featured_image.width,
-              height: card_product.featured_image.height,
-              alt: card_product.featured_media.alt,
-              data-product-image: card_product.id
-            | escape
-          }}
-        {% endif %}
-      </div>
-    </a>
+              <div class="swiper-pagination"></div>
+            </div>
+          {% else %}
+            {{
+              card_product.featured_image
+              | image_url: width: card_product.featured_image.width
+              | image_tag:
+                width: card_product.featured_image.width,
+                height: card_product.featured_image.height,
+                alt: card_product.featured_media.alt,
+                data-product-image: card_product.id
+              | escape
+            }}
+          {% endif %}
+          <button class="quickadd-button">{{ 'icon-quickadd.svg' | inline_asset_content }}</button>
+        </div>
+      </a>
+    </div>
 
     <div class="card-information">
       <div class="desktop-card-information">
-          <a href="{{ card_product.url }}">{{ card_product.title }}</a>
+        <a href="{{ card_product.url }}">{{ card_product.title }}</a>
         <div class="card-pricing">
           {% render 'price', product: card_product, show_compare_at_price: true %}
         </div>
@@ -65,18 +65,3 @@
     </div>
   </div>
 </product-card>
-
-<script>
-  $(document).ready(function () {
-    $('.card-media-slider').slick({
-      dots: true,
-      arrows: false,
-      fade: false,
-      speed: 900,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      cssEase: 'linear',
-      easing: 'linear',
-    });
-  });
-</script>

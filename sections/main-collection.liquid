@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -26,14 +28,31 @@
     line-height:75px
   }
 
-  .sorting-wrapper {
-    display: flex;
-    width: 100%;
-    align-items: flex-start;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-    gap: 30px;
+  @media (max-width: 990px) {
+    .collection-hero__title {
+      font-size: 28px;
+      line-height: 37px;
+      padding-bottom: 0 !important;
+      text-align:left !important;
+    }
+    .sorting-wrapper {
+      position: unset !important;
+
+    }
   }
+
+  .sorting-wrapper {
+    top: 140px;
+    display: flex;
+    position: sticky;
+    z-index: 20;
+    background: white;
+    height: 53px;
+    align-items: center;
+    margin: 24px 0 32px;
+    padding: 0 36px;
+  }
+
 
   .child-sorting-wrapper {
     display: flex;
@@ -41,6 +60,34 @@
     justify-content: flex-end;
     width: 100%;
     max-width: 350px;
+  }
+
+  .grid-view-options-container {
+    display: flex;
+    justify-content: flex-end;
+    width:50%;
+  }
+  .grid-view-options{
+    width: 213px;
+    margin-right: 13px;
+    height: 44px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #fafafa;
+  }
+  .cus-col{
+    padding: 10px 22px;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+  .cus-col.active{
+    background-color: #245490;
+
+  }
+  .cus-col.active svg{
+    stroke: white;
   }
 
   .collection-filters-wrapper {
@@ -62,8 +109,16 @@
     display: flex;
     flex-wrap: wrap;
     margin:0;
-    padding:0 38.4px
+    padding:0 38.4px;
+    box-sizing: border-box;
   }
+
+  @media (max-width: 990px) {
+    .product-grid {
+      padding:0 4.8px !important;
+    }
+  }
+
 
   .facet-filters__label {
     display: block;
@@ -77,7 +132,7 @@
   .facet-filters__field {
     display: flex;
     align-items: center;
-    margin-right: 30px;
+    justify-content: center;
   }
 
   .collection-filters-wrapper summary {
@@ -101,19 +156,18 @@
   }
 
   .facet-filters__sort {
-    background-color: transparent;
-    border: 0;
-    border-radius: 0;
-    font-size: 14px;
-    height: auto;
-    margin: 0;
-    padding-left: 0;
-    padding-right: 17px;
+    width: max-content;
+    border: none;
+    background: none;
     cursor: pointer;
-    color: rgba(var(--color-foreground),.75);
-    max-width: 130px;
+    font-size: 15px;
+    color:black;
+    line-height: 22.5px;
+    font-family:Poppins;
+    font-weight:400;
+    padding: 0 24px;
+    margin:0;
   }
-
   .reset-button {
     text-transform: capitalize;
     color: rgba(var(--color-foreground),.75);
@@ -136,6 +190,14 @@
     pointer-events: none
   }
 
+  .item-counts-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 80px;
+    position: relative;
+  }
+
   .results-count {
     width: max-content;
     font-size: 14px;
@@ -144,8 +206,15 @@
   .active-filter-group__item-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
     width: 100%;
+    padding: 0 48px;
+    padding-bottom: 12px;
+    box-sizing: border-box;
+  }
+
+  .active-filter-group__item-wrapper .active-filter-item {
+    margin-top: 12px;
+    margin-right: 12px;
   }
 
   .filter-close .icon-close {
@@ -163,27 +232,31 @@
     text-decoration: underline;
   }
 
+  .shop-poster-ad{
+    max-width: 50%;
+    flex: 0 0 25%;
+    padding: 0 12px;
+    box-sizing: border-box;
+    position: relative;
+    text-align: var(--product-card-text-alignment);
+    overflow: hidden;
+  }
+
   .horizontal-filters__parent-wrapper {
     display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .filter-type-horizontal .active-filter-group__item-wrapper {
-    gap: 0px;
-  }
-
-  .filter-type-horizontal .filter.active-filter-item {
-    background: transparent;
-    border: 1px solid rgba(0, 0, 0, .2);
-    color: black;
-    margin-top: 15px;
-    margin-right: 15px;
+    position: relative;
+    flex-wrap: wrap;
+    width: 50%;
+    padding:6px 0;
   }
 
   .filter-type-horizontal .filter-close .icon-close {
     width: 10px;
     height: 10px;
+  }
+
+  .filter-type-horizontal .active-filter-group__item-wrapper .active-filter-item {
+    margin: 0px;
   }
 
   .filter-type-horizontal .filter.active-filter-item.active-filter-clear-all {
@@ -196,17 +269,45 @@
     }
   }
 
-  @media screen and (max-width: 750px) {
-    .small-hide {
-      display: none !important;
+  @media screen and (max-width: 790px) {
+    .sorting-wrapper {
+      margin: 0px !important;
+      padding: 0 !important;
     }
 
-    .product-grid {
-      gap: 5px;
+    .horizontal-filters__parent-wrapper{
+      width: 100% !important;
+      box-sizing: border-box;
+    }
+    .filters-horizontal .facets__heading{
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    .facets__wrapper{
+      flex: 0 0 25%;
+      max-width: 25%;
+      width:25%;
+      margin-top: 20px;
+      padding:0 12px !important;
+      box-sizing: border-box;
+      position: unset !important;
     }
 
     .results-count{
       font-size: 14px;
+    }
+
+    .active-filter-item span{
+      font-size: 12px;
+    }
+
+    .filter-type-horizontal .active-filter-group__item-wrapper {
+      gap: 0px;
+    }
+
+    .filter-type-horizontal .active-filter-group__item-wrapper .active-filter-item {
+      margin-top: 12px;
+      margin-right: 12px;
     }
   }
 
@@ -239,6 +340,11 @@
     border-radius: 100%;
     animation: spin 0.6s infinite linear;
     display: none;
+    position: absolute;
+  }
+
+  .mobile-filters-drawer {
+    width: 100%;
   }
 
   @keyframes spin {
@@ -246,70 +352,407 @@
       transform: rotate(360deg);
     }
   }
+{%- endstyle -%}
 
-  /*====================================
-  START COLLECTION DESCRIPTION STYLING
-  ====================================*/
+{%- style -%}
+  .filters-sidebar {
+    margin-bottom: 20px;
+    width: 260px;
+    margin-right: 30px;
+    flex-shrink: 0;
+  }
 
+  .facets__heading {
+    display: block;
+    color: rgba(var(--color-foreground), 0.85);
+    font-size: 14px;
+    margin-bottom: 15px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  .filters-horizontal .facets__heading {
+    margin: 0px;
+    padding: 0 12px;
+    width: unset;
+    font-size: 15px;
+    line-height: 22.5px;
+    color: #000;
+    font-family: Poppins;
+    font-weight: 400;
+    letter-spacing: 0px;
+    box-sizing: border-box;
+  }
+
+  .filter-section {
+    border-top: 1px solid rgba(var(--color-foreground), 0.1);
+    margin-right: 0;
+  }
+
+  .facets__disclosure-vertical summary {
+    padding: 16.5px 17.5px 16.5px 0px;
+  }
+
+  .facets__disclosure-vertical details[open] summary .icon-caret {
+    transform: rotate(180deg);
+  }
+
+  .facets__disclosure-vertical summary .icon-caret {
+    position: absolute;
+    height: 6px;
+    right: 0px;
+    top: calc(50% - 2px);
+  }
+
+  .facets__display-vertical {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 12px 25px 0px;
+  }
+
+  .facet-checkbox {
+    padding: 10px 20px 10px 0;
+    flex-grow: 1;
+    position: relative;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    word-break: break-word;
+    cursor: pointer;
+  }
+
+  .facet-checkbox:hover {
+    color: rgba(var(--color-foreground), 1);
+    text-decoration: underline;
+  }
+
+  .facet-checkbox input[type='checkbox'] {
+    margin-right: 12px;
+    position: absolute;
+    opacity: 0;
+    width: 16px;
+    height: 16px;
+    top: 7px;
+    left: -4px;
+  }
+
+  .facet-checkbox > svg,
+  .facet-checkbox > .svg-wrapper {
+    background-color: rgb(var(--color-background));
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  .facet-checkbox .svg-wrapper {
+    visibility: hidden;
+    position: absolute;
+    left: 3px;
+    z-index: 5;
+    top: 14px;
+    width: 11px;
+    height: 7px;
+  }
+
+  .facet-checkbox > input[type='checkbox']:checked ~ .svg-wrapper > .icon-checkmark {
+    visibility: visible;
+  }
+
+  .facet-checkbox:has(input:disabled) {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .filters__show-more {
+    background: white;
+    border: 1px solid;
+    padding: 10px 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    outline: 1px solid transparent;
+  }
+
+  .filters__show-more:hover {
+    outline: 1px solid black;
+  }
+
+  /* STYLES FOR HORIZONTAL FILTERS TYPE */
+
+  .filters-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .facets__wrapper {
+    position: relative;
+    padding: 0 24px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .filter-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: black;
+    line-height: 22.5px;
+    font-family: Poppins;
+    font-weight: 400;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .filter-button:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: rgba(var(--color-foreground), 1);
+  }
+
+  .filter-button .icon-caret {
+    height: 6px;
+    position: relative;
+    margin-top: 10px;
+    margin-left: 4px;
+  }
+  .dark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.4;
+    z-index: 2;
+  }
+
+  .filter-content {
+    background-color: #fff;
+    width: 308px;
+    position: absolute;
+    top: 37px;
+    z-index: 2;
+    left: 0;
+  }
+
+  @media (max-width: 990px) {
+    .filter-content {
+      left: 50% !important;
+      top: 77px;
+      width: 75%;
+      max-width: 350px;
+      transform: translate(-50%);
+    }
+  }
+
+  .filter-content .facets__list {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -6px;
+    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+  }
+
+  .filter-content .facets__list-style {
+    margin: 0 !important;
+    justify-content: center;
+  }
+  .filter-content .facets__list-print {
+    margin: 0 !important;
+    justify-content: center;
+  }
+  .facets__head-wrapper {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    background-color: #f4ebe0;
+    color: #000;
+    line-height: 22.5px;
+  }
+  .filter-close-icon {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0px;
+  }
+  .facets__head-wrapper svg {
+    width: 20px;
+    height: 20px;
+  }
+  .facet-name {
+    width: 90%;
+  }
+  .facets__item {
+    width: 25%;
+    padding: 5px;
+    list-style: none;
+    box-sizing: border-box;
+  }
+  .horizontal-facets-item-style {
+    padding: 0 12px !important;
+    width: 100% !important;
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 0 -6px;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 12px;
+  }
+  .horizontal-facets-item-print {
+    padding: 0 !important;
+    width: 100% !important;
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 0 -6px;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+  }
+  .print-image {
+    flex: 0 0 auto;
+    padding: 0 6px;
+  }
+  .print-image-active img {
+    border-radius: 100px;
+    border: 1px solid #000;
+  }
+
+  .horizontal-facets-item-print img {
+  }
+
+  .horizontal-facet-checkbox-style {
+    width: 100%;
+    padding: 5px 10px !important;
+    box-sizing: border-box;
+    justify-content: start !important;
+  }
+  .horizontal-facet-checkbox-print {
+    background: transparent !important;
+    width: 100%;
+    padding: 5px 10px !important;
+    box-sizing: border-box;
+    justify-content: start !important;
+  }
+
+  .print-facet-checkbox-active {
+    color: #000 !important;
+    font-weight: bold;
+  }
+
+  .selected-sort {
+    background: #000 !important;
+    color: #fff !important;
+  }
+  .horizontal-facet-checkbox {
+    margin-bottom: 0;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 22.5px;
+    color: #000;
+    font-family: Poppins;
+    display: flex;
+    padding: 10px;
+    background: #f4ebe0;
+    justify-content: center;
+  }
+  .horizontal-facet-checkbox-active {
+    background: #3d3d3b;
+    color: #fff;
+  }
+
+  .horizontal-facet-checkbox input[type='checkbox'] {
+    margin-right: 12px;
+    position: absolute;
+    opacity: 0;
+    width: 16px;
+    height: 16px;
+    top: 7px;
+    left: -4px;
+  }
+  .facet-reset {
+    text-transform: capitalize;
+    color: black;
+    cursor: pointer;
+    text-underline-offset: 3px;
+  }
   .collection-description-container {
     padding-top: 70px;
     display: flex;
     align-items: center;
   }
-  .collection-description-image{
+  .collection-description-image {
     width: 50%;
   }
-  .collection-description-image img{
+  .collection-description-image img {
     max-width: 100%;
   }
-  .collection-description-text{
+  .collection-description-text {
     width: 50%;
     padding: 0 60px;
   }
-  .collection-description-text h1{
+  .collection-description-text h1 {
     font-size: 42px;
     line-height: 50px;
     font-family: Apris-Regular;
     margin: 0 0 15px;
     color: black;
-    font-weight:400px;
+    font-weight: 400px;
   }
-  .collection-description{
+  .collection-description {
     font-size: 12px;
     line-height: 18px;
     font-family: Poppins;
     margin: 0;
     color: #000;
-    font-weight:400;
+    font-weight: 400;
   }
-  .collection-description p{
+  .collection-description p {
     margin: 0;
   }
-  .collection-description h6{
-    font-size:24px;
-    font-weight:500;
+  .collection-description h6 {
+    font-size: 24px;
+    font-weight: 500;
     line-height: 1.2;
-    margin-top:0;
-    margin-bottom:12px;
-    font-family:Apris-Regular;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-family: Apris-Regular;
   }
 
-
-
-
-
-  .faq-title{
-    padding:60px 20px;
+  .faq-title {
+    padding: 60px 20px;
   }
-  .faq-heading{
-      font-size:40px;
-      line-height:52px;
-      color:black;
-      text-align:center;
-      font-family:Apris-Regular;
-      margin-bottom:12px;
-      font-weight:500;
-      margin-top:0;
+  .faq-heading {
+    font-size: 40px;
+    line-height: 52px;
+    color: black;
+    text-align: center;
+    font-family: Apris-Regular;
+    margin-bottom: 12px;
+    font-weight: 500;
+    margin-top: 0;
+  }
+
+  @media (max-width: 990px) {
+    .collection-description-container {
+      flex-wrap: wrap;
+      flex-direction: column-reverse;
+    }
+    .collection-description-image {
+      width: 100% !important;
+    }
+    .collection-description-text {
+      width: 100% !important;
+      padding: 0 15px 40px !important;
+      box-sizing: border-box;
+    }
   }
 {%- endstyle -%}
 
@@ -323,96 +766,120 @@
       <h1 class="collection-hero__title">{{ collection.title }}</h1>
     </div>
   </div>
-  <div class="collection-info-wrapper section-{{ section.id }}-padding">
+  <div class="collection-info-wrapper">
     <collection-info
       data-section="{{ section.id }}"
     >
       <div class="filter-type-{{ section.settings.filter_type | escape | downcase }}">
         {%- paginate collection.products by section.settings.products_per_page -%}
-          <form id="collection-form" class="main-content">
+          <div class="main-content">
             <div class="collection-filters-wrapper">
               {%- if section.settings.enable_filtering and section.settings.filter_type == 'vertical' -%}
-                {% render 'filters',
+                {% render 'component-filters-sidebar',
                   results: collection,
-                  collapse_filters: section.settings.collapse_filters,
-                  filter_type: section.settings.filter_type
+                  collapse_filters: section.settings.collapse_filters
                 %}
               {% endif %}
               <div class="product-grid-container">
                 <div class="sorting-wrapper">
-                  <div class="horizontal-filters__parent-wrapper small-hide">
-                    {%- if section.settings.enable_filtering and section.settings.filter_type == 'horizontal' -%}
-                      {% render 'filters',
+                  {%- if section.settings.enable_filtering and section.settings.filter_type == 'vertical' -%}
+                    <div class="mobile-filters-drawer medium-hide large-up-hide">
+                      {%- render 'component-filters-drawer',
                         results: collection,
-                        collapse_filters: section.settings.collapse_filters,
-                        filter_type: section.settings.filter_type
+                        enable_sorting: section.settings.enable_sorting,
+                        enable_filtering: section.settings.enable_filtering
+                      -%}
+                    </div>
+                  {%- endif -%}
+                  {%- if section.settings.enable_filtering and section.settings.filter_type == 'horizontal' -%}
+                    <div class="horizontal-filters__parent-wrapper">
+                      {% render 'component-filters-horizontal', results: collection %}
+                    </div>
+                  {% elsif section.settings.enable_filtering and section.settings.filter_type == 'drawer' %}
+                    <div class="horizontal-filters__parent-wrapper">
+                      {% render 'component-filters-drawer',
+                        results: collection,
+                        enable_sorting: section.settings.enable_sorting,
+                        enable_filtering: section.settings.enable_filtering
                       %}
-                    {% endif %}
-                    {%- if section.settings.enable_filtering -%}
-                      <div id="active-filter-group-{{ section.id }}" class="active-filter-group__item-wrapper">
-                        {% liquid
-                          assign has_active_filters = false
-                          for f in collection.filters
-                            if f.active_values.size > 0
-                              assign has_active_filters = true
-                            endif
-                          endfor
-                        %}
-
-                        {%- for f in collection.filters -%}
-                          {% for v in f.active_values %}
-                            <div class="filter active-filter-item">
-                              <span>{{ f.label | escape }}: {{ v.label | escape -}}</span>
-                              <div
-                                class="filter-close"
-                                data-render-section-url="{{ v.url_to_remove }}"
-                              >
-                                {{- 'icon-close.svg' | inline_asset_content -}}
-                              </div>
-                            </div>
-                          {% endfor %}
-                        {%- endfor -%}
-
-                        {% if has_active_filters %}
-                          <div class="filter active-filter-item active-filter-clear-all" data-render-section-url="{{ collection.url }}">
-                            <span>Clear all filters</span>
-                          </div>
-                        {% endif %}
-                      </div>
-                    {%- endif -%}
-                  </div>
-
-                  <div class="child-sorting-wrapper">
-                    {%- if section.settings.enable_sorting -%}
-                      {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-                      <div class="facet-filters__field small-hide">
-                        <h2 class="facet-filters__label">
-                          <label for="SortBy">Sort by:</label>
-                        </h2>
-                        <select
-                          data-render-section
-                          name="sort_by"
-                          id="SortBy"
-                          class="facet-filters__sort"
-                        >
-                          {%- for option in collection.sort_options -%}
-                            <option
-                              value="{{ option.value | escape }}"
-                              {% if option.value == sort_by %}
-                                selected="selected"
-                              {% endif %}
-                            >
-                              {{ option.name | escape }}
-                            </option>
-                          {%- endfor -%}
-                        </select>
-                      </div>
-                    {%- endif -%}
-                    
+                    </div>
+                  {% endif %}
+                  <div class="item-counts-wrapper" style="display: none;">
+                    <div id="results-count-{{ section.id }}" class="results-count">
+                      {%- if collection.products_count == collection.all_products_count -%}
+                        {{ collection.products_count }} products
+                      {% else %}
+                        {{ collection.products_count }} of {{ collection.all_products_count }}
+                      {% endif %}
+                    </div>
                     <div id="loading-spinner-{{ section.id }}" class="loading-overlay__spinner"></div>
                   </div>
+
+                  <div class="grid-view-options-container small-hide medium-hide">
+                    <grid-options class="grid-view-options">
+                      <div>
+                        <div
+                          class="cus-col"
+                          data-index="1"
+                        >
+                          {{ 'icon-2col-grid.svg' | inline_asset_content }}
+                        </div>
+                      </div>
+                      <div>
+                        <div
+                          class="cus-col"
+                          data-index="2"
+                        >
+                          {{ 'icon-3col-grid.svg' | inline_asset_content }}
+                        </div>
+                      </div>
+                      <div>
+                        <div
+                          class="cus-col"
+                          data-index="3"
+                        >
+                          {{ 'icon-4col-grid.svg' | inline_asset_content }}
+                        </div>
+                      </div>
+                    </grid-options>
+                  </div>
                 </div>
-                <div id="product-grid-{{ section.id }}">
+
+                <div id="active-filter-group-{{ section.id }}" class="active-filter-group__item-wrapper">
+                  {% liquid
+                    assign has_active_filters = false
+                    for f in collection.filters
+                      if f.active_values.size > 0
+                        assign has_active_filters = true
+                      endif
+                    endfor
+                  %}
+
+                  {%- for f in collection.filters -%}
+                    {% for v in f.active_values %}
+                      <div class="filter active-filter-item">
+                        <span>{{ f.label | escape }}: {{ v.label | escape -}}</span>
+                        <div
+                          class="filter-close"
+                          data-render-section-url="{{ v.url_to_remove }}"
+                        >
+                          {{- 'icon-close.svg' | inline_asset_content -}}
+                        </div>
+                      </div>
+                    {% endfor %}
+                  {%- endfor -%}
+
+                  {% if has_active_filters %}
+                    <div
+                      class="filter active-filter-item active-filter-clear-all"
+                      data-render-section-url="{{ collection.url }}"
+                    >
+                      <span>Clear all filters</span>
+                    </div>
+                  {% endif %}
+                </div>
+
+                <div class="product-grid-wrapper" id="product-grid-{{ section.id }}">
                   <div id="loading-overlay-{{ section.id }}" class="loading-overlay"></div>
                   <div class="product-grid">
                     {%- if collection.products.size == 0 -%}
@@ -427,30 +894,73 @@
                           swatch_type: section.settings.swatch_type,
                           media_aspect_ratio: section.settings.image_ratio
                         %}
+                        {% if forloop.index0 == 9 %}
+                          <div class="shop-poster-ad">
+                            <div class="product-card-child">
+                              <div class="card-media-wrapper">
+                                <div
+                                  class="card-media"
+                                  style="--media-ratio: {{ 1 | divided_by: ratio | times: 100 }}%;"
+                                >
+                                  {%- liquid
+                                    assign ratio = 1
+                                    if product.featured_media and section.settings.image_ratio == 'portrait'
+                                      assign ratio = 0.8
+                                    elsif product.featured_media and section.settings.image_ratio == 'adapt'
+                                      assign ratio = product.featured_media.aspect_ratio
+                                    endif
+                                    if ratio == 0 or ratio == null
+                                      assign ratio = 1
+                                    endif
+                                  -%}
+                                  <div class="card-media-child">
+                                    <div>
+                                      <div>
+                                        <div>
+                                          <img
+                                            src="{{'PLP_Tile-02_1.jpg'| asset_url}}"
+                                            alt="hello"
+                                            width="100%"
+                                            height=""
+                                          >
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        {% endif %}
                       {%- endfor -%}
                     {%- endif -%}
                   </div>
                   {%- if paginate.pages > 1 -%}
                     {% render 'pagination', paginate: paginate, anchor: '' %}
                   {%- endif -%}
+                  <div class="collection-description-container">
+                    <div class="collection-description-image">
+                      <img
+                        src="{{ collection.image | img_url: 'master' }}"
+                        alt="{{ collection.image.alt | escape }}"
+                        width=""
+                        height=""
+                      >
+                    </div>
+                    <div class="collection-description-text">
+                      <h1>{{ collection.title }}</h1>
+                      <div class="collection-description">
+                        {{ collection.description }}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </form>
+          </div>
         {%- endpaginate -%}
       </div>
     </collection-info>
-  </div>
-  <div class="collection-description-container">
-    <div class="collection-description-image">
-      <img src="{{ collection.image | image_url: width:'100%' }}" alt="{{ collection.image.alt | escape }}" width="" height="">
-    </div>
-    <div class="collection-description-text">
-      <h1>{{ collection.title }}</h1>
-      <div class="collection-description">
-        {{ collection.description }}
-      </div>
-    </div>
   </div>
   <div class="faq-section">
     <div class="faq-title">
@@ -459,6 +969,43 @@
     <div></div>
   </div>
 </div>
+
+<script>
+  class GridOptions extends HTMLElement {
+    constructor() {
+      super();
+      this.selectedIndex = '3';
+      this.colOptions = this.querySelectorAll('.cus-col');
+      this.initiateGrid();
+      this.colOptions.forEach((colOption) => {
+        colOption.addEventListener('click', (event) => {
+          this.switchView(event.currentTarget);
+        });
+      });
+    }
+
+    initiateGrid() {
+      this.colOptions.forEach((col) => {
+        if (col.dataset.index === this.selectedIndex) {
+          col.classList.add('active');
+        }
+      });
+    }
+
+    switchView(target) {
+      this.colOptions.forEach((col) => col.classList.remove('active'));
+      target.classList.add('active');
+      this.selectedIndex = target.dataset.index;
+      this.dispatchEvent(
+        new CustomEvent('view-change', {
+          bubbles: true,
+          detail: { index: this.selectedIndex },
+        })
+      );
+    }
+  }
+  customElements.define('grid-options', GridOptions);
+</script>
 
 <script
   type="text/javascript"
@@ -492,8 +1039,11 @@
 
         onChangeHandler = (event) => {
           if (!event.target.matches('[data-render-section]')) return;
-
-          const formData = new FormData(this.form);
+          const form =
+            event.target.closest('form') ||
+            document.querySelector('#filters-form') ||
+            document.querySelector('#filters-form-drawer');
+          const formData = new FormData(form);
           const searchParams = new URLSearchParams(formData).toString();
           this.fetchSection(searchParams);
         };
@@ -514,9 +1064,9 @@
           history.pushState({}, '', `${window.location.pathname}?${searchParams}`);
         }
 
-        updateFilters = (html) => {
-          const filtersFromFetch = html.querySelectorAll('#collection-form .js-filter');
-          const filtersFromDom = document.querySelectorAll('#collection-form .js-filter');
+        updateFilters = (html, className) => {
+          const filtersFromFetch = html.querySelectorAll(`collection-info .${className}`);
+          const filtersFromDom = document.querySelectorAll(`collection-info .${className}`);
 
           // Remove filters that are no longer returned from the server
           Array.from(filtersFromDom).forEach((currentElement) => {
@@ -534,12 +1084,24 @@
           this.querySelector(`#loading-overlay-${this.dataset.section}`).style.display = 'flex';
           this.querySelector(`#loading-spinner-${this.dataset.section}`).style.display = 'block';
           this.querySelector(`#results-count-${this.dataset.section}`).style.display = 'none';
+          if (this.querySelector(`#drawer-results-count-${this.dataset.section}`)) {
+            this.querySelector(`#drawer-results-count-${this.dataset.section}`).style.display = 'none';
+          }
+          if (this.querySelector(`#drawer-loading-spinner-${this.dataset.section}`)) {
+            this.querySelector(`#drawer-loading-spinner-${this.dataset.section}`).style.display = 'block';
+          }
         };
 
         hideLoadingOverlay = () => {
           this.querySelector(`#loading-overlay-${this.dataset.section}`).style.display = 'none';
           this.querySelector(`#loading-spinner-${this.dataset.section}`).style.display = 'none';
           this.querySelector(`#results-count-${this.dataset.section}`).style.display = 'block';
+          if (this.querySelector(`#drawer-results-count-${this.dataset.section}`)) {
+            this.querySelector(`#drawer-results-count-${this.dataset.section}`).style.display = 'block';
+          }
+          if (this.querySelector(`#drawer-loading-spinner-${this.dataset.section}`)) {
+            this.querySelector(`#drawer-loading-spinner-${this.dataset.section}`).style.display = 'none';
+          }
         };
 
         fetchSection = (searchParams) => {
@@ -550,8 +1112,11 @@
               let html = new DOMParser().parseFromString(responseText, 'text/html');
               this.updateSourceFromDestination(html, `product-grid-${this.dataset.section}`);
               this.updateSourceFromDestination(html, `results-count-${this.dataset.section}`);
+              this.updateSourceFromDestination(html, `drawer-results-count-${this.dataset.section}`);
               this.updateSourceFromDestination(html, `active-filter-group-${this.dataset.section}`);
-              this.updateFilters(html);
+              this.updateSourceFromDestination(html, `sort-by-drawer-${this.dataset.section}`);
+              // this.updateSourceFromDestination(html, `sort-by-${this.dataset.section}`);
+              this.updateFilters(html, `js-filter`);
               this.updateURL(searchParams);
               this.hideLoadingOverlay();
             })
@@ -564,36 +1129,49 @@
     );
   }
 </script>
+
 <script>
   class ProductCard extends HTMLElement {
     constructor() {
       super();
+      let swiper = new Swiper('.card-media-slider', {
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        speed: 400,
+        slidesPerView: 1,
+      });
+      // this.updateLayout('3');
     }
-
     connectedCallback() {
-      this.querySelectorAll('.color-swatch').forEach((s) => s.addEventListener('click', this.onSwatchClick.bind(this)));
+      let selectedIndex = document.getElementsByTagName('grid-options')[0].selectedIndex;
+      this.updateLayout(selectedIndex);
+      window.addEventListener('view-change', (e) => {
+        this.updateLayout(e.detail.index);
+      });
     }
-
-    onSwatchClick(event) {
-      const swatch = event.target;
-      const productImage = this.querySelector(`[data-product-image="${this.dataset.productId}"]`);
-      const swatchImageElement = swatch.querySelector('.data-variant-image');
-      const newImageUrl = swatchImageElement ? swatchImageElement.getAttribute('src') : null;
-      const newSrcset = swatchImageElement ? swatchImageElement.getAttribute('srcset') : null;
-
-      this.querySelectorAll('.color-swatch').forEach((s) => s.classList.remove('selected'));
-      swatch.classList.add('selected');
-
-      if (productImage && swatchImageElement) {
-        productImage.src = newImageUrl;
-        productImage.srcset = newSrcset;
+    updateLayout(index) {
+      let flexBasis;
+      switch (index) {
+        case '1':
+          flexBasis = '50%';
+          break;
+        case '2':
+          flexBasis = '33.3333%';
+          break;
+        case '3':
+          flexBasis = '25%';
+          break;
+        default:
+          flexBasis = '50%';
       }
+      this.style.flex = `0 0 ${flexBasis}`;
+      this.style.maxWidth = flexBasis;
     }
   }
-
-  if (!customElements.get('product-card')) {
-    customElements.define('product-card', ProductCard);
-  }
+  customElements.define('product-card', ProductCard);
 </script>
 
 {% schema %}
@@ -751,7 +1329,8 @@
       "type": "checkbox",
       "id": "collapse_filters",
       "default": true,
-      "label": "Collapse filters by default"
+      "label": "Collapse filters by default",
+      "info": "This supports only the vertical option"
     },
     {
       "type": "checkbox",
