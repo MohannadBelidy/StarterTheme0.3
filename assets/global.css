@@ -43,6 +43,10 @@ p{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .page-wrapper {
   max-width: var(--page-width);
   margin-inline: auto;
@@ -155,14 +159,14 @@ body .hidden, .visually-hidden {
 }
 
 /* Media query for Mobiles */
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 795px) {
   .small-hide {
     display: none !important;
   }
 }
 
 /* Media query for Tablets */
-@media screen and (min-width: 750px) and (max-width: 989px) {
+@media screen and (min-width: 795px) and (max-width: 989px) {
   .medium-hide {
     display: none !important;
   }

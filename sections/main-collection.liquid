@@ -37,6 +37,8 @@
     }
     .sorting-wrapper {
       position: unset !important;
+      padding: 0 !important;
+
 
     }
   }
@@ -267,28 +269,33 @@
     .product-grid {
       grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
     }
+    .filters-horizontal .facets__heading{
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    .facets__wrapper{
+      padding:0 12px !important;
+    }
   }
 
   @media screen and (max-width: 790px) {
     .sorting-wrapper {
       margin: 0px !important;
-      padding: 0 !important;
+      display: unset !important;
+
     }
 
     .horizontal-filters__parent-wrapper{
       width: 100% !important;
       box-sizing: border-box;
     }
-    .filters-horizontal .facets__heading{
-      flex: 0 0 100%;
-      max-width: 100%;
-    }
+
     .facets__wrapper{
       flex: 0 0 25%;
       max-width: 25%;
       width:25%;
       margin-top: 20px;
-      padding:0 12px !important;
+
       box-sizing: border-box;
       position: unset !important;
     }
@@ -540,12 +547,32 @@
 
   @media (max-width: 990px) {
     .filter-content {
+      left: 0;
+      top: 37px;
+      max-width: 308px;
+    }
+  }
+  @media (max-width: 790px) {
+    .filter-content {
       left: 50% !important;
-      top: 77px;
+      top: 77px !important;
       width: 75%;
       max-width: 350px;
       transform: translate(-50%);
     }
+  }
+  .facets__size-wrapper {
+    padding: 10px;
+    max-height: calc(80vh - 46px);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .facet-sublabel {
+    font-size: 15px;
+    line-height: 22.5px;
+    color: black;
+    font-family: Poppins;
+    margin-bottom: 12px;
   }
 
   .filter-content .facets__list {
@@ -556,6 +583,9 @@
     align-items: center;
     box-sizing: border-box;
     margin-bottom: 12px;
+  }
+  .filter-content .facets__list-size {
+    padding: 0 !important;
   }
 
   .filter-content .facets__list-style {
@@ -604,6 +634,11 @@
     position: relative;
     margin-bottom: 12px;
   }
+
+  .horizontal-facets-sort {
+    color: #373735;
+  }
+
   .horizontal-facets-item-print {
     padding: 0 !important;
     width: 100% !important;
@@ -815,7 +850,7 @@
                     <div id="loading-spinner-{{ section.id }}" class="loading-overlay__spinner"></div>
                   </div>
 
-                  <div class="grid-view-options-container small-hide medium-hide">
+                  <div class="grid-view-options-container small-hide ">
                     <grid-options class="grid-view-options">
                       <div>
                         <div

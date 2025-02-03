@@ -1,73 +1,130 @@
 <form id="filters-form" class="filters-horizontal">
   <h2 class="facets__heading">Filter by:</h2>
   {%- for f in results.filters -%}
-    <div
-      class="facets__wrapper"
-      x-data="{ open: false }"
-    >
-      <button type="button" @click="open = !open" class="filter-button">
-        {{ f.label | escape }}
-        {{ 'icon-caret.svg' | inline_asset_content }}
-      </button>
-      <div class="dark-overlay" x-cloak x-show="open"></div>
+    {% unless f.label == 'Tall / Petite' %}
       <div
-        x-cloak
-        x-show="open"
-        @click.away="open = false"
-        class="filter-content js-filter"
-        id="Details-{{ f.param_name | escape }}-{{ section.id }}"
+        class="facets__wrapper"
+        x-data="{ open: false }"
       >
-        <div class="facets__head-wrapper">
-          <span class="facet-name">
-            {% if f.label == 'Style' %}
-              Select {{ f.label }}
-            {% else %}
-              {% if f.label == 'Print' %}
-                {{ f.label }} Collection
-              {% else %}
-                {{ f.label }}
-              {% endif %}
-            {% endif %}
-          </span>
-          <button type="button" @click="open = false" class="filter-close-icon">
-            {{ 'icon-close.svg' | inline_asset_content }}
-          </button>
-        </div>
-        <ul class="facets__list {% if f.label=="Style" %} facets__list-style{% endif %} {% if f.label=="Print" %} facets__list-print{% endif %}">
-          {%- for v in f.values -%}
-            {% assign input_id = 'Filter-' | append: f.param_name | escape | append: '-' | append: forloop.index %}
-            <li class="facets__item {% if f.label=="Style" %} horizontal-facets-item-style{% endif %} {% if f.label=="Print" %} horizontal-facets-item-print{% endif %}">
-              {% if f.label == 'Print' %}
-                {% for link in menus['print-images'].links %}
-                  {% if link.title == v.label %}
-                    <div class="print-image {% if v.active %} print-image-active{% endif %}">
-                      <img src="{{ link.url }}" alt="{{ link.title }}" class="facet-image" width="44px" height="44px">
-                    </div>
-                  {% endif %}
-                {% endfor %}
-              {% endif %}
-              <label class="horizontal-facet-checkbox {% if v.active%} horizontal-facet-checkbox-active{% endif %} {% if v.active and f.label=="Print"%} print-facet-checkbox-active{% endif %} {% if f.label=="Style" %} horizontal-facet-checkbox-style{% endif %} {% if f.label=="Print" %} horizontal-facet-checkbox-print{% endif %}">
-                <input
-                  type="checkbox"
-                  id="{{ input_id }}"
-                  name="{{ v.param_name }}"
-                  value="{{ v.value }}"
-                  data-render-section="filters-form"
-                  {% if v.active %}
-                    checked
-                  {% endif -%}
-                  {% if v.count == 0 and v.active == false %}
-                    disabled
-                  {% endif -%}
-                >
+        <button type="button" @click="open = !open" class="filter-button">
+          {{ f.label | escape }}
+          {{ 'icon-caret.svg' | inline_asset_content }}
+        </button>
+        <div class="dark-overlay" x-cloak x-show="open"></div>
+        <div
+          x-cloak
+          x-show="open"
+          @click.away="open = false"
+          class="filter-content js-filter"
+          id="Details-{{ f.param_name | escape }}-{{ section.id }}"
+        >
+          {% if f.label == 'Size' %}
+           
+              <div class="facets__head-wrapper">
+                <span class="facet-name"> Size </span>
+                <button type="button" @click="open = false" class="filter-close-icon">
+                  {{ 'icon-close.svg' | inline_asset_content }}
+                </button>
+              </div>
+              <div class="facets__size-wrapper">
+              {% for f in results.filters %}
+                {% if f.label == 'Size' or f.label == 'Tall / Petite' %}
+                  <div class="facet-sublabel">
+                    {{ f.label }}
+                  </div>
+                  <ul class="facets__list facets__list-size">
+                    {%- for v in f.values -%}
+                      {% assign input_id = 'Filter-'
+                        | append: f.param_name
+                        | escape
+                        | append: '-'
+                        | append: forloop.index
+                      %}
+                      <li class="facets__item ">
+                        <label class="horizontal-facet-checkbox {% if v.active%} horizontal-facet-checkbox-active{% endif %}">
+                          <input
+                            type="checkbox"
+                            id="{{ input_id }}"
+                            name="{{ v.param_name }}"
+                            value="{{ v.value }}"
+                            data-render-section="filters-form"
+                            {% if v.active %}
+                              checked
+                            {% endif -%}
+                            {% if v.count == 0 and v.active == false %}
+                              disabled
+                            {% endif -%}
+                          >
 
-                {{- v.label -}}
-              </label>
-            </li>
-          {%- endfor -%}
-        </ul>
+                          {{- v.label -}}
+                        </label>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+          {% else %}
+            <div class="facets__head-wrapper">
+              <span class="facet-name">
+                {% if f.label == 'Style' %}
+                  Select {{ f.label }}
+                {% else %}
+                  {% if f.label == 'Print' %}
+                    {{ f.label }} Collection
+                  {% else %}
+                    {{ f.label }}
+                  {% endif %}
+                {% endif %}
+              </span>
+              <button type="button" @click="open = false" class="filter-close-icon">
+                {{ 'icon-close.svg' | inline_asset_content }}
+              </button>
+            </div>
+            <ul class="facets__list {% if f.label=="Style" %} facets__list-style{% endif %} {% if f.label=="Print" %} facets__list-print{% endif %}">
+              {%- for v in f.values -%}
+                {% assign input_id = 'Filter-' | append: f.param_name | escape | append: '-' | append: forloop.index %}
+                <li class="facets__item {% if f.label=="Style" %} horizontal-facets-item-style{% endif %} {% if f.label=="Print" %} horizontal-facets-item-print{% endif %}">
+                  {% if f.label == 'Print' %}
+                    {% for link in menus['print-images'].links %}
+                      {% if link.title == v.label %}
+                        <div class="print-image {% if v.active %} print-image-active{% endif %}">
+                          <img
+                            src="{{ link.url }}"
+                            alt="{{ link.title }}"
+                            class="facet-image"
+                            width="44px"
+                            height="44px"
+                          >
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                  <label class="horizontal-facet-checkbox {% if v.active%} horizontal-facet-checkbox-active{% endif %} {% if v.active and f.label=="Print"%} print-facet-checkbox-active{% endif %} {% if f.label=="Style" %} horizontal-facet-checkbox-style{% endif %} {% if f.label=="Print" %} horizontal-facet-checkbox-print{% endif %}">
+                    <input
+                      type="checkbox"
+                      id="{{ input_id }}"
+                      name="{{ v.param_name }}"
+                      value="{{ v.value }}"
+                      data-render-section="filters-form"
+                      {% if v.active %}
+                        checked
+                      {% endif -%}
+                      {% if v.count == 0 and v.active == false %}
+                        disabled
+                      {% endif -%}
+                    >
+
+                    {{- v.label -}}
+                  </label>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {% endif %}
+        </div>
       </div>
-    </div>
+    {% endunless %}
   {% endfor %}
   {%- if section.settings.enable_sorting -%}
     <div
