@@ -154,7 +154,7 @@
           <ul class="facets__list  facets__list-style">
             {%- for option in collection.sort_options -%}
               <li class="facets__item horizontal-facets-item-style">
-                <label class="horizontal-facet-checkbox {% if option.value== collection.sort_by %} selected-sort{% endif %}">
+                <label class="horizontal-facet-checkbox horizontal-facet-checkbox-style grey {% if option.value== collection.sort_by %} selected-sort{% endif %}">
                   <input
                     type="checkbox"
                     id="SortBy"

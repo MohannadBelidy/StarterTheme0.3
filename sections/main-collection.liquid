@@ -36,7 +36,7 @@
       text-align:left !important;
     }
     .sorting-wrapper {
-      position: unset !important;
+      
       padding: 0 !important;
 
 
@@ -54,7 +54,9 @@
     margin: 24px 0 32px;
     padding: 0 36px;
   }
-
+  .grey{
+    color: #373735 !important;
+  }
 
   .child-sorting-wrapper {
     display: flex;
@@ -90,6 +92,7 @@
   }
   .cus-col.active svg{
     stroke: white;
+    color: white
   }
 
   .collection-filters-wrapper {
@@ -243,6 +246,16 @@
     text-align: var(--product-card-text-alignment);
     overflow: hidden;
   }
+  @media (max-width: 990px) {
+    .shop-poster-ad{
+      padding:0 2.4px !important;
+    }
+  }
+  @media (max-width: 790px) {
+    .shop-poster-ad{
+      flex: 0 0 50% !important;
+    }
+  }
 
   .horizontal-filters__parent-wrapper {
     display: flex;
@@ -282,6 +295,7 @@
     .sorting-wrapper {
       margin: 0px !important;
       display: unset !important;
+      position: unset !important;
 
     }
 
@@ -739,7 +753,7 @@
     font-family: Apris-Regular;
     margin: 0 0 15px;
     color: black;
-    font-weight: 400px;
+    font-weight: 400;
   }
   .collection-description {
     font-size: 12px;
@@ -873,7 +887,8 @@
                           class="cus-col"
                           data-index="3"
                         >
-                          {{ 'icon-4col-grid.svg' | inline_asset_content }}
+                          {% include 'icon-4col-grid' %}
+                          {% comment %} <img src="{{ 'icon-4col-grid.svg' | asset_url }}" alt="hello">  {% endcomment %}
                         </div>
                       </div>
                     </grid-options>
