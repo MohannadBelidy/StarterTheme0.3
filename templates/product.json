@@ -22,6 +22,7 @@
         },
         "text_CmhREB": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "{{ product.vendor }}",
             "text_style": "body"
@@ -29,6 +30,7 @@
         },
         "sku_m7MALE": {
           "type": "sku",
+          "disabled": true,
           "settings": {
             "text_style": "uppercase"
           }
@@ -45,15 +47,18 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "none"
           }
         },
         "quantity_selector_cwaLFj": {
           "type": "quantity_selector",
-          "settings": {}
+          "settings": {
+            "show_quantity": false
+          }
         },
         "share_ybFkAW": {
           "type": "share",
+          "disabled": true,
           "settings": {
             "share_label": "Share"
           }
@@ -68,6 +73,18 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
           }
+        },
+        "pf_guarantee_TRjEXm": {
+          "type": "pf-guarantee",
+          "settings": {
+            "show_pf-guarantee": true,
+            "title": "The printfresh guarantee",
+            "image_text": "The Printfresh Guarantee",
+            "image": "shopify://shop_images/Shot_15_9024_2_1.webp",
+            "heading": "OUR GUARANTEE OF QUALITY",
+            "text_1": "<p>We pride ourselves on creating  joyful, high-quality products that stand the test of time.</p><p>If you find an item doesn’t meet your standards of comfort,</p><p>we will make every effort to make it right! </p>",
+            "text_2": "<p><strong>Please contact us with any questions!</strong></p><p>Email: Hello@Printfresh.com </p><p>Phone:  267-610-0628</p>"
+          }
         }
       },
       "block_order": [
@@ -80,14 +97,15 @@
         "quantity_selector_cwaLFj",
         "share_ybFkAW",
         "description_RxGjaP",
-        "buy_buttons_JPDYXc"
+        "buy_buttons_JPDYXc",
+        "pf_guarantee_TRjEXm"
       ],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "",
         "media_size": "medium",
         "constrain_to_viewport": true,
-        "media_fit": "cover",
+        "media_fit": "contain",
         "media_position": "left",
         "image_zoom": "lightbox",
         "enable_video_looping": true,
