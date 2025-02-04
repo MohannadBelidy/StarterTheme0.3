@@ -1,6 +1,6 @@
 <media-gallery>
-  <div class="swiper">
-    <div class="swiper-wrapper">
+  <div class="media-gallery-container">
+    <div class="desktop-media-gallery">
       {% assign media_index = 0 %}
       {% if selected_variant.featured_image != null %}
         <div
@@ -18,15 +18,12 @@
             class="swiper-slide"
             data-media-id="{{ media.id }}"
             data-media-index="{{ media_index }}"
-          >
+          > 
             {% render 'product-media', media: media, loop: video_looping %}
           </div>
           {% assign media_index = media_index | plus: 1 %}
         {% endunless %}
       {% endfor %}
     </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
   </div>
 </media-gallery>
