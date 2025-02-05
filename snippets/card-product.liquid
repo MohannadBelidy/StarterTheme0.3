@@ -32,7 +32,16 @@
               <div class="swiper-wrapper">
                 {% for image in card_product.images limit: 3 %}
                   <div class="swiper-slide">
-                    <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt }}" width="100%" height="">
+                    {{
+                      image
+                      | image_url: width: card_product.featured_image.width
+                      | image_tag:
+                        width: card_product.featured_image.width,
+                        height: card_product.featured_image.height,
+                        alt: card_product.featured_media.alt,
+                        data-product-image: card_product.id
+                      | escape
+                    }}
                   </div>
                 {% endfor %}
               </div>

@@ -36,7 +36,7 @@
       text-align:left !important;
     }
     .sorting-wrapper {
-      
+
       padding: 0 !important;
 
 
@@ -90,9 +90,8 @@
     background-color: #245490;
 
   }
-  .cus-col.active svg{
-    stroke: white;
-    color: white
+  .cus-col.active svg path{
+    fill: #fff;
   }
 
   .collection-filters-wrapper {
@@ -986,7 +985,7 @@
                     {%- endif -%}
                   </div>
                   {%- if paginate.pages > 1 -%}
-                    {% render 'pagination', paginate: paginate, anchor: '' %}
+                    {% render 'collection-pagination', paginate: paginate, anchor: '' %}
                   {%- endif -%}
                   <div class="collection-description-container">
                     <div class="collection-description-image">
@@ -1077,6 +1076,36 @@
           this.debounceOnChange = debounce((event) => this.onChangeHandler(event), 800);
           this.addEventListener('change', this.debounceOnChange.bind(this));
           this.addEventListener('click', this.onClickHandler.bind(this));
+        }
+
+        connectedCallback() {
+          let selectedIndex = document.getElementsByTagName('grid-options')[0].selectedIndex;
+          this.updatePosterSize(selectedIndex);
+          window.addEventListener('view-change', (e) => {
+            this.updatePosterSize(e.detail.index);
+          });
+        }
+        updatePosterSize(index) {
+          this.posterAd = this.querySelector('.shop-poster-ad');
+          console.log(this.posterAd);
+          let flexBasis;
+          switch (index) {
+            case '1':
+              this.posterAd.style.flex = `0 0 50%`;
+              this.posterAd.style.maxWidth = `50%`;
+              break;
+            case '2':
+              this.posterAd.style.flex = `0 0 33.33%`;
+              this.posterAd.style.maxWidth = `33.33%`;
+              break;
+            case '3':
+              this.posterAd.style.flex = `0 0 25%`;
+              this.posterAd.style.maxWidth = `25%`;
+              break;
+            default:
+              this.posterAd.style.flex = `0 0 25%`;
+              this.posterAd.style.maxWidth = `25%`;
+          }
         }
 
         onClickHandler = (event) => {
