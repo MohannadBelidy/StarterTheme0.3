@@ -39,8 +39,10 @@
                         width: card_product.featured_image.width,
                         height: card_product.featured_image.height,
                         alt: card_product.featured_media.alt,
-                        data-product-image: card_product.id
+                        data-product-image: card_product.id,
+                        loading: 'lazy'
                       | escape
+                      
                     }}
                   </div>
                 {% endfor %}
@@ -55,7 +57,8 @@
                 width: card_product.featured_image.width,
                 height: card_product.featured_image.height,
                 alt: card_product.featured_media.alt,
-                data-product-image: card_product.id
+                data-product-image: card_product.id,
+                loading: 'lazy'
               | escape
             }}
           {% endif %}
