@@ -198,6 +198,7 @@
 
   .pill-label.pill-disabled {
     opacity:0.25;
+    border:none
   }
 
   .variant-block__dropdown select {
@@ -266,18 +267,25 @@
 
   .product-form__buttons button {
     width: 100%;
-    background: transparent;
-    border: none;
-    outline: var(--inputs-border-width) solid rgba(var(--color-foreground),var(--inputs-border-opacity));
     padding: 12.5px 10px;
     cursor: pointer;
-    font-size: 15px;
     letter-spacing: 1px;
-    color: var(--color-secondary-button);
+    background: #245490;
+    font-size: 14px;
+    line-height: 21px;
+    color: #fff;
+    border: 1px solid #245490;
+    border-color: #245490;
+    font-family:Poppins;
+    text-transform:uppercase;
+    transition:all .2s
+
   }
 
   .product-form__buttons button:hover {
-    outline: 2px solid rgba(var(--color-foreground));
+    background:transparent;
+    color:#245490;
+    transition:all .2s
   }
 
   .shopify-payment-button__button {
@@ -355,7 +363,7 @@
     right: 15px;
   }
 
-  .product__accordion details[open]>summary .icon-caret {
+  .product__accordion details[modal_open]>summary .icon-caret {
     transform: rotate(180deg);
   }
 
@@ -398,7 +406,7 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .pf-guarantee-container{
     padding-bottom:20px;
   }
@@ -487,6 +495,7 @@
     text-align: center;
     margin-bottom: 8px;
     font-family: Poppins;
+    color: #373735;
     margin-top:0;
   }
   .pf-guarantee-text{
@@ -500,6 +509,31 @@
     font-weight: 400;
     margin-top:0;
   }
+  .info-tabs{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom: 1px solid #dcdcdc;
+  }
+  .tab{
+    font-size: 15px;
+    line-height: 22.5px;
+    color: #000;
+    cursor: pointer;
+    transition: .3s;
+    opacity: .3;
+  }
+  .tab.active{
+    opacity: 1;
+    border-bottom: 1px solid #245490;
+  }
+  .info-tab-content{
+    display:none;
+  }
+  .info-tab-content.active{
+    display:block;
+  }
+
 
   @media screen and (min-width: 750px) {
     product-info .page-width {
@@ -572,7 +606,6 @@
     .product--medium .product__accordion,
     .product--medium .share-button {
       display: block;
-      max-width: 440px;
     }
 
     .product--large .product__variants variant-selector,
@@ -580,7 +613,6 @@
     .product--large .product-form__buttons button,
     .product--large .product-form__buttons .shopify-payment-button,
     .product--large .share-button {
-      max-width: 343px;
     }
   }
 
@@ -622,14 +654,18 @@
 {%- endstyle -%}
 
 {% assign selected_variant = product.selected_or_first_available_variant %}
-
+{% assign product_info = product.title | split: '-' %}
+{% assign product_title = product_info[1] %}
 <product-info
   data-url="{{ product.url}}"
   data-section="{{ section.id }}"
   class="color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding"
 >
   <div class="product-container">
-    <div class="product flex product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} {% if section.settings.constrain_to_viewport %}constrain-height{% endif %}">
+    <div
+      x-data="{modal_open:false}"
+      class="product flex product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} {% if section.settings.constrain_to_viewport %}constrain-height{% endif %}"
+    >
       <div class="product__media-wrapper flex__item media-{{ section.settings.media_fit }} small-hide">
         {% render 'product-media-gallery',
           product_media: product.media,
@@ -659,7 +695,7 @@
 
             {%- when 'title' -%}
               <div class="product__title" {{ block.shopify_attributes }}>
-                <h1>{{ product.title }}</h1>
+                <h1>{{ product_title }}</h1>
               </div>
 
             {%- when 'price' -%}
@@ -728,8 +764,8 @@
                             >
                               {% for value in option.values %}
                                 {%- capture input_id -%}
-                                  {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
-                                {%- endcapture -%}
+                                    {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
+                                  {%- endcapture -%}
                                 <option
                                   id="{{ input_id }}"
                                   value="{{ value | escape }}"
@@ -839,7 +875,7 @@
                         id="AddToCart-{{ section.id }}"
                         type="submit"
                         name="add"
-                        class="{% if block.settings.show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+                        class=" {% if block.settings.show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
                         {% if selected_variant == null or selected_variant.available == false %}
                           disabled
                         {% endif %}
@@ -861,25 +897,42 @@
               </div>
 
             {%- when 'pf-guarantee' -%}
-              <div class="pf-guarantee-container" x-data="{open:false}">
-                <div class="pf-guarantee-title" >
-                  {{ block.settings.title }} <div class="pf-guarantee-icon" @click="open=true">{{ 'icon-mark.svg' | inline_asset_content }}</div>
-                </div>
-                <div class="pf-guarantee-modal" x-show="open" x-cloak >
-                  <div class="pf-guarantee-modal-content" @click.away="open=false">
-                    <div class="pf-guarantee-image-content">
-                      <span class="pf-guarantee-close-icon" @click="open=false">{{ 'icon-close.svg' | inline_asset_content }}</span>
-                      <img src="{{block.settings.image| img_url:'master'}}" alt="" height="" width="">
-                      <h2> {{block.settings.image_text}}</h2>
-                    </div>
-                    <div class="pf-guarantee-text-content">
-                      <h2>{{ block.settings.heading }}</h2>
-                      <div class="pf-guarantee-text">{{ block.settings.text_1}}</div>
-                      <div class="pf-guarantee-text"> {{ block.settings.text_2}} </div>
-                    </div>
+              <div class="pf-guarantee-container">
+                <div class="pf-guarantee-title">
+                  {{ block.settings.title }}
+                  <div class="pf-guarantee-icon" @click="modal_open=true">
+                    {{ 'icon-mark.svg' | inline_asset_content }}
                   </div>
                 </div>
               </div>
+
+            {%- when 'info-tab' -%}
+              <information-tabs class="info-tab-container">
+                <div class="info-tabs">
+                  <div class="tab" data-tab-index="1">
+                    {{ block.settings['tab-1'] }}
+                  </div>
+                  <div class="tab" data-tab-index="2">
+                    {{ block.settings['tab-2'] }}
+                  </div>
+                  <div class="tab" data-tab-index="3">
+                    {{ block.settings['tab-3'] }}
+                  </div>
+                </div>
+                <div class="info-tab-content-container">
+                  <div>
+                    <div class="info-tab-content" data-content-index="1">
+                      {{ product.metafields.custom.description_tab }}
+                    </div>
+                    <div class="info-tab-content" data-content-index="2">
+                      {{ product.metafields.custom.fit_and_sizing }}
+                    </div>
+                    <div class="info-tab-content" data-content-index="3">
+                      {{ product.metafields.custom.why_we_love_it_tab }}
+                    </div>
+                  </div>
+                </div>
+              </information-tabs>
             {%- when 'custom_liquid' -%}
               {{ block.settings.custom_liquid }}
 
@@ -962,166 +1015,27 @@
           {%- endcase -%}
         {%- endfor -%}
       </div>
+      <div class="pf-guarantee-modal" x-show="modal_open" x-cloak>
+        <div class="pf-guarantee-modal-content" @click.away="modal_open=false">
+          <div class="pf-guarantee-image-content">
+            <span class="pf-guarantee-close-icon" @click="modal_open=false">
+              {{- 'icon-close.svg' | inline_asset_content -}}
+            </span>
+            <img src="{{section.settings.image| img_url:'master'}}" alt="" height="" width="">
+            <h2>{{ section.settings.image_text }}</h2>
+          </div>
+          <div class="pf-guarantee-text-content">
+            <h2>{{ section.settings.heading }}</h2>
+            <div class="pf-guarantee-text">{{ section.settings.text_1 }}</div>
+            <div class="pf-guarantee-text">{{ section.settings.text_2 }}</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </product-info>
-
-<script type="text/javascript">
-  class ProductInfo extends HTMLElement {
-    abortController = undefined;
-
-    constructor() {
-      super();
-      this.variantSelector?.addEventListener('change', this.onVariantChange.bind(this));
-      this.quantitySelector.addEventListener('change', this.onQuantitySelectorEvent.bind(this));
-      this.quantitySelector
-        .querySelector('button[name="plus"]')
-        .addEventListener('click', this.onQuantitySelectorEvent.bind(this));
-      this.quantitySelector
-        .querySelector('button[name="minus"]')
-        .addEventListener('click', this.onQuantitySelectorEvent.bind(this));
-      document.getElementById('swiper-script').addEventListener('load', this.initSwiper.bind(this));
-      document.addEventListener('liquid-ajax-cart:request-end', this.onCartUpdate.bind(this));
-    }
-
-    initSwiper() {
-      this.swiper = new Swiper('.swiper', {
-        autoHeight: true,
-        direction: 'horizontal',
-        pagination: {
-          el: '.swiper-pagination',
-        },
-        navigation: {
-          prevEl: '.swiper-button-prev',
-          nextEl: '.swiper-button-next',
-        },
-      });
-    }
-
-    onCartUpdate(e) {
-      const { requestState } = e.detail;
-      // If the "add to cart" request is successful
-      if (requestState.requestType === 'add' && requestState.responseData?.ok) {
-        // Add the CSS class to the "body" tag
-        document.body.classList.add('js-show-ajax-cart');
-        // dispatch a custom event
-        this.dispatchEvent(new CustomEvent('product-info-updated'));
-      }
-    }
-
-    get variantSelector() {
-      return this.querySelector('variant-selector');
-    }
-
-    get quantitySelector() {
-      return this.querySelector('quantity-selector');
-    }
-
-    get selectedOptionValues() {
-      if (this.variantSelector.dataset.pickerType === 'dropdown') {
-        const list = Array.from(this.variantSelector.querySelectorAll('select')).map(
-          (select) => select.options[select.selectedIndex].dataset.optionValueId
-        );
-        return list;
-      } else {
-        const list = Array.from(this.variantSelector.querySelectorAll('fieldset input:checked')).map(
-          ({ dataset }) => dataset.optionValueId
-        );
-        return list;
-      }
-    }
-
-    getSelectedVariant(html) {
-      const selectedVariant = html.querySelector('[data-selected-variant]')?.innerHTML;
-      return !!selectedVariant ? JSON.parse(selectedVariant) : null;
-    }
-
-    onVariantChange(e) {
-      this.renderSection();
-    }
-
-    onQuantitySelectorEvent(e) {
-      const quantityInput = this.quantitySelector.querySelector('input[type="number"]');
-      let currentValue = parseInt(quantityInput.value);
-      const minValue = parseInt(quantityInput.getAttribute('min')) || 0;
-      const maxValue = parseInt(quantityInput.getAttribute('max')) || Infinity;
-
-      if (event.target.name === 'minus' && currentValue > minValue) {
-        quantityInput.value = currentValue - 1;
-      } else if (event.target.name === 'plus' && currentValue < maxValue) {
-        quantityInput.value = currentValue + 1;
-      } else if (event.type === 'change') {
-        if (currentValue < minValue) {
-          quantityInput.value = minValue;
-        } else if (currentValue > maxValue) {
-          quantityInput.value = maxValue;
-        }
-      }
-    }
-
-    updateMedia(variantFeaturedMediaId) {
-      if (!variantFeaturedMediaId) return;
-      var index = this.querySelector(`.swiper-slide[data-media-id="${variantFeaturedMediaId}"]`).dataset.mediaIndex;
-      this.swiper?.slideTo(index);
-    }
-
-    updateURL(variantId) {
-      // this.querySelector('share-button')?.updateUrl(
-      //   `${window.shopUrl}${url}${variantId ? `?variant=${variantId}` : ''}`
-      // );
-      window.history.replaceState({}, '', `${this.dataset.url}${variantId ? `?variant=${variantId}` : ''}`);
-    }
-
-    updateSourceFromDestination = (html, id) => {
-      const source = html.getElementById(`${id}`);
-      const destination = this.querySelector(`#${id}`);
-      if (source && destination) {
-        destination.innerHTML = source.innerHTML;
-      }
-    };
-
-    updateVariantInputs(variantId) {
-      this.querySelectorAll(
-        `#product-form-${this.dataset.section}, #product-form-installment-${this.dataset.section}`
-      ).forEach((productForm) => {
-        const input = productForm.querySelector('input[name="id"]');
-        input.value = variantId ?? '';
-      });
-    }
-
-    renderSection() {
-      this.abortController?.abort();
-      this.abortController = new AbortController();
-
-      fetch(`${this.dataset.url}?option_values=${this.selectedOptionValues}&section_id=${this.dataset.section}`, {
-        signal: this.abortController.signal,
-      })
-        .then((response) => response.text())
-        .then((responseText) => {
-          const html = new DOMParser().parseFromString(responseText, 'text/html');
-          const variant = this.getSelectedVariant(html);
-          this.updateMedia(variant?.featured_media?.id);
-          this.updateURL(variant?.id);
-          this.updateVariantInputs(variant?.id);
-          this.updateSourceFromDestination(html, `add-to-cart-container-${this.dataset.section}`);
-          this.updateSourceFromDestination(html, `variant-selector-${this.dataset.section}`);
-          this.updateSourceFromDestination(html, `price-${this.dataset.section}`);
-          this.updateSourceFromDestination(html, `sku-${this.dataset.section}`);
-          this.updateSourceFromDestination(html, `inventory-${this.dataset.section}`);
-        })
-        .catch((error) => {
-          if (error.name === 'AbortError') {
-            console.log('Fetch aborted by user');
-          } else {
-            console.error(error);
-          }
-        });
-    }
-  }
-
-  customElements.define('product-info', ProductInfo);
-</script>
-
+<script src="{{ 'component-product-info.js' | asset_url }}" defer="defer"></script>
+<script src="{{ "swiper7.4.1.min.js" | asset_url }}" defer="defer" id="swiper-script"></script> 
 {% schema %}
 {
   "name": "t:sections.main-product.name",
@@ -1336,31 +1250,6 @@
           "type": "text",
           "id": "title",
           "label": "PrintFresh Guarantee Title"
-        },
-        {
-          "type": "text",
-          "id": "image_text",
-          "label": "PrintFresh Guarantee Image Text"
-        },
-        {
-          "type": "image_picker",
-          "id":"image",
-          "label": "PrintFresh Guarantee Image"
-        },
-        {
-          "type": "text",
-          "id": "heading",
-          "label": "PF Guarantee Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "text_1",
-          "label": "PrintFresh Guarantee Text 1"
-        },
-        {
-          "type": "richtext",
-          "id": "text_2",
-          "label": "PrintFresh Guarantee Text 2"
         }
       ]
     },
@@ -1387,6 +1276,31 @@
         {
           "type": "paragraph",
           "content": "t:sections.main-product.blocks.share.settings.title_info.content"
+        }
+      ]
+    },
+    {
+      "type": "info-tab",
+      "name": "Information Tab",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab-1",
+          "label": "First Tab Title",
+          "default": "Description"
+        },
+        {
+          "type": "text",
+          "id": "tab-2",
+          "label": "Second Tab Title",
+          "default": "Fit & Sizing"
+        },
+        {
+          "type": "text",
+          "id": "tab-3",
+          "label": "Third Tab Title",
+          "default": "Why We Love It"
         }
       ]
     },
@@ -2653,6 +2567,31 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "text",
+      "id": "image_text",
+      "label": "PrintFresh Guarantee Image Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "PrintFresh Guarantee Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "PF Guarantee Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text_1",
+      "label": "PrintFresh Guarantee Text 1"
+    },
+    {
+      "type": "richtext",
+      "id": "text_2",
+      "label": "PrintFresh Guarantee Text 2"
     }
   ]
 }

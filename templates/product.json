@@ -70,7 +70,7 @@
         "buy_buttons_JPDYXc": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
         },
@@ -78,12 +78,15 @@
           "type": "pf-guarantee",
           "settings": {
             "show_pf-guarantee": true,
-            "title": "The printfresh guarantee",
-            "image_text": "The Printfresh Guarantee",
-            "image": "shopify://shop_images/Shot_15_9024_2_1.webp",
-            "heading": "OUR GUARANTEE OF QUALITY",
-            "text_1": "<p>We pride ourselves on creating  joyful, high-quality products that stand the test of time.</p><p>If you find an item doesn’t meet your standards of comfort,</p><p>we will make every effort to make it right! </p>",
-            "text_2": "<p><strong>Please contact us with any questions!</strong></p><p>Email: Hello@Printfresh.com </p><p>Phone:  267-610-0628</p>"
+            "title": "The printfresh guarantee"
+          }
+        },
+        "info_tab_8gYztp": {
+          "type": "info-tab",
+          "settings": {
+            "tab-1": "Description",
+            "tab-2": "Fit & Sizing",
+            "tab-3": "Why We Love It"
           }
         }
       },
@@ -98,7 +101,8 @@
         "share_ybFkAW",
         "description_RxGjaP",
         "buy_buttons_JPDYXc",
-        "pf_guarantee_TRjEXm"
+        "pf_guarantee_TRjEXm",
+        "info_tab_8gYztp"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -110,7 +114,12 @@
         "image_zoom": "lightbox",
         "enable_video_looping": true,
         "padding_top": 36,
-        "padding_bottom": 100
+        "padding_bottom": 100,
+        "image_text": "The Printfresh Guarantee",
+        "image": "shopify://shop_images/Shot_15_9024_2_1.webp",
+        "heading": "OUR GUARANTEE OF QUALITY",
+        "text_1": "<p>We pride ourselves on creating joyful, high-quality products that stand the test of time.</p><p>If you find an item doesn’t meet your standards of comfort,</p><p>we will make every effort to make it right! </p>",
+        "text_2": "<p><strong>Please contact us with any questions!</strong></p><p>Email: Hello@Printfresh.com </p><p>Phone:  267-610-0628</p>"
       }
     }
   },
