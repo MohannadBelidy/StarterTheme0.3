@@ -879,6 +879,15 @@
                         {% if selected_variant == null or selected_variant.available == false %}
                           disabled
                         {% endif %}
+                        data-product-collections="{{ product.collections | map: 'title' | join: ',' }}"
+                        onclick="
+                          if(window.dataLayer) {
+                            window.dataLayer.push({
+                              'event': 'addToCart',
+                              'productCollections': this.getAttribute('data-product-collections').split(',')
+                            });
+                          }
+                        "
                       >
                         {% if selected_variant == null %}
                           Unavailable
@@ -1035,7 +1044,7 @@
   </div>
 </product-info>
 <script src="{{ 'component-product-info.js' | asset_url }}" defer="defer"></script>
-<script src="{{ "swiper7.4.1.min.js" | asset_url }}" defer="defer" id="swiper-script"></script> 
+<script src="{{ "swiper7.4.1.min.js" | asset_url }}" defer="defer" id="swiper-script"></script>
 {% schema %}
 {
   "name": "t:sections.main-product.name",
