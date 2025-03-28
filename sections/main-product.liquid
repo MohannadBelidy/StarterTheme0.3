@@ -885,7 +885,9 @@
                             window.dataLayer.push({
                               'event': 'addToCart',
                               'productCollections': this.getAttribute('data-product-collections').split(','),
-                              'productName': 'Aight so you seein this right?'
+                              'productName': 'Aight so you seein this right?',
+                              'productSku': '{{ selected_variant.sku }}',
+                              'productVariant': '{{ selected_variant.title }}'
                             });
                           }
                         "
